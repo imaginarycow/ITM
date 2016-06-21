@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B54294FD1C606F38007119F7 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FC1C606F38007119F7 /* shootButton.png */; };
+		B54294FF1C606F46007119F7 /* moveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FE1C606F46007119F7 /* moveButton.png */; };
+		B54295011C606F8B007119F7 /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295001C606F8B007119F7 /* GameControls.swift */; };
+		B54295031C60733F007119F7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295021C60733F007119F7 /* GameScene.swift */; };
+		B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295041C60FB56007119F7 /* Level2GameScene.swift */; };
+		B54295091C610106007119F7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295081C610106007119F7 /* Player.swift */; };
+		B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950A1C6101E9007119F7 /* Something_Strange.ttf */; };
+		B542950E1C610522007119F7 /* Halo3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950D1C6104E6007119F7 /* Halo3.ttf */; };
+		B54295131C614254007119F7 /* walkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B54295121C614254007119F7 /* walkCycle.atlas */; };
+		B54295171C6191F1007119F7 /* MenuViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295161C6191F1007119F7 /* MenuViewExtension.swift */; };
+		B542951B1C61A0BC007119F7 /* RUBBBI__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */; };
+		B59BCC7D1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC7C1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png */; };
+		B59BCC7F1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC7E1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png */; };
+		B59BCC811C5D34EE007DAA27 /* mazeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC801C5D34EE007DAA27 /* mazeBackground.png */; };
+		B59BCC831C5D3728007DAA27 /* rateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC821C5D3728007DAA27 /* rateIcon.png */; };
+		B59BCC851C5D3AD8007DAA27 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC841C5D3AD8007DAA27 /* helpIcon.png */; };
+		B59BCC871C5D3B90007DAA27 /* playIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC861C5D3B90007DAA27 /* playIcon.png */; };
+		B59BCC891C5D3C65007DAA27 /* gameCenterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC881C5D3C65007DAA27 /* gameCenterIcon.png */; };
+		B59BCC8B1C5D3D0C007DAA27 /* upgradeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC8A1C5D3D0C007DAA27 /* upgradeIcon.png */; };
+		B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC8C1C5D41BE007DAA27 /* Icons */; };
+		B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */; };
+		B5A6D86E1C4FE209001B6ABA /* Level1GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D86D1C4FE209001B6ABA /* Level1GameScene.swift */; };
+		B5A6D8701C4FE209001B6ABA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D86F1C4FE209001B6ABA /* GameViewController.swift */; };
+		B5A6D8731C4FE209001B6ABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8711C4FE209001B6ABA /* Main.storyboard */; };
+		B5A6D8751C4FE209001B6ABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8741C4FE209001B6ABA /* Assets.xcassets */; };
+		B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8761C4FE209001B6ABA /* LaunchScreen.storyboard */; };
+		B5A6D8831C4FE209001B6ABA /* Into_The_MazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8821C4FE209001B6ABA /* Into_The_MazeTests.swift */; };
+		B5A6D88E1C4FE209001B6ABA /* Into_The_MazeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D88D1C4FE209001B6ABA /* Into_The_MazeUITests.swift */; };
+		B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */; };
+		B5A6D89E1C4FED07001B6ABA /* ChooseMazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */; };
+		B5A6D8A01C4FED4E001B6ABA /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */; };
+		B5A6D8A21C4FEE32001B6ABA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6D8A11C4FEE32001B6ABA /* iAd.framework */; };
+		B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A31C5015B6001B6ABA /* lockImg.png */; };
+		B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A61C501964001B6ABA /* generalMaze.png */; };
+		B5A6D8A91C504886001B6ABA /* muscle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A81C504886001B6ABA /* muscle.png */; };
+		B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8AC1C504C72001B6ABA /* maze.png */; };
+		B5A6D8B11C505A23001B6ABA /* brickBreaker.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8B01C505A23001B6ABA /* brickBreaker.png */; };
+		B5A6D8B51C507038001B6ABA /* faster.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8B41C507038001B6ABA /* faster.png */; };
+		B5A6D8B71C5074F2001B6ABA /* stopWatch.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8B61C5074F2001B6ABA /* stopWatch.png */; };
+		B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */; };
+		B5A6D8BB1C5165F0001B6ABA /* MazeSelectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */; };
+		B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */; };
+		B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */; };
+		B5A6D8C91C51E8B5001B6ABA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */; };
+		B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */; };
+		B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */; };
+		B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */; };
+		B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93E1C57D7A0001B6ABA /* closedOuter.png */; };
+		B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93F1C57D7A0001B6ABA /* outerTriangle.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5A6D87F1C4FE209001B6ABA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A6D85E1C4FE209001B6ABA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5A6D8651C4FE209001B6ABA;
+			remoteInfo = "Into The Maze";
+		};
+		B5A6D88A1C4FE209001B6ABA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A6D85E1C4FE209001B6ABA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5A6D8651C4FE209001B6ABA;
+			remoteInfo = "Into The Maze";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B54294FC1C606F38007119F7 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
+		B54294FE1C606F46007119F7 /* moveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveButton.png; sourceTree = "<group>"; };
+		B54295001C606F8B007119F7 /* GameControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControls.swift; sourceTree = "<group>"; };
+		B54295021C60733F007119F7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B54295041C60FB56007119F7 /* Level2GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2GameScene.swift; sourceTree = "<group>"; };
+		B54295081C610106007119F7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B542950A1C6101E9007119F7 /* Something_Strange.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Something_Strange.ttf; sourceTree = "<group>"; };
+		B542950D1C6104E6007119F7 /* Halo3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Halo3.ttf; sourceTree = "<group>"; };
+		B54295121C614254007119F7 /* walkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = walkCycle.atlas; sourceTree = "<group>"; };
+		B54295161C6191F1007119F7 /* MenuViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewExtension.swift; sourceTree = "<group>"; };
+		B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RUBBBI__.ttf; sourceTree = "<group>"; };
+		B59BCC7C1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IntoTheMazeLaunchScreen.png; path = ../../../../Desktop/IntoTheMazeArtwork/IntoTheMazeLaunchScreen.png; sourceTree = "<group>"; };
+		B59BCC7E1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IntoTheMazeMenuScreen.png; path = ../../../../Desktop/IntoTheMazeArtwork/IntoTheMazeMenuScreen.png; sourceTree = "<group>"; };
+		B59BCC801C5D34EE007DAA27 /* mazeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mazeBackground.png; path = ../../../../Desktop/IntoTheMazeArtwork/mazeBackground.png; sourceTree = "<group>"; };
+		B59BCC821C5D3728007DAA27 /* rateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rateIcon.png; path = ../../../../Desktop/IntoTheMazeArtwork/rateIcon.png; sourceTree = "<group>"; };
+		B59BCC841C5D3AD8007DAA27 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helpIcon.png; path = ../../../../Desktop/IntoTheMazeArtwork/helpIcon.png; sourceTree = "<group>"; };
+		B59BCC861C5D3B90007DAA27 /* playIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playIcon.png; path = ../../../../Desktop/IntoTheMazeArtwork/playIcon.png; sourceTree = "<group>"; };
+		B59BCC881C5D3C65007DAA27 /* gameCenterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameCenterIcon.png; path = ../../../../Desktop/IntoTheMazeArtwork/gameCenterIcon.png; sourceTree = "<group>"; };
+		B59BCC8A1C5D3D0C007DAA27 /* upgradeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upgradeIcon.png; path = ../../../../Desktop/IntoTheMazeArtwork/upgradeIcon.png; sourceTree = "<group>"; };
+		B59BCC8C1C5D41BE007DAA27 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
+		B5A6D8661C4FE209001B6ABA /* Into The Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Into The Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5A6D86D1C4FE209001B6ABA /* Level1GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1GameScene.swift; sourceTree = "<group>"; };
+		B5A6D86F1C4FE209001B6ABA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B5A6D8721C4FE209001B6ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B5A6D8741C4FE209001B6ABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5A6D8771C4FE209001B6ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B5A6D8791C4FE209001B6ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A6D87E1C4FE209001B6ABA /* Into The MazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Into The MazeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A6D8821C4FE209001B6ABA /* Into_The_MazeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Into_The_MazeTests.swift; sourceTree = "<group>"; };
+		B5A6D8841C4FE209001B6ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A6D8891C4FE209001B6ABA /* Into The MazeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Into The MazeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A6D88D1C4FE209001B6ABA /* Into_The_MazeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Into_The_MazeUITests.swift; sourceTree = "<group>"; };
+		B5A6D88F1C4FE209001B6ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMazeViewController.swift; sourceTree = "<group>"; };
+		B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
+		B5A6D8A11C4FEE32001B6ABA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		B5A6D8A31C5015B6001B6ABA /* lockImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockImg.png; sourceTree = "<group>"; };
+		B5A6D8A61C501964001B6ABA /* generalMaze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = generalMaze.png; sourceTree = SOURCE_ROOT; };
+		B5A6D8A81C504886001B6ABA /* muscle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = muscle.png; sourceTree = SOURCE_ROOT; };
+		B5A6D8AC1C504C72001B6ABA /* maze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maze.png; path = ../maze.png; sourceTree = "<group>"; };
+		B5A6D8B01C505A23001B6ABA /* brickBreaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brickBreaker.png; path = ../brickBreaker.png; sourceTree = "<group>"; };
+		B5A6D8B41C507038001B6ABA /* faster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = faster.png; path = ../faster.png; sourceTree = "<group>"; };
+		B5A6D8B61C5074F2001B6ABA /* stopWatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopWatch.png; sourceTree = SOURCE_ROOT; };
+		B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalGameData.swift; sourceTree = "<group>"; };
+		B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeSelectExtension.swift; sourceTree = "<group>"; };
+		B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeIntro.png; sourceTree = SOURCE_ROOT; };
+		B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Charcoal.otf; sourceTree = "<group>"; };
+		B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DESTROY_.ttf; sourceTree = "<group>"; };
+		B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innerTriangle.png; sourceTree = SOURCE_ROOT; };
+		B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innerTriangle2.png; sourceTree = SOURCE_ROOT; };
+		B5A6D93E1C57D7A0001B6ABA /* closedOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closedOuter.png; sourceTree = SOURCE_ROOT; };
+		B5A6D93F1C57D7A0001B6ABA /* outerTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outerTriangle.png; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5A6D8631C4FE209001B6ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A6D8A21C4FEE32001B6ABA /* iAd.framework in Frameworks */,
+				B5A6D8C91C51E8B5001B6ABA /* GameKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D87B1C4FE209001B6ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D8861C4FE209001B6ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B54295111C6106BD007119F7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */,
+				B542950D1C6104E6007119F7 /* Halo3.ttf */,
+				B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */,
+				B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */,
+				B542950A1C6101E9007119F7 /* Something_Strange.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		B59BCC8E1C5D760C007DAA27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B54295021C60733F007119F7 /* GameScene.swift */,
+				B54295001C606F8B007119F7 /* GameControls.swift */,
+				B54295081C610106007119F7 /* Player.swift */,
+				B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */,
+				B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */,
+				B54295161C6191F1007119F7 /* MenuViewExtension.swift */,
+				B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */,
+				B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */,
+				B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */,
+				B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */,
+				B5A6D8761C4FE209001B6ABA /* LaunchScreen.storyboard */,
+				B5A6D8711C4FE209001B6ABA /* Main.storyboard */,
+				B54295121C614254007119F7 /* walkCycle.atlas */,
+				B54295111C6106BD007119F7 /* Fonts */,
+				B5A6D8791C4FE209001B6ABA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5A6D85D1C4FE209001B6ABA = {
+			isa = PBXGroup;
+			children = (
+				B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */,
+				B5A6D8A11C4FEE32001B6ABA /* iAd.framework */,
+				B5A6D8681C4FE209001B6ABA /* Into The Maze */,
+				B5A6D8811C4FE209001B6ABA /* Into The MazeTests */,
+				B5A6D88C1C4FE209001B6ABA /* Into The MazeUITests */,
+				B5A6D8671C4FE209001B6ABA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5A6D8671C4FE209001B6ABA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6D8661C4FE209001B6ABA /* Into The Maze.app */,
+				B5A6D87E1C4FE209001B6ABA /* Into The MazeTests.xctest */,
+				B5A6D8891C4FE209001B6ABA /* Into The MazeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5A6D8681C4FE209001B6ABA /* Into The Maze */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6D93B1C57D769001B6ABA /* Levels */,
+				B5A6D86F1C4FE209001B6ABA /* GameViewController.swift */,
+				B5A6D8741C4FE209001B6ABA /* Assets.xcassets */,
+				B59BCC8C1C5D41BE007DAA27 /* Icons */,
+				B59BCC8E1C5D760C007DAA27 /* Supporting Files */,
+				B5A6D8A51C5015C6001B6ABA /* images */,
+			);
+			path = "Into The Maze";
+			sourceTree = "<group>";
+		};
+		B5A6D8811C4FE209001B6ABA /* Into The MazeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6D8821C4FE209001B6ABA /* Into_The_MazeTests.swift */,
+				B5A6D8841C4FE209001B6ABA /* Info.plist */,
+			);
+			path = "Into The MazeTests";
+			sourceTree = "<group>";
+		};
+		B5A6D88C1C4FE209001B6ABA /* Into The MazeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6D88D1C4FE209001B6ABA /* Into_The_MazeUITests.swift */,
+				B5A6D88F1C4FE209001B6ABA /* Info.plist */,
+			);
+			path = "Into The MazeUITests";
+			sourceTree = "<group>";
+		};
+		B5A6D8A51C5015C6001B6ABA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B54294FE1C606F46007119F7 /* moveButton.png */,
+				B54294FC1C606F38007119F7 /* shootButton.png */,
+				B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */,
+				B5A6D8A81C504886001B6ABA /* muscle.png */,
+				B59BCC7C1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png */,
+				B5A6D8B01C505A23001B6ABA /* brickBreaker.png */,
+				B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */,
+				B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */,
+				B5A6D93E1C57D7A0001B6ABA /* closedOuter.png */,
+				B5A6D93F1C57D7A0001B6ABA /* outerTriangle.png */,
+				B59BCC8A1C5D3D0C007DAA27 /* upgradeIcon.png */,
+				B59BCC881C5D3C65007DAA27 /* gameCenterIcon.png */,
+				B59BCC861C5D3B90007DAA27 /* playIcon.png */,
+				B59BCC841C5D3AD8007DAA27 /* helpIcon.png */,
+				B59BCC821C5D3728007DAA27 /* rateIcon.png */,
+				B59BCC801C5D34EE007DAA27 /* mazeBackground.png */,
+				B59BCC7E1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png */,
+				B5A6D8B41C507038001B6ABA /* faster.png */,
+				B5A6D8B61C5074F2001B6ABA /* stopWatch.png */,
+				B5A6D8AC1C504C72001B6ABA /* maze.png */,
+				B5A6D8A61C501964001B6ABA /* generalMaze.png */,
+				B5A6D8A31C5015B6001B6ABA /* lockImg.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		B5A6D93B1C57D769001B6ABA /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6D86D1C4FE209001B6ABA /* Level1GameScene.swift */,
+				B54295041C60FB56007119F7 /* Level2GameScene.swift */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5A6D8651C4FE209001B6ABA /* Into The Maze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A6D8921C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The Maze" */;
+			buildPhases = (
+				B5A6D8621C4FE209001B6ABA /* Sources */,
+				B5A6D8631C4FE209001B6ABA /* Frameworks */,
+				B5A6D8641C4FE209001B6ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Into The Maze";
+			productName = "Into The Maze";
+			productReference = B5A6D8661C4FE209001B6ABA /* Into The Maze.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5A6D87D1C4FE209001B6ABA /* Into The MazeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A6D8951C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The MazeTests" */;
+			buildPhases = (
+				B5A6D87A1C4FE209001B6ABA /* Sources */,
+				B5A6D87B1C4FE209001B6ABA /* Frameworks */,
+				B5A6D87C1C4FE209001B6ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5A6D8801C4FE209001B6ABA /* PBXTargetDependency */,
+			);
+			name = "Into The MazeTests";
+			productName = "Into The MazeTests";
+			productReference = B5A6D87E1C4FE209001B6ABA /* Into The MazeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B5A6D8881C4FE209001B6ABA /* Into The MazeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A6D8981C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The MazeUITests" */;
+			buildPhases = (
+				B5A6D8851C4FE209001B6ABA /* Sources */,
+				B5A6D8861C4FE209001B6ABA /* Frameworks */,
+				B5A6D8871C4FE209001B6ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5A6D88B1C4FE209001B6ABA /* PBXTargetDependency */,
+			);
+			name = "Into The MazeUITests";
+			productName = "Into The MazeUITests";
+			productReference = B5A6D8891C4FE209001B6ABA /* Into The MazeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5A6D85E1C4FE209001B6ABA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Ramiro Beltran";
+				TargetAttributes = {
+					B5A6D8651C4FE209001B6ABA = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = VHQ88CT5TL;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
+					B5A6D87D1C4FE209001B6ABA = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = B5A6D8651C4FE209001B6ABA;
+					};
+					B5A6D8881C4FE209001B6ABA = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = B5A6D8651C4FE209001B6ABA;
+					};
+				};
+			};
+			buildConfigurationList = B5A6D8611C4FE209001B6ABA /* Build configuration list for PBXProject "Into The Maze" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B5A6D85D1C4FE209001B6ABA;
+			productRefGroup = B5A6D8671C4FE209001B6ABA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5A6D8651C4FE209001B6ABA /* Into The Maze */,
+				B5A6D87D1C4FE209001B6ABA /* Into The MazeTests */,
+				B5A6D8881C4FE209001B6ABA /* Into The MazeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5A6D8641C4FE209001B6ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59BCC891C5D3C65007DAA27 /* gameCenterIcon.png in Resources */,
+				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
+				B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */,
+				B59BCC7F1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png in Resources */,
+				B54294FD1C606F38007119F7 /* shootButton.png in Resources */,
+				B59BCC8B1C5D3D0C007DAA27 /* upgradeIcon.png in Resources */,
+				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
+				B542950E1C610522007119F7 /* Halo3.ttf in Resources */,
+				B5A6D8A91C504886001B6ABA /* muscle.png in Resources */,
+				B5A6D8B51C507038001B6ABA /* faster.png in Resources */,
+				B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */,
+				B59BCC851C5D3AD8007DAA27 /* helpIcon.png in Resources */,
+				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
+				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
+				B5A6D8B71C5074F2001B6ABA /* stopWatch.png in Resources */,
+				B54294FF1C606F46007119F7 /* moveButton.png in Resources */,
+				B5A6D8751C4FE209001B6ABA /* Assets.xcassets in Resources */,
+				B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */,
+				B59BCC831C5D3728007DAA27 /* rateIcon.png in Resources */,
+				B59BCC811C5D34EE007DAA27 /* mazeBackground.png in Resources */,
+				B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */,
+				B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */,
+				B59BCC7D1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png in Resources */,
+				B5A6D8B11C505A23001B6ABA /* brickBreaker.png in Resources */,
+				B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */,
+				B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */,
+				B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */,
+				B5A6D8731C4FE209001B6ABA /* Main.storyboard in Resources */,
+				B542951B1C61A0BC007119F7 /* RUBBBI__.ttf in Resources */,
+				B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */,
+				B59BCC871C5D3B90007DAA27 /* playIcon.png in Resources */,
+				B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D87C1C4FE209001B6ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D8871C4FE209001B6ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5A6D8621C4FE209001B6ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54295031C60733F007119F7 /* GameScene.swift in Sources */,
+				B5A6D86E1C4FE209001B6ABA /* Level1GameScene.swift in Sources */,
+				B5A6D8701C4FE209001B6ABA /* GameViewController.swift in Sources */,
+				B5A6D8A01C4FED4E001B6ABA /* HowToPlayViewController.swift in Sources */,
+				B54295091C610106007119F7 /* Player.swift in Sources */,
+				B54295171C6191F1007119F7 /* MenuViewExtension.swift in Sources */,
+				B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */,
+				B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */,
+				B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */,
+				B54295011C606F8B007119F7 /* GameControls.swift in Sources */,
+				B5A6D89E1C4FED07001B6ABA /* ChooseMazeViewController.swift in Sources */,
+				B5A6D8BB1C5165F0001B6ABA /* MazeSelectExtension.swift in Sources */,
+				B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D87A1C4FE209001B6ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A6D8831C4FE209001B6ABA /* Into_The_MazeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A6D8851C4FE209001B6ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A6D88E1C4FE209001B6ABA /* Into_The_MazeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5A6D8801C4FE209001B6ABA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5A6D8651C4FE209001B6ABA /* Into The Maze */;
+			targetProxy = B5A6D87F1C4FE209001B6ABA /* PBXContainerItemProxy */;
+		};
+		B5A6D88B1C4FE209001B6ABA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5A6D8651C4FE209001B6ABA /* Into The Maze */;
+			targetProxy = B5A6D88A1C4FE209001B6ABA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B5A6D8711C4FE209001B6ABA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5A6D8721C4FE209001B6ABA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B5A6D8761C4FE209001B6ABA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5A6D8771C4FE209001B6ABA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5A6D8901C4FE209001B6ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5A6D8911C4FE209001B6ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5A6D8931C4FE209001B6ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Into The Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-Maze";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		B5A6D8941C4FE209001B6ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Into The Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-Maze";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		B5A6D8961C4FE209001B6ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Into The MazeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-MazeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Into The Maze.app/Into The Maze";
+			};
+			name = Debug;
+		};
+		B5A6D8971C4FE209001B6ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Into The MazeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-MazeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Into The Maze.app/Into The Maze";
+			};
+			name = Release;
+		};
+		B5A6D8991C4FE209001B6ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Into The MazeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-MazeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Into The Maze";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B5A6D89A1C4FE209001B6ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Into The MazeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.Beliro.Into-The-MazeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Into The Maze";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5A6D8611C4FE209001B6ABA /* Build configuration list for PBXProject "Into The Maze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A6D8901C4FE209001B6ABA /* Debug */,
+				B5A6D8911C4FE209001B6ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5A6D8921C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The Maze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A6D8931C4FE209001B6ABA /* Debug */,
+				B5A6D8941C4FE209001B6ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5A6D8951C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The MazeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A6D8961C4FE209001B6ABA /* Debug */,
+				B5A6D8971C4FE209001B6ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5A6D8981C4FE209001B6ABA /* Build configuration list for PBXNativeTarget "Into The MazeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A6D8991C4FE209001B6ABA /* Debug */,
+				B5A6D89A1C4FE209001B6ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5A6D85E1C4FE209001B6ABA /* Project object */;
+}
