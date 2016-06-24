@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+var level = 0
 
+var playerSpeed : CGFloat = 0.1
 let mazeColor: UIColor = UIColor(red: 0/255.0, green: 152/255.0, blue: 153/255.0, alpha: 1.0)
 
 //create arrays of locked and unlocked levels
@@ -26,6 +28,9 @@ func removeAds() {
     removeAdsPurchased = true
 }
 
+enum PlayerDirection {
+    case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+}
 func updateScore() {
     
 }

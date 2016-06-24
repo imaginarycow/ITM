@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import iAd
 
-class ChooseViewController : UIViewController, ADBannerViewDelegate {
+class ChooseViewController : UIViewController {
     
     
     @IBOutlet weak var lock1: UIImageView!
@@ -38,24 +37,27 @@ class ChooseViewController : UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var maze12: UIButton!
     
     
-    var adBanner : ADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLocks()
-        loadAdBanner()
+
     }
     
     @IBAction func maze1Selected(sender: AnyObject) {
+        level = 1
         self.performSegueWithIdentifier("toGame", sender: self)
+
     }
     
     @IBAction func maze2Selected(sender: AnyObject) {
+        level = 2
         self.performSegueWithIdentifier("toGame", sender: self)
     }
     
     @IBAction func maze3Selected(sender: AnyObject) {
+        level = 3
         self.performSegueWithIdentifier("toGame", sender: self)
     }
     
@@ -97,31 +99,6 @@ class ChooseViewController : UIViewController, ADBannerViewDelegate {
     
     @IBAction func toMenuButtonTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("toMenu", sender: self)
-    }
-    
-    //loads adbanner only if remove ads upgrade not purchased
-    func loadAdBanner() {
-        
-        if removeAdsPurchased == false {
-            
-            adBanner = ADBannerView(frame: CGRect.zero)
-            adBanner.center = CGPoint(x: adBanner.center.x, y: view.bounds.size.height - adBanner.frame.size.height / 2)
-            adBanner.delegate = self
-            adBanner.hidden = true
-            view.addSubview(adBanner)
-            
-        }
-        
-    }
-
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        adBanner.hidden = false
-    }
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        adBanner.hidden = false
-    }
-    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        return true
     }
     
     

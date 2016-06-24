@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B534798A1D19D6EB001110CA /* abilityButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479891D19D6EB001110CA /* abilityButton.png */; };
+		B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534798B1D19E104001110CA /* AnalogJoystick.swift */; };
+		B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479B11D1C4864001110CA /* MainMenuScene.swift */; };
+		B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479B31D1C5222001110CA /* MazeSelectScene.swift */; };
+		B53479B61D1CA767001110CA /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479B51D1CA767001110CA /* bullet.png */; };
 		B54294FD1C606F38007119F7 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FC1C606F38007119F7 /* shootButton.png */; };
 		B54294FF1C606F46007119F7 /* moveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FE1C606F46007119F7 /* moveButton.png */; };
-		B54295011C606F8B007119F7 /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295001C606F8B007119F7 /* GameControls.swift */; };
 		B54295031C60733F007119F7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295021C60733F007119F7 /* GameScene.swift */; };
 		B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295041C60FB56007119F7 /* Level2GameScene.swift */; };
 		B54295091C610106007119F7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295081C610106007119F7 /* Player.swift */; };
@@ -76,9 +80,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B53479891D19D6EB001110CA /* abilityButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityButton.png; sourceTree = "<group>"; };
+		B534798B1D19E104001110CA /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
+		B53479B11D1C4864001110CA /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		B53479B31D1C5222001110CA /* MazeSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeSelectScene.swift; sourceTree = "<group>"; };
+		B53479B51D1CA767001110CA /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		B54294FC1C606F38007119F7 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
 		B54294FE1C606F46007119F7 /* moveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveButton.png; sourceTree = "<group>"; };
-		B54295001C606F8B007119F7 /* GameControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControls.swift; sourceTree = "<group>"; };
 		B54295021C60733F007119F7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		B54295041C60FB56007119F7 /* Level2GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2GameScene.swift; sourceTree = "<group>"; };
 		B54295081C610106007119F7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -175,8 +183,9 @@
 		B59BCC8E1C5D760C007DAA27 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B53479B11D1C4864001110CA /* MainMenuScene.swift */,
+				B53479B31D1C5222001110CA /* MazeSelectScene.swift */,
 				B54295021C60733F007119F7 /* GameScene.swift */,
-				B54295001C606F8B007119F7 /* GameControls.swift */,
 				B54295081C610106007119F7 /* Player.swift */,
 				B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */,
 				B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */,
@@ -185,6 +194,7 @@
 				B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */,
 				B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */,
 				B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */,
+				B534798B1D19E104001110CA /* AnalogJoystick.swift */,
 				B5A6D8761C4FE209001B6ABA /* LaunchScreen.storyboard */,
 				B5A6D8711C4FE209001B6ABA /* Main.storyboard */,
 				B54295121C614254007119F7 /* walkCycle.atlas */,
@@ -250,8 +260,10 @@
 		B5A6D8A51C5015C6001B6ABA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B53479B51D1CA767001110CA /* bullet.png */,
 				B54294FE1C606F46007119F7 /* moveButton.png */,
 				B54294FC1C606F38007119F7 /* shootButton.png */,
+				B53479891D19D6EB001110CA /* abilityButton.png */,
 				B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */,
 				B5A6D8A81C504886001B6ABA /* muscle.png */,
 				B59BCC7C1C5D25CD007DAA27 /* IntoTheMazeLaunchScreen.png */,
@@ -395,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59BCC891C5D3C65007DAA27 /* gameCenterIcon.png in Resources */,
+				B53479B61D1CA767001110CA /* bullet.png in Resources */,
 				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
 				B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */,
 				B59BCC7F1C5D2653007DAA27 /* IntoTheMazeMenuScreen.png in Resources */,
@@ -402,6 +415,7 @@
 				B59BCC8B1C5D3D0C007DAA27 /* upgradeIcon.png in Resources */,
 				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
 				B542950E1C610522007119F7 /* Halo3.ttf in Resources */,
+				B534798A1D19D6EB001110CA /* abilityButton.png in Resources */,
 				B5A6D8A91C504886001B6ABA /* muscle.png in Resources */,
 				B5A6D8B51C507038001B6ABA /* faster.png in Resources */,
 				B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */,
@@ -459,9 +473,11 @@
 				B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */,
 				B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */,
 				B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */,
-				B54295011C606F8B007119F7 /* GameControls.swift in Sources */,
 				B5A6D89E1C4FED07001B6ABA /* ChooseMazeViewController.swift in Sources */,
+				B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */,
+				B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */,
 				B5A6D8BB1C5165F0001B6ABA /* MazeSelectExtension.swift in Sources */,
+				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,
 				B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

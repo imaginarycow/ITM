@@ -2,102 +2,49 @@
 import SpriteKit
 import GameplayKit
 
-let boundingBox = SKSpriteNode()
 
-class level1GameScene: GameScene {
+
+class Level1GameScene: GameScene {
+    
     
     //var TextureAtlas = SKTextureAtlas()
-    var TextureArray = [SKTexture]()
-    var Player = SKSpriteNode()
-    var walking: Bool = false
     
-    override func didMoveToView(view: SKView) {
-                
-        //boundingBox.color = SKColor.redColor()
-        boundingBox.size = CGSize(width: scene!.size.width * 0.7, height: scene!.size.width * 0.7)
-        boundingBox.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + scene!.size.height * 0.2 )
-        boundingBox.zPosition = 1
-        boundingBox.name = "boundingBox"
-        scene!.addChild(boundingBox)
-        
-        let boundingBox2 = SKSpriteNode()
-        //boundingBox2.color = SKColor.greenColor()
-        boundingBox2.size = CGSize(width: 200, height: 200)
-        boundingBox2.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + scene!.size.height * 0.2)
-        boundingBox2.zPosition = 2
-        boundingBox2.name = "boundingBox2"
-        scene!.addChild(boundingBox2)
-        
-        let boundingBox3 = SKSpriteNode()
-        //boundingBox3.color = SKColor.yellowColor()
-        boundingBox3.size = CGSize(width: 100, height: 100)
-        boundingBox3.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + scene!.size.height * 0.2)
-        boundingBox3.zPosition = 3
-        boundingBox3.name = "boundingBox3"
-        scene!.addChild(boundingBox3)
-        
-        let sceneBox = SKSpriteNode()
-        //sceneBox.texture = SKTexture(imageNamed: "grassBackground.jpg")
-        sceneBox.size = CGSize(width: scene!.size.width, height: scene!.size.height * 0.5)
-        sceneBox.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + 170)
-        sceneBox.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: -scene!.size.width/2, y: -sceneBox.size.height/2, width: scene!.size.width, height: scene!.size.height * 0.5))
-        sceneBox.zPosition = 1
-        sceneBox.name = "sceneBox"
-        scene!.addChild(sceneBox)
-        
-        let redCirc = SKShapeNode(circleOfRadius: 7.0)
-        redCirc.position = CGPointMake(0.0, 0.0)
-        redCirc.physicsBody = SKPhysicsBody(circleOfRadius: 7.0)
-        redCirc.fillColor = .redColor()
-        redCirc.zPosition = 5
-        redCirc.name = "redCirc"
-        boundingBox2.addChild(redCirc)
-        //redBox.physicsBody?.applyForce(CGVector(dx: 50.0,dy: 600.0))
-        redCirc.physicsBody?.restitution = 0.6
-        
-        boundingBox.zRotation = CGFloat(M_PI)
-        boundingBox2.zRotation = CGFloat(M_PI/3)
-        boundingBox3.zRotation = CGFloat(-M_PI/3)
-        
-        //build triangle maze
-        let tri1 = triangle.createNewTriangle(0.1, buffer: 50.0, parent: boundingBox, color: SKColor.greenColor())
-        triangle.createNewTriangle(0.5, buffer: 15.0, parent: boundingBox2,color: SKColor.greenColor())
-        triangle.createNewTriangle(0.8, buffer: 0.0, parent: boundingBox3,color: SKColor.yellowColor())
-        
-        delay(6.0) {
-            
-            self.Player = createPlayer()
-            self.Player.position = triangle.getSpawnPoint(0.1)
-            self.Player.zPosition = 100
-            self.Player.alpha = 1.0
-            tri1.addChild(self.Player)
-        }
-        
-        TextureArray = createTextureArray()
-        //begin animation before game start
-        beginningAnimation(boundingBox, tri2: boundingBox2, tri3: boundingBox3)
-        
-        createNewScene()
-    }
+    
+//    override func didMoveToView(view: SKView) {
+//        
+//        
+////        let sceneBox = SKSpriteNode()
+////        sceneBox.texture = SKTexture(imageNamed: "grassBackground.jpg")
+////        sceneBox.size = CGSize(width: scene!.size.width, height: scene!.size.height * 0.5)
+////        sceneBox.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + 170)
+////        sceneBox.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: -scene!.size.width/2, y: -sceneBox.size.height/2, width: scene!.size.width, height: scene!.size.height * 0.5))
+////        sceneBox.zPosition = 1
+////        sceneBox.name = "sceneBox"
+////        scene!.addChild(sceneBox)
+//
+//        
+//        boundingBox2.zRotation = CGFloat(M_PI/3)
+//        boundingBox3.zRotation = CGFloat(-M_PI/3)
+//        
+//        //build triangle maze
+//        let tri1 = triangle.createNewTriangle(0.1, buffer: 50.0, parent: boundingBox, color: SKColor.greenColor())
+//        triangle.createNewTriangle(0.5, buffer: 15.0, parent: boundingBox2,color: SKColor.greenColor())
+//        triangle.createNewTriangle(0.8, buffer: 0.0, parent: boundingBox3,color: SKColor.yellowColor())
+//        
+//        delay(6.0) {
+//            
+//
+//        }
+//        
+//        
+//        //begin animation before game start
+//        beginningAnimation(boundingBox, tri2: boundingBox2, tri3: boundingBox3)
+//        
+//        createNewScene()
+//    }
     override func willMoveFromView(view: SKView) {
+        
 
-        boundingBox.removeFromParent()
-        boundingBox.removeAllChildren()
-        
-        Player.removeFromParent()
-    }
-
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        if walking {
-            Player.removeAllActions()
-            Player.texture = SKTexture(imageNamed: "PlayerWalk01.png")
-            walking = false
-        }else {
-            Player.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(TextureArray, timePerFrame: 0.2)))
-            walking = true
-        }
-        
     }
     
     

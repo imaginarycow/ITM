@@ -9,11 +9,9 @@
 import Foundation
 import UIKit
 import SpriteKit
-
-extension MenuViewController {
     
     
-    class triangle {
+    class Triangle {
         
         
         class func createNewTriangle(scale: CGFloat, buffer: CGFloat, parent: SKSpriteNode, color:SKColor) -> SKShapeNode{
@@ -56,6 +54,3 @@ extension MenuViewController {
         }
     }
 
-    
-    
-}
