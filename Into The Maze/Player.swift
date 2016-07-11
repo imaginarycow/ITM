@@ -18,6 +18,10 @@ class NewPlayer {
         newPlayer.zPosition = 100
         
         newPlayer.physicsBody = SKPhysicsBody(rectangleOfSize: newPlayer.frame.size)
+        newPlayer.physicsBody?.dynamic = false
+        newPlayer.physicsBody?.categoryBitMask = playerCategory
+        newPlayer.physicsBody?.collisionBitMask = bulletCategory
+        newPlayer.physicsBody?.contactTestBitMask = bulletCategory
         
         return newPlayer
     }
