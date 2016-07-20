@@ -7,13 +7,16 @@
 //
 
 import SpriteKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController, UITextFieldDelegate {
+var adBanner: GADBannerView?
+
+class GameViewController: UIViewController, UITextFieldDelegate, GADBannerViewDelegate {
     
 
     var scene:SKScene!
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         
         // Configure the view.
         let skView = self.view as! SKView
+        skView.multipleTouchEnabled = true
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.showsPhysics = false
@@ -36,6 +40,13 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
         
+        
+//        delay(3.0, closure: {
+//        
+//            self.loadAds()
+//            self.view.addSubview(adBanner!)
+//        })
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -44,7 +55,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func shouldAutorotate() -> Bool {
-        return true
+        return false
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

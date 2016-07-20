@@ -9,12 +9,16 @@
 import Foundation
 import UIKit
 
+//screen height and width of user's device
+var screenHeight:CGFloat = 0.0
+var screenWidth:CGFloat = 0.0
+var scale:CGFloat = 1.0
 
 let labelFont = "Charcoal"
 var level = 0
-var playerName:String = ""
 
-var playerSpeed : CGFloat = 0.1
+
+
 let mazeColor: UIColor = UIColor(red: 0/255.0, green: 152/255.0, blue: 153/255.0, alpha: 1.0)
 
 //create arrays of locked and unlocked levels
@@ -24,16 +28,7 @@ var unlockedLevels: [Int] = []
 var gameHasRun = false
 let gameData = NSUserDefaults.standardUserDefaults()
 
-// bool to see if ad banner should load
-var removeAdsPurchased = false
 
-func removeAds() {
-    removeAdsPurchased = true
-}
-
-enum PlayerDirection {
-    case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
-}
 func updateScore() {
     
 }

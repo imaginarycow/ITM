@@ -9,9 +9,13 @@
 import Foundation
 import SpriteKit
 import UIKit
+import GoogleMobileAds
+
+let backGroundColor = SKColor.darkGrayColor()
 
 
-class MainMenuScene: SKScene, UITextFieldDelegate {
+class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
+    
     
     let mazeSelectLabel = SKLabelNode(text: "Into The Maze")
     
@@ -20,7 +24,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
     let restorePurchasesLabel = SKSpriteNode(imageNamed: "restorePurchasesIcon.png")
     let goLabel = SKLabelNode(text: "Go")
     let userNameField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 30.0))
-    
+    let helpLabel = SKSpriteNode(imageNamed: "helpIcon.png")
     
     let parent1 = SKSpriteNode()
     let parent2 = SKSpriteNode()
@@ -28,7 +32,10 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        scene?.backgroundColor = .yellowColor()
+        
+        setScale()
+        
+        scene?.backgroundColor = backgroundColor
 
         //text field properties for user name input
         userNameField.center = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.8)
@@ -46,8 +53,6 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
         userNameField.textAlignment = .Center
         userNameField.textColor = .redColor()
         userNameField.delegate = self
-        
-
         
         parent1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         addChild(parent1)
@@ -70,11 +75,33 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
         Triangle.beginningAnimation(parent1, tri2: parent2, tri3: parent3)
         fadeInLabels()
 
-        
     }
     
     override func willMoveFromView(view: SKView) {
         
+    }
+    
+    //set scale of game based on screen size of player's device
+    func setScale() {
+        screenHeight = scene!.size.height
+        screenWidth = scene!.size.width
+        print(screenHeight)
+        print(screenWidth)
+        
+        switch screenHeight {
+        case 320:
+            scale = 1.0
+        case 375:
+            scale = 1.25
+        case 414:
+            scale = 1.35
+        case 768:
+            scale = 1.75
+        case 1024:
+            scale = 2.0
+        default:
+            scale = 1.0
+        }
     }
     
     func moveToAbilitySelectScene() {
@@ -97,6 +124,14 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
                 userNameField.removeFromSuperview()
                 moveToAbilitySelectScene()
             }
+            
+            if removeAdsLabel.containsPoint(location) {
+                print("Attempting to remove Ads")
+            
+                adBanner?.removeFromSuperview()
+                
+                
+            }
         }
     }
     
@@ -116,9 +151,13 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
         restorePurchasesLabel.size = CGSize(width: 40.0, height: 40.0)
         
         goLabel.position = CGPoint(x: scene!.size.width/2, y: (scene?.size.height)! * 0.41)
-        goLabel.fontColor = .redColor()
+        goLabel.fontColor = .whiteColor()
         goLabel.fontName = labelFont
         goLabel.zPosition = 100
+        
+        helpLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.45)
+        helpLabel.size = CGSize(width: 40.0, height: 40.0)
+        helpLabel.zPosition = 100
 
         //wait til maze animation stops
         delay(3.0) {
@@ -128,6 +167,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate {
             self.addChild(self.restorePurchasesLabel)
             self.view!.addSubview(self.userNameField)
             self.addChild(self.goLabel)
+            self.addChild(self.helpLabel)
             
         }
         

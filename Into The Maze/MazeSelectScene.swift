@@ -14,11 +14,11 @@ class MazeSelectScene: SKScene {
     let backButton = SKLabelNode(text: "Back")
     
     var mazes = [SKShapeNode]()
-    var index = 0
+    var index = 2
     
     override func didMoveToView(view: SKView) {
         
-        self.backgroundColor = .yellowColor()
+        self.backgroundColor = backgroundColor
         createLabels()
         createMazeIcons()
         
@@ -31,7 +31,7 @@ class MazeSelectScene: SKScene {
         
         for i in 0...11 {
             
-            let maze = SKShapeNode(circleOfRadius: 30.0)
+            let maze = SKShapeNode(circleOfRadius: 30.0 * scale)
             maze.fillColor = mazeColor
             maze.zPosition = 10
             
@@ -47,13 +47,13 @@ class MazeSelectScene: SKScene {
                 
             }else if i < 8 {
                 
-                maze.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * j), y: (self.size.height * 0.4))
-                mazeNum.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * j), y: (self.size.height * 0.4))
+                maze.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * j), y: (self.size.height * 0.48))
+                mazeNum.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * j), y: (self.size.height * 0.48))
                 j += 1
             }else {
                 
-                maze.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * k), y: (self.size.height * 0.1))
-                mazeNum.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * k), y: (self.size.height * 0.1))
+                maze.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * k), y: (self.size.height * 0.26))
+                mazeNum.position = CGPoint(x: (self.size.width * 0.25) + CGFloat(110 * k), y: (self.size.height * 0.26))
                 k += 1
             }
             mazes.append(maze)
@@ -81,7 +81,38 @@ class MazeSelectScene: SKScene {
     
     func moveToSelectedMaze(level: Int) {
         
-        let GameScene = Level1GameScene()
+        var GameScene = Level1GameScene()
+        
+        switch level {
+        case 1:
+            GameScene = Level1GameScene()
+        case 2:
+            GameScene = Level1GameScene()
+        case 3:
+            GameScene = Level1GameScene()
+        case 4:
+            GameScene = Level1GameScene()
+        case 5:
+            GameScene = Level1GameScene()
+        case 6:
+            GameScene = Level1GameScene()
+        case 7:
+            GameScene = Level1GameScene()
+        case 8:
+            GameScene = Level1GameScene()
+        case 9:
+            GameScene = Level1GameScene()
+        case 10:
+            GameScene = Level1GameScene()
+        case 11:
+            GameScene = Level1GameScene()
+        case 12:
+            GameScene = Level1GameScene()
+        default:
+            GameScene = Level1GameScene()
+        }
+        
+        
         GameScene.size = self.size
         GameScene.scaleMode = self.scaleMode
         let transition = SKTransition.doorwayWithDuration(2.0)
@@ -92,9 +123,22 @@ class MazeSelectScene: SKScene {
         if let touch = touches.first as UITouch! {
             let location = touch.locationInNode(self)
             
-            if mazes[index].containsPoint(location) {
-                moveToSelectedMaze(level)
+            var i = 1
+            
+            for maze in mazes {
+                
+                let mazeNum:Int = i
+                level = mazeNum
+                i += 1
+                
+                if maze.containsPoint(location) {
+
+                    moveToSelectedMaze(mazeNum)
+                }
+
             }
+            
+            
             
             if backButton.containsPoint(location) {
                 

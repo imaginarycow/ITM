@@ -9,9 +9,8 @@
 import Foundation
 import SpriteKit
 
-let boundingBox = SKSpriteNode()
-let boundingBox2 = SKSpriteNode()
-let boundingBox3 = SKSpriteNode()
+var boundingBox = SKSpriteNode()
+var outerWall = [SKSpriteNode]()
 
 var bulletNode = SKSpriteNode()
 var bullets = [bulletNode]
@@ -20,29 +19,35 @@ let boundingBoxCategory: UInt32 = 0x1 << 1
 let bulletCategory: UInt32 = 0x1 << 2
 let playerCategory: UInt32 = 0x1 << 3
 
+//the direction the player is currently moving the thumbstick in
+var currentDirection:PlayerDirection!
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     var center = SKShapeNode(circleOfRadius: 7.0)
     //on screen buttons
     let backButton = SKLabelNode(text: "Back")
-    let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 50.0)
-    let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 50.0)
+    let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
+    let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
     
     var TextureArray = [SKTexture]()
     var walking: Bool = false
     var playerFacing = PlayerDirection.North
     
     var Player : SKSpriteNode?
-    //let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()))
-    let joystick = AnalogJoystick(diameter: 100.0, colors: (.clearColor(), .clearColor()), images: (UIImage(named: "substrate.png"), UIImage(named: "stick.png")))
+    let joystick = AnalogJoystick(diameter: 80.0 * scale, colors: (.clearColor(), .clearColor()), images: (UIImage(named: "substrate.png"), UIImage(named: "stick.png")))
     
+    
+    let parent1 = SKSpriteNode()
+    let parent2 = SKSpriteNode()
+    let parent3 = SKSpriteNode()
 
     override func didMoveToView(view: SKView) {
         
-        TextureArray = createTextureArray()
         
         createNewScene()
+        createNewPlayer()
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
@@ -58,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         }
         
+        //handles player position and rotation and gives direction for projectiles
         joystick.trackingHandler = { [unowned self] data in
             
             guard let plr = self.Player else { return }
@@ -67,36 +73,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("x:\(x)")
             print("y:\(y)")
             
-            if x > 0 {
-                if y < 20 && y > -20 {
-                    self.playerFacing = PlayerDirection.East
-                    self.Player?.zRotation = self.DegToRad(180.0)
-                }else if y >= 20 {
-                    self.playerFacing = PlayerDirection.NorthEast
-                    self.Player?.zRotation = self.DegToRad(45.0)
+            let xNum:CGFloat = 10.0
+            let yNum:CGFloat = 15.0
+            
+            
+            if x > xNum {
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.East
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthEast
+                    self.turnPlayer(currentDirection)
                 } else {
-                    self.playerFacing = PlayerDirection.SouthEast
-                    self.Player?.zRotation = self.DegToRad(315.0)
+                    currentDirection = PlayerDirection.SouthEast
+                    self.turnPlayer(currentDirection)
                 }
             //test if x < 0
-            }else if x < 0{
-                if y == 0 {
-                    self.playerFacing = PlayerDirection.West
-                }else if y > 0 {
-                    self.playerFacing = PlayerDirection.NorthWest
+            }else if x < -xNum{
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.West
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthWest
+                    self.turnPlayer(currentDirection)
                 }else {
-                    self.playerFacing = PlayerDirection.SouthWest
+                    currentDirection = PlayerDirection.SouthWest
+                    self.turnPlayer(currentDirection)
                 }
             //test if x == 0
             }else {
                 if y > 0 {
-                    self.playerFacing = PlayerDirection.North
+                    currentDirection = PlayerDirection.North
+                    self.turnPlayer(currentDirection)
                 }else {
-                    self.playerFacing = PlayerDirection.South
+                    currentDirection = PlayerDirection.South
+                    self.turnPlayer(currentDirection)
                 }
 
             }
-            print(self.playerFacing)
+            print(currentDirection)
             
             
             
@@ -112,6 +127,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         //Mark: End Joystick Handlers
+        
+        
+        parent1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        addChild(parent1)
+        
+        parent2.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        addChild(parent2)
+        
+        parent3.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        addChild(parent3)
+        
+        let triangle1 = Triangle.createTriangle(self, scale: 1.0, buffer: 0.0, color: .redColor())
+        
+        let triangle2 = Triangle.createTriangle(self, scale: 0.7, buffer: -10.0, color: .redColor())
+        
+        let triangle3 = Triangle.createTriangle(self, scale: 0.4, buffer: -20.0, color: .redColor())
+
+        parent1.addChild(triangle1)
+        parent2.addChild(triangle2)
+        parent3.addChild(triangle3)
+
 
     }
     
@@ -126,24 +162,67 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createBackButton()
         createBoundingBox()
         createScoreLabel()
-        levelLabel(level)
+        //levelLabel(level)
         createControls()
-        backgroundColor = SKColor.yellowColor()
+        backgroundColor = backgroundColor
         //mazeShiftLabel()
 
-        self.Player = NewPlayer.createNewPlayer(self.scene!)
+    }
+    
+    func createNewPlayer() {
+        
+        //create texture array for player movement
+        TextureArray = createTextureArray()
+        
+        self.Player = NewPlayer.createNewPlayer()
         Player!.name = "Player"
-        boundingBox.addChild(Player!)
-        Player!.zPosition = 100
-
+        
+        addChild(Player!)
+        
+        Player?.position = CGPoint(x: ((scene?.size.width)!/2), y: (scene?.size.height)! * 0.1)
+        
+        //give player's start direction
+        currentDirection = PlayerDirection.North
+        turnPlayer(currentDirection)
+    }
+    
+    func turnPlayer(direction: PlayerDirection) {
+        
+        var deg = 0.0
+        
+        switch direction {
+            
+        case .North:
+            deg = 0.0
+        case .NorthEast:
+            deg = -45.0
+        case .NorthWest:
+            deg = 45.0
+        case .South:
+            deg = 180.0
+        case .SouthEast:
+            deg = 220.0
+        case .SouthWest:
+            deg = 135.0
+        case .East:
+            deg = 270.0
+        case .West:
+            deg = 90.0
+        default:
+            deg = 0.0
+        }
+        
+        Player?.zRotation = DegToRad(deg)
+        currentDirection = direction
     }
     
     func createBackButton() {
         
-        backButton.fontColor = .blueColor()
+        backButton.fontColor = .redColor()
         backButton.fontSize = 14.0
-        backButton.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.93)
+        backButton.position = CGPoint(x: self.size.width * 0.9, y: self.size.height * 0.92)
         backButton.zPosition = 50
+        backButton.fontName = labelFont
         self.addChild(backButton)
     }
     
@@ -152,8 +231,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let scoreLabel = SKLabelNode(fontNamed: "RUBBBI__")
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = mazeColor
+        scoreLabel.fontSize = 16.0
         scoreLabel.text = String(format: "Score: %04u", 0)
-        scoreLabel.position = CGPoint(x: frame.size.width/2, y: frame.size.height * 0.93)
+        scoreLabel.position = CGPoint(x: frame.size.width * 0.1, y: frame.size.height * 0.92)
         scene!.addChild(scoreLabel)
     }
     
@@ -164,6 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelLabel.fontColor = .yellowColor()
         levelLabel.text = "Level: \(level)"
         levelLabel.position = CGPoint(x: frame.size.width/2, y: frame.size.height * 0.80)
+        levelLabel.zPosition = 50.0
         scene!.addChild(levelLabel)
     }
     
@@ -192,7 +273,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         abilityControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.60)
         abilityControl.fillColor = SKColor.whiteColor()
-        abilityControl.fillTexture = SKTexture(imageNamed: "abilityButton")
+        
+        switch abilitySelected {
+        case ability.wallBuster:
+            abilityControl.fillTexture = SKTexture(imageNamed: "wallBuster.png")
+        case ability.speedDemon:
+            abilityControl.fillTexture = SKTexture(imageNamed: "speedDemon.png")
+        case ability.timeFreeze:
+            abilityControl.fillTexture = SKTexture(imageNamed: "timeFreeze.png")
+        default:
+            abilityControl.fillTexture = SKTexture(imageNamed: "abilityButton")
+        }
+        
         abilityControl.zPosition = 100
         abilityControl.name = "abilityControl"
         scene!.addChild(abilityControl)
@@ -200,36 +292,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createBoundingBox() {
         
-        boundingBox.color = SKColor.clearColor()
-        boundingBox.size = CGSize(width: scene!.size.width * 0.65, height: scene!.size.height * 0.85)
-        boundingBox.texture = SKTexture(imageNamed: "cobblestone.jpg")
+        //boundingBox.color = SKColor.clearColor()
+        boundingBox.color = SKColor.blackColor()
+        boundingBox.size = CGSize(width: scene!.size.width, height: scene!.size.height)
+        //boundingBox.texture = SKTexture(imageNamed: "cobblestone.png")
         boundingBox.position = CGPointMake(scene!.size.width/2, scene!.size.height/2)
         boundingBox.zPosition = 0
         boundingBox.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: boundingBox.anchorPoint.x - boundingBox.size.width/2, y: boundingBox.anchorPoint.y - boundingBox.size.height/2, width: boundingBox.size.width, height: boundingBox.size.height))
         boundingBox.physicsBody?.affectedByGravity = false
         boundingBox.physicsBody?.usesPreciseCollisionDetection = true
-        boundingBox.physicsBody?.collisionBitMask = 0
         boundingBox.physicsBody?.categoryBitMask = boundingBoxCategory
-        boundingBox.physicsBody?.contactTestBitMask = bulletCategory
+        boundingBox.physicsBody?.collisionBitMask = playerCategory
+        boundingBox.physicsBody?.contactTestBitMask = bulletCategory | playerCategory
         boundingBox.name = "boundingBox"
         scene!.addChild(boundingBox)
         
         createCenter()
+        //createOuterWall()
 
-        //boundingBox2.color = SKColor.greenColor()
-//        boundingBox2.size = CGSize(width: 200, height: 200)
-//        boundingBox2.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + scene!.size.height * 0.2)
-//        boundingBox2.zPosition = 2
-//        boundingBox2.name = "boundingBox2"
-//        scene!.addChild(boundingBox2)
-
-        //boundingBox3.color = SKColor.yellowColor()
-//        boundingBox3.size = CGSize(width: 100, height: 100)
-//        boundingBox3.position = CGPointMake(scene!.size.width/2, scene!.size.height/2 + scene!.size.height * 0.2)
-//        boundingBox3.zPosition = 3
-//        boundingBox3.name = "boundingBox3"
-//        scene!.addChild(boundingBox3)
-
+    }
+    
+    func createOuterWall() {
+        
+        let thickness:CGFloat = 20.0
+        
+        let wall1 = SKShapeNode(rectOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
+        let wall2 = SKShapeNode(rectOfSize: CGSize(width: thickness, height: (scene?.size.height)!))
+        let wall3 = SKShapeNode(rectOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
+        let wall4 = SKShapeNode(rectOfSize: CGSize(width: thickness, height: (scene?.size.height)!))
+        
+        wall1.position = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.97)
+        wall1.fillColor = mazeColor
+        wall1.zPosition = 5
+        wall1.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
+        wall1.physicsBody?.affectedByGravity = false
+        wall1.physicsBody?.dynamic = false
+        addChild(wall1)
+        
+        wall3.position = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.03)
+        wall3.fillColor = mazeColor
+        wall3.zPosition = 5
+        addChild(wall3)
+        
+        
     }
     
     //create target area for player to reach
@@ -276,15 +381,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first as UITouch! {
             let location = touch.locationInNode(self)
             
+            //check to see if a bullet should be fired
             if shootControl.containsPoint(location) {
                 
                 print("Bullet fired")
                 
+                //get bullet direction, rotation and speed
+                let xOffset:CGFloat = getBulletOffset(currentDirection).0
+                let yOffset:CGFloat = getBulletOffset(currentDirection).1
+                
+                var bulletSpeedX:CGFloat = 0.0
+                var bulletSpeedY:CGFloat = 0.0
+                
+                bulletSpeedX = getBulletImpulse(currentDirection).0
+                bulletSpeedY = getBulletImpulse(currentDirection).1
+                let rotation = getBulletOffset(currentDirection).2
+
                 bulletNode = createProjectile()
-                bulletNode.position = (Player?.position)!
+                bulletNode.position = CGPoint(x: Player!.position.x + xOffset, y: Player!.position.y + yOffset)
+                bulletNode.zRotation = DegToRad(rotation)
                 bullets.insert(bulletNode, atIndex: 0)
-                boundingBox.addChild(bullets[0])
-                bullets[0].physicsBody?.applyImpulse(CGVectorMake(bulletSpeedX, bulletSpeedY))
+                addChild(bullets[0])
+                
+                let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
+                bullets[0].physicsBody?.applyImpulse(vector)
                 
             }
             

@@ -7,12 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51FBBA71D3DE1D2008DCF94 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBA61D3DE1D2008DCF94 /* projectile.png */; };
+		B51FBBAB1D3DEEE1008DCF94 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBAA1D3DEEE1008DCF94 /* AdSupport.framework */; };
+		B51FBBAD1D3DEF79008DCF94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBAC1D3DEF79008DCF94 /* AudioToolbox.framework */; };
+		B51FBBAF1D3DEF83008DCF94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBAE1D3DEF83008DCF94 /* AVFoundation.framework */; };
+		B51FBBB11D3DEF8C008DCF94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBB01D3DEF8C008DCF94 /* CoreGraphics.framework */; };
+		B51FBBB31D3DEF96008DCF94 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBB21D3DEF96008DCF94 /* CoreMedia.framework */; };
+		B51FBBB51D3DEF9D008DCF94 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBB41D3DEF9D008DCF94 /* CoreTelephony.framework */; };
+		B51FBBB81D3DEFB3008DCF94 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBB61D3DEFB3008DCF94 /* EventKit.framework */; };
+		B51FBBB91D3DEFB3008DCF94 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBB71D3DEFB3008DCF94 /* EventKitUI.framework */; };
+		B51FBBBB1D3DEFBB008DCF94 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBBA1D3DEFBB008DCF94 /* MediaPlayer.framework */; };
+		B51FBBBD1D3DEFC2008DCF94 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBBC1D3DEFC2008DCF94 /* MessageUI.framework */; };
+		B51FBBBF1D3DEFC9008DCF94 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBBE1D3DEFC9008DCF94 /* StoreKit.framework */; };
+		B51FBBC11D3DEFD0008DCF94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBC01D3DEFD0008DCF94 /* SystemConfiguration.framework */; };
+		B51FBBC51D3DF061008DCF94 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51FBBC31D3DF061008DCF94 /* GoogleMobileAds.framework */; };
+		B51FBBC61D3DF061008DCF94 /* Mediation Adapters in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBC41D3DF061008DCF94 /* Mediation Adapters */; };
+		B51FBBC81D3DF696008DCF94 /* adHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBBC71D3DF696008DCF94 /* adHelper.swift */; };
+		B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */; };
+		B51FBBCC1D3EBE34008DCF94 /* speedDemon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */; };
+		B51FBBD01D3EC316008DCF94 /* timeFreeze.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */; };
+		B51FBBD41D3F3984008DCF94 /* cobblestone.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD31D3F3984008DCF94 /* cobblestone.png */; };
+		B51FBBD61D3F446E008DCF94 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD51D3F446E008DCF94 /* shootButton.png */; };
+		B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD71D3F48EB008DCF94 /* helpIcon.png */; };
+		B51FBBDA1D3F4A0D008DCF94 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */; };
 		B534798A1D19D6EB001110CA /* abilityButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479891D19D6EB001110CA /* abilityButton.png */; };
 		B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534798B1D19E104001110CA /* AnalogJoystick.swift */; };
 		B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479B11D1C4864001110CA /* MainMenuScene.swift */; };
 		B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479B31D1C5222001110CA /* MazeSelectScene.swift */; };
 		B53479B61D1CA767001110CA /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479B51D1CA767001110CA /* bullet.png */; };
-		B53479BC1D2AB53B001110CA /* cobblestone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B53479BB1D2AB53B001110CA /* cobblestone.jpg */; };
 		B53479BE1D2AB6E2001110CA /* BulletNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479BD1D2AB6E2001110CA /* BulletNode.swift */; };
 		B53479C81D2C3281001110CA /* GameSceneHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */; };
 		B53479CA1D2C3A95001110CA /* substrate.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479C91D2C3A95001110CA /* substrate.png */; };
@@ -20,7 +42,6 @@
 		B53479CE1D2C40ED001110CA /* MazeBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479CD1D2C40ED001110CA /* MazeBuilders.swift */; };
 		B53479D01D2D54B2001110CA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479CF1D2D54B2001110CA /* Logo.png */; };
 		B53479D21D2D6CFB001110CA /* AbilitySelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479D11D2D6CFB001110CA /* AbilitySelectScene.swift */; };
-		B54294FD1C606F38007119F7 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FC1C606F38007119F7 /* shootButton.png */; };
 		B54294FF1C606F46007119F7 /* moveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B54294FE1C606F46007119F7 /* moveButton.png */; };
 		B54295031C60733F007119F7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295021C60733F007119F7 /* GameScene.swift */; };
 		B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295041C60FB56007119F7 /* Level2GameScene.swift */; };
@@ -45,9 +66,7 @@
 		B5A6D8831C4FE209001B6ABA /* Into_The_MazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8821C4FE209001B6ABA /* Into_The_MazeTests.swift */; };
 		B5A6D88E1C4FE209001B6ABA /* Into_The_MazeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D88D1C4FE209001B6ABA /* Into_The_MazeUITests.swift */; };
 		B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */; };
-		B5A6D89E1C4FED07001B6ABA /* ChooseMazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */; };
 		B5A6D8A01C4FED4E001B6ABA /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */; };
-		B5A6D8A21C4FEE32001B6ABA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6D8A11C4FEE32001B6ABA /* iAd.framework */; };
 		B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A31C5015B6001B6ABA /* lockImg.png */; };
 		B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A61C501964001B6ABA /* generalMaze.png */; };
 		B5A6D8A91C504886001B6ABA /* muscle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8A81C504886001B6ABA /* muscle.png */; };
@@ -56,10 +75,8 @@
 		B5A6D8B51C507038001B6ABA /* faster.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8B41C507038001B6ABA /* faster.png */; };
 		B5A6D8B71C5074F2001B6ABA /* stopWatch.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8B61C5074F2001B6ABA /* stopWatch.png */; };
 		B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */; };
-		B5A6D8BB1C5165F0001B6ABA /* MazeSelectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */; };
 		B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */; };
 		B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */; };
-		B5A6D8C91C51E8B5001B6ABA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */; };
 		B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */; };
 		B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */; };
 		B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */; };
@@ -85,12 +102,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B51FBBA61D3DE1D2008DCF94 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
+		B51FBBAA1D3DEEE1008DCF94 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B51FBBAC1D3DEF79008DCF94 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B51FBBAE1D3DEF83008DCF94 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B51FBBB01D3DEF8C008DCF94 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B51FBBB21D3DEF96008DCF94 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B51FBBB41D3DEF9D008DCF94 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B51FBBB61D3DEFB3008DCF94 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B51FBBB71D3DEFB3008DCF94 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		B51FBBBA1D3DEFBB008DCF94 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B51FBBBC1D3DEFC2008DCF94 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B51FBBBE1D3DEFC9008DCF94 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B51FBBC01D3DEFD0008DCF94 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B51FBBC31D3DF061008DCF94 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		B51FBBC41D3DF061008DCF94 /* Mediation Adapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Mediation Adapters"; sourceTree = "<group>"; };
+		B51FBBC71D3DF696008DCF94 /* adHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adHelper.swift; sourceTree = "<group>"; };
+		B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallBuster.png; sourceTree = "<group>"; };
+		B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedDemon.png; sourceTree = "<group>"; };
+		B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeFreeze.png; sourceTree = "<group>"; };
+		B51FBBD31D3F3984008DCF94 /* cobblestone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cobblestone.png; sourceTree = "<group>"; };
+		B51FBBD51D3F446E008DCF94 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
+		B51FBBD71D3F48EB008DCF94 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
+		B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
 		B53479891D19D6EB001110CA /* abilityButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityButton.png; sourceTree = "<group>"; };
 		B534798B1D19E104001110CA /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		B53479B11D1C4864001110CA /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		B53479B31D1C5222001110CA /* MazeSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeSelectScene.swift; sourceTree = "<group>"; };
 		B53479B51D1CA767001110CA /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
-		B53479BB1D2AB53B001110CA /* cobblestone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cobblestone.jpg; sourceTree = "<group>"; };
 		B53479BD1D2AB6E2001110CA /* BulletNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletNode.swift; sourceTree = "<group>"; };
 		B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneHelperMethods.swift; sourceTree = "<group>"; };
 		B53479C91D2C3A95001110CA /* substrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = substrate.png; sourceTree = "<group>"; };
@@ -98,7 +137,6 @@
 		B53479CD1D2C40ED001110CA /* MazeBuilders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeBuilders.swift; sourceTree = "<group>"; };
 		B53479CF1D2D54B2001110CA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		B53479D11D2D6CFB001110CA /* AbilitySelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilitySelectScene.swift; sourceTree = "<group>"; };
-		B54294FC1C606F38007119F7 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
 		B54294FE1C606F46007119F7 /* moveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveButton.png; sourceTree = "<group>"; };
 		B54295021C60733F007119F7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		B54295041C60FB56007119F7 /* Level2GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2GameScene.swift; sourceTree = "<group>"; };
@@ -129,9 +167,7 @@
 		B5A6D88D1C4FE209001B6ABA /* Into_The_MazeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Into_The_MazeUITests.swift; sourceTree = "<group>"; };
 		B5A6D88F1C4FE209001B6ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMazeViewController.swift; sourceTree = "<group>"; };
 		B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
-		B5A6D8A11C4FEE32001B6ABA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		B5A6D8A31C5015B6001B6ABA /* lockImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockImg.png; sourceTree = "<group>"; };
 		B5A6D8A61C501964001B6ABA /* generalMaze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = generalMaze.png; sourceTree = SOURCE_ROOT; };
 		B5A6D8A81C504886001B6ABA /* muscle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = muscle.png; sourceTree = SOURCE_ROOT; };
@@ -140,10 +176,8 @@
 		B5A6D8B41C507038001B6ABA /* faster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = faster.png; path = ../faster.png; sourceTree = "<group>"; };
 		B5A6D8B61C5074F2001B6ABA /* stopWatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopWatch.png; sourceTree = SOURCE_ROOT; };
 		B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalGameData.swift; sourceTree = "<group>"; };
-		B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeSelectExtension.swift; sourceTree = "<group>"; };
 		B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeIntro.png; sourceTree = SOURCE_ROOT; };
 		B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Charcoal.otf; sourceTree = "<group>"; };
-		B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DESTROY_.ttf; sourceTree = "<group>"; };
 		B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innerTriangle.png; sourceTree = SOURCE_ROOT; };
 		B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innerTriangle2.png; sourceTree = SOURCE_ROOT; };
@@ -156,8 +190,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A6D8A21C4FEE32001B6ABA /* iAd.framework in Frameworks */,
-				B5A6D8C91C51E8B5001B6ABA /* GameKit.framework in Frameworks */,
+				B51FBBC11D3DEFD0008DCF94 /* SystemConfiguration.framework in Frameworks */,
+				B51FBBBF1D3DEFC9008DCF94 /* StoreKit.framework in Frameworks */,
+				B51FBBC51D3DF061008DCF94 /* GoogleMobileAds.framework in Frameworks */,
+				B51FBBBD1D3DEFC2008DCF94 /* MessageUI.framework in Frameworks */,
+				B51FBBBB1D3DEFBB008DCF94 /* MediaPlayer.framework in Frameworks */,
+				B51FBBB81D3DEFB3008DCF94 /* EventKit.framework in Frameworks */,
+				B51FBBB91D3DEFB3008DCF94 /* EventKitUI.framework in Frameworks */,
+				B51FBBB51D3DEF9D008DCF94 /* CoreTelephony.framework in Frameworks */,
+				B51FBBB31D3DEF96008DCF94 /* CoreMedia.framework in Frameworks */,
+				B51FBBB11D3DEF8C008DCF94 /* CoreGraphics.framework in Frameworks */,
+				B51FBBAF1D3DEF83008DCF94 /* AVFoundation.framework in Frameworks */,
+				B51FBBAD1D3DEF79008DCF94 /* AudioToolbox.framework in Frameworks */,
+				B51FBBAB1D3DEEE1008DCF94 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +223,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51FBBC21D3DEFE6008DCF94 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				B51FBBC31D3DF061008DCF94 /* GoogleMobileAds.framework */,
+				B51FBBC41D3DF061008DCF94 /* Mediation Adapters */,
+				B51FBBC01D3DEFD0008DCF94 /* SystemConfiguration.framework */,
+				B51FBBBE1D3DEFC9008DCF94 /* StoreKit.framework */,
+				B51FBBBC1D3DEFC2008DCF94 /* MessageUI.framework */,
+				B51FBBBA1D3DEFBB008DCF94 /* MediaPlayer.framework */,
+				B51FBBB61D3DEFB3008DCF94 /* EventKit.framework */,
+				B51FBBB71D3DEFB3008DCF94 /* EventKitUI.framework */,
+				B51FBBB41D3DEF9D008DCF94 /* CoreTelephony.framework */,
+				B51FBBB21D3DEF96008DCF94 /* CoreMedia.framework */,
+				B51FBBB01D3DEF8C008DCF94 /* CoreGraphics.framework */,
+				B51FBBAE1D3DEF83008DCF94 /* AVFoundation.framework */,
+				B51FBBAC1D3DEF79008DCF94 /* AudioToolbox.framework */,
+				B51FBBAA1D3DEEE1008DCF94 /* AdSupport.framework */,
+			);
+			name = AdMob;
+			sourceTree = "<group>";
+		};
 		B54295111C6106BD007119F7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,11 +265,10 @@
 				B54295081C610106007119F7 /* Player.swift */,
 				B53479BD1D2AB6E2001110CA /* BulletNode.swift */,
 				B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */,
+				B51FBBC71D3DF696008DCF94 /* adHelper.swift */,
 				B5A6D89B1C4FE64B001B6ABA /* MenuViewController.swift */,
 				B54295161C6191F1007119F7 /* MenuViewExtension.swift */,
 				B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */,
-				B5A6D8BA1C5165F0001B6ABA /* MazeSelectExtension.swift */,
-				B5A6D89D1C4FED07001B6ABA /* ChooseMazeViewController.swift */,
 				B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */,
 				B5A6D86F1C4FE209001B6ABA /* GameViewController.swift */,
 				B534798B1D19E104001110CA /* AnalogJoystick.swift */,
@@ -219,8 +284,7 @@
 		B5A6D85D1C4FE209001B6ABA = {
 			isa = PBXGroup;
 			children = (
-				B5A6D8C81C51E8B5001B6ABA /* GameKit.framework */,
-				B5A6D8A11C4FEE32001B6ABA /* iAd.framework */,
+				B51FBBC21D3DEFE6008DCF94 /* AdMob */,
 				B5A6D8681C4FE209001B6ABA /* Into The Maze */,
 				B5A6D8811C4FE209001B6ABA /* Into The MazeTests */,
 				B5A6D88C1C4FE209001B6ABA /* Into The MazeUITests */,
@@ -271,7 +335,14 @@
 		B5A6D8A51C5015C6001B6ABA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */,
+				B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */,
+				B51FBBD31D3F3984008DCF94 /* cobblestone.png */,
+				B51FBBD51D3F446E008DCF94 /* shootButton.png */,
+				B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */,
+				B51FBBA61D3DE1D2008DCF94 /* projectile.png */,
 				B58CBF471D34014100908922 /* mazeLaunchScreen2.png */,
+				B51FBBD71D3F48EB008DCF94 /* helpIcon.png */,
 				B58CBF441D33FE1A00908922 /* restorePurchasesIcon.png */,
 				B58CBF421D33F8A400908922 /* removeAds.png */,
 				B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */,
@@ -279,8 +350,6 @@
 				B54294FE1C606F46007119F7 /* moveButton.png */,
 				B53479CF1D2D54B2001110CA /* Logo.png */,
 				B53479CB1D2C3D29001110CA /* stick.png */,
-				B53479BB1D2AB53B001110CA /* cobblestone.jpg */,
-				B54294FC1C606F38007119F7 /* shootButton.png */,
 				B53479891D19D6EB001110CA /* abilityButton.png */,
 				B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */,
 				B53479C91D2C3A95001110CA /* substrate.png */,
@@ -303,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				B53479B11D1C4864001110CA /* MainMenuScene.swift */,
+				B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */,
 				B53479D11D2D6CFB001110CA /* AbilitySelectScene.swift */,
 				B53479B31D1C5222001110CA /* MazeSelectScene.swift */,
 				B54295021C60733F007119F7 /* GameScene.swift */,
@@ -424,25 +494,28 @@
 				B53479B61D1CA767001110CA /* bullet.png in Resources */,
 				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
 				B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */,
-				B54294FD1C606F38007119F7 /* shootButton.png in Resources */,
 				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
 				B542950E1C610522007119F7 /* Halo3.ttf in Resources */,
 				B534798A1D19D6EB001110CA /* abilityButton.png in Resources */,
+				B51FBBD61D3F446E008DCF94 /* shootButton.png in Resources */,
 				B58CBF451D33FE1A00908922 /* restorePurchasesIcon.png in Resources */,
 				B5A6D8A91C504886001B6ABA /* muscle.png in Resources */,
+				B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */,
+				B51FBBD01D3EC316008DCF94 /* timeFreeze.png in Resources */,
 				B5A6D8B51C507038001B6ABA /* faster.png in Resources */,
 				B53479CC1D2C3D29001110CA /* stick.png in Resources */,
 				B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */,
 				B58CBF431D33F8A400908922 /* removeAds.png in Resources */,
-				B53479BC1D2AB53B001110CA /* cobblestone.jpg in Resources */,
 				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
 				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
+				B51FBBC61D3DF061008DCF94 /* Mediation Adapters in Resources */,
 				B58CBF411D33D9C800908922 /* mazeLaunchScreen.png in Resources */,
 				B5A6D8B71C5074F2001B6ABA /* stopWatch.png in Resources */,
 				B54294FF1C606F46007119F7 /* moveButton.png in Resources */,
 				B5A6D8751C4FE209001B6ABA /* Assets.xcassets in Resources */,
 				B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */,
 				B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */,
+				B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */,
 				B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */,
 				B53479CA1D2C3A95001110CA /* substrate.png in Resources */,
 				B53479D01D2D54B2001110CA /* Logo.png in Resources */,
@@ -450,11 +523,14 @@
 				B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */,
 				B58CBF481D34014100908922 /* mazeLaunchScreen2.png in Resources */,
 				B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */,
+				B51FBBD41D3F3984008DCF94 /* cobblestone.png in Resources */,
 				B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */,
 				B5A6D8731C4FE209001B6ABA /* Main.storyboard in Resources */,
 				B542951B1C61A0BC007119F7 /* RUBBBI__.ttf in Resources */,
+				B51FBBA71D3DE1D2008DCF94 /* projectile.png in Resources */,
 				B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */,
 				B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */,
+				B51FBBCC1D3EBE34008DCF94 /* speedDemon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,18 +560,18 @@
 				B5A6D86E1C4FE209001B6ABA /* Level1GameScene.swift in Sources */,
 				B5A6D8701C4FE209001B6ABA /* GameViewController.swift in Sources */,
 				B5A6D8A01C4FED4E001B6ABA /* HowToPlayViewController.swift in Sources */,
+				B51FBBC81D3DF696008DCF94 /* adHelper.swift in Sources */,
 				B54295091C610106007119F7 /* Player.swift in Sources */,
 				B53479CE1D2C40ED001110CA /* MazeBuilders.swift in Sources */,
 				B54295171C6191F1007119F7 /* MenuViewExtension.swift in Sources */,
+				B51FBBDA1D3F4A0D008DCF94 /* HelpScene.swift in Sources */,
 				B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */,
 				B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */,
 				B54295051C60FB56007119F7 /* Level2GameScene.swift in Sources */,
 				B53479D21D2D6CFB001110CA /* AbilitySelectScene.swift in Sources */,
 				B53479BE1D2AB6E2001110CA /* BulletNode.swift in Sources */,
-				B5A6D89E1C4FED07001B6ABA /* ChooseMazeViewController.swift in Sources */,
 				B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */,
 				B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */,
-				B5A6D8BB1C5165F0001B6ABA /* MazeSelectExtension.swift in Sources */,
 				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,
 				B58CBF3B1D32BC1500908922 /* Helper Functions.swift in Sources */,
 				B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */,
@@ -642,6 +718,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Into The Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -657,6 +737,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Into The Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

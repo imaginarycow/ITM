@@ -22,7 +22,7 @@ class HowToPlayViewController : UIViewController, ADBannerViewDelegate {
         
         loadTextView()
         scroller.contentInset = UIEdgeInsetsMake(0, 0, 800, 0)
-        loadAdBanner()
+        
     }
     
     func loadTextView() {
@@ -35,19 +35,19 @@ class HowToPlayViewController : UIViewController, ADBannerViewDelegate {
     }
     
     //loads adbanner only if remove ads upgrade not purchased
-    func loadAdBanner() {
-        
-        if removeAdsPurchased == false {
-            
-            adBanner = ADBannerView(frame: CGRect.zero)
-            adBanner.center = CGPoint(x: adBanner.center.x, y: view.bounds.size.height - adBanner.frame.size.height / 2)
-            adBanner.delegate = self
-            adBanner.hidden = true
-            view.addSubview(adBanner)
-            
-        }
-        
-    }
+//    func loadAdBanner() {
+//        
+//        if removeAdsPurchased == false {
+//            
+//            adBanner = ADBannerView(frame: CGRect.zero)
+//            adBanner.center = CGPoint(x: adBanner.center.x, y: view.bounds.size.height - adBanner.frame.size.height / 2)
+//            adBanner.delegate = self
+//            adBanner.hidden = true
+//            view.addSubview(adBanner)
+//            
+//        }
+//        
+//    }
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         adBanner.hidden = false
     }

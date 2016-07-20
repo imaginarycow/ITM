@@ -17,7 +17,7 @@ class AbilitySelectScene: SKScene {
     override func didMoveToView(view: SKView) {
         
     
-        scene?.backgroundColor = .yellowColor()
+        scene?.backgroundColor = backgroundColor
         
         createLabels()
         createAbilityIcons()
@@ -29,7 +29,7 @@ class AbilitySelectScene: SKScene {
         for i in 0...2 {
             
             let icon = SKShapeNode(circleOfRadius: 30.0)
-            icon.fillColor = mazeColor
+            icon.fillColor = SKColor.whiteColor()
             
             let iconTitle = SKLabelNode()
             iconTitle.fontColor = mazeColor
@@ -38,18 +38,21 @@ class AbilitySelectScene: SKScene {
             if i == 0 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.7)
                 icon.name = "Wall Buster"
+                icon.fillTexture = SKTexture(imageNamed: "wallBuster.png")
                 iconTitle.text = "Wall Buster"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.7)
             }
             if i == 1 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.5)
                 icon.name = "Speed Demon"
+                icon.fillTexture = SKTexture(imageNamed: "speedDemon.png")
                 iconTitle.text = "Speed Demon"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
             }
             if i == 2 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.3)
                 icon.name = "Time Freeze"
+                icon.fillTexture = SKTexture(imageNamed: "timeFreeze.png")
                 iconTitle.text = "Time Freeze"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.3)
             }
@@ -110,9 +113,18 @@ class AbilitySelectScene: SKScene {
             
             for icon in iconArray {
                 if icon.containsPoint(location) {
+                    if icon == iconArray[0] {
+                        abilitySelected = .wallBuster
+                    }else if icon == iconArray[1] {
+                        abilitySelected = .speedDemon
+                    }else {
+                        abilitySelected = .timeFreeze
+                    }
                     moveToMazeSelectScene()
                 }
+                
             }
+            print("Player selected \(abilitySelected)")
             
             if backButton.containsPoint(location) {
                 print("Back button tapped")
