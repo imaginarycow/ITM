@@ -25,11 +25,18 @@
 		B51FBBC81D3DF696008DCF94 /* adHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBBC71D3DF696008DCF94 /* adHelper.swift */; };
 		B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */; };
 		B51FBBCC1D3EBE34008DCF94 /* speedDemon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */; };
-		B51FBBD01D3EC316008DCF94 /* timeFreeze.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */; };
 		B51FBBD41D3F3984008DCF94 /* cobblestone.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD31D3F3984008DCF94 /* cobblestone.png */; };
-		B51FBBD61D3F446E008DCF94 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD51D3F446E008DCF94 /* shootButton.png */; };
 		B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBD71D3F48EB008DCF94 /* helpIcon.png */; };
 		B51FBBDA1D3F4A0D008DCF94 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */; };
+		B51FBBDC1D431B5E008DCF94 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBDB1D431B5E008DCF94 /* arrow.png */; };
+		B51FBBDE1D432CED008DCF94 /* random.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBDD1D432CED008DCF94 /* random.png */; };
+		B51FBBE31D433CB7008DCF94 /* flash.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBE21D433CB7008DCF94 /* flash.png */; };
+		B51FBBE91D457706008DCF94 /* restorePurchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBE81D457706008DCF94 /* restorePurchasesIcon.png */; };
+		B51FBBEB1D45784A008DCF94 /* removeAds.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBEA1D45784A008DCF94 /* removeAds.png */; };
+		B51FBBED1D457AD9008DCF94 /* timeFreeze.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBEC1D457AD9008DCF94 /* timeFreeze.png */; };
+		B51FBBEF1D457CDF008DCF94 /* substrate.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBEE1D457CDF008DCF94 /* substrate.png */; };
+		B51FBBF11D457D6C008DCF94 /* stick.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBF01D457D6C008DCF94 /* stick.png */; };
+		B51FBBF31D457E4F008DCF94 /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FBBF21D457E4F008DCF94 /* shootButton.png */; };
 		B534798A1D19D6EB001110CA /* abilityButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479891D19D6EB001110CA /* abilityButton.png */; };
 		B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534798B1D19E104001110CA /* AnalogJoystick.swift */; };
 		B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479B11D1C4864001110CA /* MainMenuScene.swift */; };
@@ -37,8 +44,6 @@
 		B53479B61D1CA767001110CA /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479B51D1CA767001110CA /* bullet.png */; };
 		B53479BE1D2AB6E2001110CA /* BulletNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479BD1D2AB6E2001110CA /* BulletNode.swift */; };
 		B53479C81D2C3281001110CA /* GameSceneHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */; };
-		B53479CA1D2C3A95001110CA /* substrate.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479C91D2C3A95001110CA /* substrate.png */; };
-		B53479CC1D2C3D29001110CA /* stick.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479CB1D2C3D29001110CA /* stick.png */; };
 		B53479CE1D2C40ED001110CA /* MazeBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479CD1D2C40ED001110CA /* MazeBuilders.swift */; };
 		B53479D01D2D54B2001110CA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B53479CF1D2D54B2001110CA /* Logo.png */; };
 		B53479D21D2D6CFB001110CA /* AbilitySelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53479D11D2D6CFB001110CA /* AbilitySelectScene.swift */; };
@@ -50,11 +55,8 @@
 		B542950E1C610522007119F7 /* Halo3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950D1C6104E6007119F7 /* Halo3.ttf */; };
 		B54295131C614254007119F7 /* walkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B54295121C614254007119F7 /* walkCycle.atlas */; };
 		B54295171C6191F1007119F7 /* MenuViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54295161C6191F1007119F7 /* MenuViewExtension.swift */; };
-		B542951B1C61A0BC007119F7 /* RUBBBI__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */; };
 		B58CBF3B1D32BC1500908922 /* Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CBF3A1D32BC1500908922 /* Helper Functions.swift */; };
 		B58CBF411D33D9C800908922 /* mazeLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */; };
-		B58CBF431D33F8A400908922 /* removeAds.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF421D33F8A400908922 /* removeAds.png */; };
-		B58CBF451D33FE1A00908922 /* restorePurchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF441D33FE1A00908922 /* restorePurchasesIcon.png */; };
 		B58CBF481D34014100908922 /* mazeLaunchScreen2.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF471D34014100908922 /* mazeLaunchScreen2.png */; };
 		B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC8C1C5D41BE007DAA27 /* Icons */; };
 		B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */; };
@@ -120,11 +122,20 @@
 		B51FBBC71D3DF696008DCF94 /* adHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adHelper.swift; sourceTree = "<group>"; };
 		B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallBuster.png; sourceTree = "<group>"; };
 		B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedDemon.png; sourceTree = "<group>"; };
-		B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeFreeze.png; sourceTree = "<group>"; };
 		B51FBBD31D3F3984008DCF94 /* cobblestone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cobblestone.png; sourceTree = "<group>"; };
-		B51FBBD51D3F446E008DCF94 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
 		B51FBBD71D3F48EB008DCF94 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
 		B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
+		B51FBBDB1D431B5E008DCF94 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		B51FBBDD1D432CED008DCF94 /* random.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = random.png; sourceTree = "<group>"; };
+		B51FBBE01D433457008DCF94 /* lf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lf.ttf; sourceTree = "<group>"; };
+		B51FBBE11D433977008DCF94 /* Prida65.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Prida65.otf; sourceTree = "<group>"; };
+		B51FBBE21D433CB7008DCF94 /* flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash.png; sourceTree = "<group>"; };
+		B51FBBE81D457706008DCF94 /* restorePurchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restorePurchasesIcon.png; sourceTree = "<group>"; };
+		B51FBBEA1D45784A008DCF94 /* removeAds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeAds.png; sourceTree = "<group>"; };
+		B51FBBEC1D457AD9008DCF94 /* timeFreeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeFreeze.png; sourceTree = "<group>"; };
+		B51FBBEE1D457CDF008DCF94 /* substrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = substrate.png; sourceTree = "<group>"; };
+		B51FBBF01D457D6C008DCF94 /* stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick.png; sourceTree = "<group>"; };
+		B51FBBF21D457E4F008DCF94 /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
 		B53479891D19D6EB001110CA /* abilityButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityButton.png; sourceTree = "<group>"; };
 		B534798B1D19E104001110CA /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		B53479B11D1C4864001110CA /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -132,8 +143,6 @@
 		B53479B51D1CA767001110CA /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		B53479BD1D2AB6E2001110CA /* BulletNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletNode.swift; sourceTree = "<group>"; };
 		B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneHelperMethods.swift; sourceTree = "<group>"; };
-		B53479C91D2C3A95001110CA /* substrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = substrate.png; sourceTree = "<group>"; };
-		B53479CB1D2C3D29001110CA /* stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick.png; sourceTree = "<group>"; };
 		B53479CD1D2C40ED001110CA /* MazeBuilders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeBuilders.swift; sourceTree = "<group>"; };
 		B53479CF1D2D54B2001110CA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		B53479D11D2D6CFB001110CA /* AbilitySelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilitySelectScene.swift; sourceTree = "<group>"; };
@@ -145,11 +154,8 @@
 		B542950D1C6104E6007119F7 /* Halo3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Halo3.ttf; sourceTree = "<group>"; };
 		B54295121C614254007119F7 /* walkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = walkCycle.atlas; sourceTree = "<group>"; };
 		B54295161C6191F1007119F7 /* MenuViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewExtension.swift; sourceTree = "<group>"; };
-		B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RUBBBI__.ttf; sourceTree = "<group>"; };
 		B58CBF3A1D32BC1500908922 /* Helper Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Helper Functions.swift"; sourceTree = "<group>"; };
 		B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeLaunchScreen.png; sourceTree = "<group>"; };
-		B58CBF421D33F8A400908922 /* removeAds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeAds.png; sourceTree = "<group>"; };
-		B58CBF441D33FE1A00908922 /* restorePurchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restorePurchasesIcon.png; sourceTree = "<group>"; };
 		B58CBF471D34014100908922 /* mazeLaunchScreen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeLaunchScreen2.png; sourceTree = "<group>"; };
 		B59BCC8C1C5D41BE007DAA27 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		B5A6D8661C4FE209001B6ABA /* Into The Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Into The Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,7 +253,8 @@
 		B54295111C6106BD007119F7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B542951A1C61A0BC007119F7 /* RUBBBI__.ttf */,
+				B51FBBE01D433457008DCF94 /* lf.ttf */,
+				B51FBBE11D433977008DCF94 /* Prida65.otf */,
 				B542950D1C6104E6007119F7 /* Halo3.ttf */,
 				B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */,
 				B5A6D8C61C51DF26001B6ABA /* Charcoal.otf */,
@@ -335,25 +342,28 @@
 		B5A6D8A51C5015C6001B6ABA /* images */ = {
 			isa = PBXGroup;
 			children = (
-				B51FBBCF1D3EC316008DCF94 /* timeFreeze.png */,
+				B51FBBDD1D432CED008DCF94 /* random.png */,
+				B51FBBE21D433CB7008DCF94 /* flash.png */,
+				B51FBBDB1D431B5E008DCF94 /* arrow.png */,
 				B51FBBCB1D3EBE34008DCF94 /* speedDemon.png */,
 				B51FBBD31D3F3984008DCF94 /* cobblestone.png */,
-				B51FBBD51D3F446E008DCF94 /* shootButton.png */,
+				B51FBBEC1D457AD9008DCF94 /* timeFreeze.png */,
 				B51FBBC91D3EBBBB008DCF94 /* wallBuster.png */,
 				B51FBBA61D3DE1D2008DCF94 /* projectile.png */,
 				B58CBF471D34014100908922 /* mazeLaunchScreen2.png */,
 				B51FBBD71D3F48EB008DCF94 /* helpIcon.png */,
-				B58CBF441D33FE1A00908922 /* restorePurchasesIcon.png */,
-				B58CBF421D33F8A400908922 /* removeAds.png */,
+				B51FBBEA1D45784A008DCF94 /* removeAds.png */,
+				B51FBBE81D457706008DCF94 /* restorePurchasesIcon.png */,
 				B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */,
 				B53479B51D1CA767001110CA /* bullet.png */,
+				B51FBBF21D457E4F008DCF94 /* shootButton.png */,
 				B54294FE1C606F46007119F7 /* moveButton.png */,
 				B53479CF1D2D54B2001110CA /* Logo.png */,
-				B53479CB1D2C3D29001110CA /* stick.png */,
 				B53479891D19D6EB001110CA /* abilityButton.png */,
 				B5A6D8BC1C51D644001B6ABA /* mazeIntro.png */,
-				B53479C91D2C3A95001110CA /* substrate.png */,
 				B5A6D8A81C504886001B6ABA /* muscle.png */,
+				B51FBBEE1D457CDF008DCF94 /* substrate.png */,
+				B51FBBF01D457D6C008DCF94 /* stick.png */,
 				B5A6D8B01C505A23001B6ABA /* brickBreaker.png */,
 				B5A6D93C1C57D7A0001B6ABA /* innerTriangle.png */,
 				B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */,
@@ -491,21 +501,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51FBBE31D433CB7008DCF94 /* flash.png in Resources */,
 				B53479B61D1CA767001110CA /* bullet.png in Resources */,
 				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
+				B51FBBEF1D457CDF008DCF94 /* substrate.png in Resources */,
+				B51FBBED1D457AD9008DCF94 /* timeFreeze.png in Resources */,
+				B51FBBE91D457706008DCF94 /* restorePurchasesIcon.png in Resources */,
 				B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */,
+				B51FBBEB1D45784A008DCF94 /* removeAds.png in Resources */,
 				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
 				B542950E1C610522007119F7 /* Halo3.ttf in Resources */,
 				B534798A1D19D6EB001110CA /* abilityButton.png in Resources */,
-				B51FBBD61D3F446E008DCF94 /* shootButton.png in Resources */,
-				B58CBF451D33FE1A00908922 /* restorePurchasesIcon.png in Resources */,
 				B5A6D8A91C504886001B6ABA /* muscle.png in Resources */,
 				B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */,
-				B51FBBD01D3EC316008DCF94 /* timeFreeze.png in Resources */,
 				B5A6D8B51C507038001B6ABA /* faster.png in Resources */,
-				B53479CC1D2C3D29001110CA /* stick.png in Resources */,
 				B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */,
-				B58CBF431D33F8A400908922 /* removeAds.png in Resources */,
+				B51FBBF31D457E4F008DCF94 /* shootButton.png in Resources */,
+				B51FBBF11D457D6C008DCF94 /* stick.png in Resources */,
 				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
 				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
 				B51FBBC61D3DF061008DCF94 /* Mediation Adapters in Resources */,
@@ -517,17 +529,17 @@
 				B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */,
 				B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */,
 				B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */,
-				B53479CA1D2C3A95001110CA /* substrate.png in Resources */,
 				B53479D01D2D54B2001110CA /* Logo.png in Resources */,
 				B5A6D8B11C505A23001B6ABA /* brickBreaker.png in Resources */,
 				B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */,
 				B58CBF481D34014100908922 /* mazeLaunchScreen2.png in Resources */,
 				B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */,
 				B51FBBD41D3F3984008DCF94 /* cobblestone.png in Resources */,
+				B51FBBDC1D431B5E008DCF94 /* arrow.png in Resources */,
 				B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */,
 				B5A6D8731C4FE209001B6ABA /* Main.storyboard in Resources */,
-				B542951B1C61A0BC007119F7 /* RUBBBI__.ttf in Resources */,
 				B51FBBA71D3DE1D2008DCF94 /* projectile.png in Resources */,
+				B51FBBDE1D432CED008DCF94 /* random.png in Resources */,
 				B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */,
 				B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */,
 				B51FBBCC1D3EBE34008DCF94 /* speedDemon.png in Resources */,

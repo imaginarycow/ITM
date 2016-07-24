@@ -30,6 +30,7 @@ class AbilitySelectScene: SKScene {
             
             let icon = SKShapeNode(circleOfRadius: 30.0)
             icon.fillColor = SKColor.whiteColor()
+            icon.strokeColor = .clearColor()
             
             let iconTitle = SKLabelNode()
             iconTitle.fontColor = mazeColor
@@ -45,7 +46,7 @@ class AbilitySelectScene: SKScene {
             if i == 1 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.5)
                 icon.name = "Speed Demon"
-                icon.fillTexture = SKTexture(imageNamed: "speedDemon.png")
+                icon.fillTexture = SKTexture(imageNamed: "flash.png")
                 iconTitle.text = "Speed Demon"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
             }
@@ -85,6 +86,15 @@ class AbilitySelectScene: SKScene {
         backButton.fontName = labelFont
         backButton.position = CGPoint(x: self.size.width * 0.06, y: self.size.height * 0.92)
         self.addChild(backButton)
+        
+        let infoLabel = SKLabelNode()
+        infoLabel.zPosition = 100
+        infoLabel.fontColor = mazeColor
+        infoLabel.fontName = labelFont
+        infoLabel.fontSize = 12.0
+        infoLabel.position = CGPoint(x: ((self.scene?.size.width)!/2), y: (self.scene?.size.height)! * 0.06)
+        infoLabel.text = "Earn your ability in the game by whooping bad guys and grabbing tokens"
+        self.addChild(infoLabel)
         
     }
     

@@ -265,6 +265,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         shootControl.fillTexture = SKTexture(imageNamed: "shootButton.png")
         shootControl.fillColor = SKColor.whiteColor()
+        shootControl.strokeColor = .clearColor()
         shootControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.25)
         shootControl.zPosition = 100
         shootControl.name = "shootControl"

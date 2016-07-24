@@ -12,7 +12,8 @@ import UIKit
 import GoogleMobileAds
 
 let backGroundColor = SKColor.darkGrayColor()
-
+var scaledWidth:CGFloat!
+var scaledHeight:CGFloat!
 
 class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
     
@@ -102,6 +103,10 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
         default:
             scale = 1.0
         }
+        
+        scaledWidth = 40.0 * scale
+        scaledHeight = 40.0 * scale
+        
     }
     
     func moveToAbilitySelectScene() {
@@ -144,19 +149,19 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
         
         //properties for removeAdsLabel
         removeAdsLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.7)
-        removeAdsLabel.size = CGSize(width: 40.0, height: 40.0)
+        removeAdsLabel.size = CGSize(width: scaledWidth, height: scaledHeight)
         
         //properties for restorePurchasesLabel
-        restorePurchasesLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.6)
-        restorePurchasesLabel.size = CGSize(width: 40.0, height: 40.0)
+        restorePurchasesLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.5)
+        restorePurchasesLabel.size = CGSize(width: scaledWidth, height: scaledHeight)
         
         goLabel.position = CGPoint(x: scene!.size.width/2, y: (scene?.size.height)! * 0.41)
         goLabel.fontColor = .whiteColor()
         goLabel.fontName = labelFont
         goLabel.zPosition = 100
         
-        helpLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.45)
-        helpLabel.size = CGSize(width: 40.0, height: 40.0)
+        helpLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.3)
+        helpLabel.size = CGSize(width: scaledWidth, height: scaledHeight)
         helpLabel.zPosition = 100
 
         //wait til maze animation stops
