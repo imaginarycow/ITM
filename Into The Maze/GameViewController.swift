@@ -9,18 +9,26 @@
 import SpriteKit
 import GoogleMobileAds
 
-var adBanner: GADBannerView?
+protocol AdmobInterstitialDelegate {
+    func showInterstitial()
+}
 
-class GameViewController: UIViewController, UITextFieldDelegate, GADBannerViewDelegate {
+
+class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitialDelegate, AdmobInterstitialDelegate {
     
-
+    let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6450694282232724/6482008496")
+    var presentingController : UIViewController!
+    
     var scene:SKScene!
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AdMob.sharedInstance.setup(viewController: self, interID: "ca-app-pub-6450694282232724/6482008496")
+        
         scene = MainMenuScene()
+        
         
         // Configure the view.
         let skView = self.view as! SKView
@@ -39,19 +47,43 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADBannerViewDe
         scene.size = skView.bounds.size
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
-        
-        
-//        delay(3.0, closure: {
-//        
-//            self.loadAds()
-//            self.view.addSubview(adBanner!)
-//        })
+     
+        loadRequest()
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
+    
+    
+    func setViewController() {
+        presentingController = self
+        print(presentingController)
+        print("view controller set")
+    }
+    
+    func loadRequest() {
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        interstitial.delegate = self
+        interstitial.loadRequest(request)
+    }
 
+    func showInterstitial() {
+        
+        print("load ads button tapped")
+        print("interstitial isReady: \(interstitial.isReady)")
+        loadRequest()
+        
+        if interstitial.isReady {
+           
+            print("rootViewController set")
+            interstitial.presentFromRootViewController(self)
+            
+        }
     }
     
     override func shouldAutorotate() -> Bool {

@@ -87,40 +87,39 @@ class MazeSelectScene: SKScene {
     
     func moveToSelectedMaze(level: Int) {
         
-        var GameScene = Level1GameScene()
+        var GameScene = SKScene()
         
         switch level {
         case 1:
-            GameScene = Level1GameScene()
+            GameScene = Maze1GameScene()
         case 2:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 3:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 4:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 5:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 6:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 7:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 8:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 9:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 10:
-            GameScene = Level1GameScene()
+            GameScene = Maze2GameScene()
         case 11:
-            GameScene = Level1GameScene()
-        case 12:
-            GameScene = Level1GameScene()
+            GameScene = Maze1GameScene()
         default:
-            GameScene = Level1GameScene()
+            GameScene = Maze1GameScene()
         }
         
         
         GameScene.size = self.size
         GameScene.scaleMode = self.scaleMode
+        
         let transition = SKTransition.doorwayWithDuration(2.0)
         self.scene!.view?.presentScene(GameScene, transition: transition)
     }

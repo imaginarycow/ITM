@@ -9,10 +9,12 @@
 import Foundation
 import SpriteKit
 
+
+import SpriteKit
+
+
 //GameScene Helper Methods
 extension GameScene {
-    
-    
     
     
     func delay(delay:Double, closure:()->()) {

@@ -14,10 +14,12 @@ import GoogleMobileAds
 let backGroundColor = SKColor.darkGrayColor()
 var scaledWidth:CGFloat!
 var scaledHeight:CGFloat!
+var showAnimation = true
 
-class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
+class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     
     
+    let vc = GameViewController()
     let mazeSelectLabel = SKLabelNode(text: "Into The Maze")
     
     //next three nodes built in function fadeInLabels()
@@ -32,7 +34,9 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
     let parent3 = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
-        
+    
+
+        vc.loadRequest()
         
         setScale()
         
@@ -72,13 +76,24 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
         parent2.addChild(triangle2)
         parent3.addChild(triangle3)
         
+        //don't animate main menu when player is already in game
+        if showAnimation {
+            Triangle.beginningAnimation(parent1, tri2: parent2, tri3: parent3)
+            fadeInLabels(3.0)
+        }else {
+            fadeInLabels(0.5)
+        }
         
-        Triangle.beginningAnimation(parent1, tri2: parent2, tri3: parent3)
-        fadeInLabels()
-
-    }
+        vc.loadRequest()
+    } // End DidMoveToView
+    
     
     override func willMoveFromView(view: SKView) {
+        
+    }
+    
+    func getViewController(vc: UIViewController) {
+        
         
     }
     
@@ -111,6 +126,8 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
     
     func moveToAbilitySelectScene() {
         
+        showAnimation = false
+        
         let abilitySelectScene = AbilitySelectScene()
         abilitySelectScene.size = self.size
         abilitySelectScene.scaleMode = self.scaleMode
@@ -131,16 +148,14 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
             }
             
             if removeAdsLabel.containsPoint(location) {
-                print("Attempting to remove Ads")
-            
-                adBanner?.removeFromSuperview()
+                print("Attempting to load Ads")
                 
-                
+                adsRemoved = true
             }
         }
     }
     
-    func fadeInLabels() {
+    func fadeInLabels(del: Double) {
         // top label
         mazeSelectLabel.fontColor = mazeColor
         mazeSelectLabel.fontSize = 31.0
@@ -165,7 +180,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADBannerViewDelegate {
         helpLabel.zPosition = 100
 
         //wait til maze animation stops
-        delay(3.0) {
+        delay(del) {
             
             self.addChild(self.mazeSelectLabel)
             self.addChild(self.removeAdsLabel)
