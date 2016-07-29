@@ -13,6 +13,7 @@ import SpriteKit
 //remove bullet from scene
 func removeBullet(node:SKNode) {
     print("attempting to remove bullet")
+    node.removeAllChildren()
     node.removeFromParent()
 }
 
@@ -70,17 +71,14 @@ func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {
 }
 
 func createProjectile() -> SKSpriteNode {
-    
-    //let shooterNode = self.childNodeWithName("Player")
-    //let shooterPosition = shooterNode!.position
-    //let shooterWidth = shooterNode!.frame.size.width
+
     
     let bullet = SKSpriteNode(imageNamed: "projectile")
-    bullet.size = CGSize(width: 20.0, height: 20.0)
+    bullet.size = CGSize(width: 10.0, height: 10.0)
     bullet.zPosition = 50
     
     bullet.name = "bulletNode"
-    bullet.physicsBody = SKPhysicsBody(rectangleOfSize: bullet.frame.size)
+    bullet.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: bullet.size.width, height: bullet.size.height))
     
     bullet.physicsBody?.usesPreciseCollisionDetection = true
     bullet.physicsBody?.affectedByGravity = false
@@ -99,7 +97,7 @@ func getBulletImpulse(direction: PlayerDirection) -> (CGFloat, CGFloat) {
     var xImpulse:CGFloat = 0.0
     var yImpulse:CGFloat = 0.0
     
-    let max:CGFloat = 10.0
+    let max:CGFloat = 1.0
     
     switch direction {
         

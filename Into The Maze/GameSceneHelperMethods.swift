@@ -45,8 +45,25 @@ extension GameScene {
             loadMaze1()
         }
         
+        createCenter()
+        
     }
     
+    func removeTreasure(node: SKNode) {
+        node.removeFromParent()
+        let treasureLabel = SKLabelNode(text: "Got the Treasure")
+        treasureLabel.zPosition = 100
+        treasureLabel.fontName = labelFont
+        treasureLabel.fontSize = 24.0
+        treasureLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        treasureLabel.fontColor = .greenColor()
+        scene?.addChild(treasureLabel)
+        delay(1.0) {
+            treasureLabel.removeFromParent()
+        }
+    }
+    
+
     
     func delay(delay:Double, closure:()->()) {
         dispatch_after(

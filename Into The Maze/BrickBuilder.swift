@@ -20,7 +20,7 @@ var lastPoint = CGPointMake(0.0, 0.0)
 
 class Brick {
     
-    class func createBrick(point:CGPoint, rotation:Double) -> SKSpriteNode {
+    class func createBrick(point:CGPoint, brickWidth: CGFloat, rotation:Double) -> SKSpriteNode {
         
         
         let brick = SKSpriteNode(imageNamed: "brick.png")
@@ -34,7 +34,7 @@ class Brick {
         brick.physicsBody?.mass = 1000
         brick.physicsBody?.usesPreciseCollisionDetection = true
         brick.physicsBody?.categoryBitMask = brickCategory
-        brick.physicsBody?.collisionBitMask = playerCategory | bulletCategory | monsterCategory
+        brick.physicsBody?.collisionBitMask = playerCategory | monsterCategory
         brick.physicsBody?.contactTestBitMask = playerCategory | bulletCategory | monsterCategory
         
         return brick

@@ -124,9 +124,9 @@ class AbilitySelectScene: SKScene {
             for icon in iconArray {
                 if icon.containsPoint(location) {
                     if icon == iconArray[0] {
-                        abilitySelected = .wallBuster
+                        abilitySelected = .brickBreaker
                     }else if icon == iconArray[1] {
-                        abilitySelected = .speedDemon
+                        abilitySelected = .instaKill
                     }else {
                         abilitySelected = .timeFreeze
                     }

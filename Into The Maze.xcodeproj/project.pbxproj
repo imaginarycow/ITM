@@ -68,6 +68,8 @@
 		B58CBF3B1D32BC1500908922 /* Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CBF3A1D32BC1500908922 /* Helper Functions.swift */; };
 		B58CBF411D33D9C800908922 /* mazeLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */; };
 		B58CBF481D34014100908922 /* mazeLaunchScreen2.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CBF471D34014100908922 /* mazeLaunchScreen2.png */; };
+		B58CC9B71D4BB7180084887F /* FireParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CC9B61D4BB7180084887F /* FireParticle.swift */; };
+		B58CC9B91D4BBDB60084887F /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = B58CC9B81D4BBDB60084887F /* loading.png */; };
 		B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = B59BCC8C1C5D41BE007DAA27 /* Icons */; };
 		B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */; };
 		B5A6D86E1C4FE209001B6ABA /* Maze1GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6D86D1C4FE209001B6ABA /* Maze1GameScene.swift */; };
@@ -94,6 +96,9 @@
 		B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */; };
 		B5A6D9421C57D7A0001B6ABA /* closedOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93E1C57D7A0001B6ABA /* closedOuter.png */; };
 		B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A6D93F1C57D7A0001B6ABA /* outerTriangle.png */; };
+		B5FF5F0A1D4BD29900B53CEB /* treasure.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F091D4BD29900B53CEB /* treasure.png */; };
+		B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */; };
+		B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +182,8 @@
 		B58CBF3A1D32BC1500908922 /* Helper Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Helper Functions.swift"; sourceTree = "<group>"; };
 		B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeLaunchScreen.png; sourceTree = "<group>"; };
 		B58CBF471D34014100908922 /* mazeLaunchScreen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeLaunchScreen2.png; sourceTree = "<group>"; };
+		B58CC9B61D4BB7180084887F /* FireParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireParticle.swift; sourceTree = "<group>"; };
+		B58CC9B81D4BBDB60084887F /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		B59BCC8C1C5D41BE007DAA27 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		B5A6D8661C4FE209001B6ABA /* Into The Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Into The Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +216,9 @@
 		B5A6D93D1C57D7A0001B6ABA /* innerTriangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = innerTriangle2.png; sourceTree = SOURCE_ROOT; };
 		B5A6D93E1C57D7A0001B6ABA /* closedOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closedOuter.png; sourceTree = SOURCE_ROOT; };
 		B5A6D93F1C57D7A0001B6ABA /* outerTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outerTriangle.png; sourceTree = SOURCE_ROOT; };
+		B5FF5F091D4BD29900B53CEB /* treasure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treasure.png; sourceTree = "<group>"; };
+		B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityToken.png; sourceTree = "<group>"; };
+		B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +303,7 @@
 				B53479CD1D2C40ED001110CA /* MazeBuilders.swift */,
 				B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */,
 				B58CBF3A1D32BC1500908922 /* Helper Functions.swift */,
+				B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */,
 				B54295081C610106007119F7 /* Player.swift */,
 				B5790F971D46AA9500608F7F /* Monster.swift */,
 				B53479BD1D2AB6E2001110CA /* BulletNode.swift */,
@@ -302,6 +313,7 @@
 				B5A6D89F1C4FED4E001B6ABA /* HowToPlayViewController.swift */,
 				B5790F9F1D47E60000608F7F /* RateMe.swift */,
 				B534798B1D19E104001110CA /* AnalogJoystick.swift */,
+				B58CC9B61D4BB7180084887F /* FireParticle.swift */,
 				B5790FA21D4907C500608F7F /* fire.sks */,
 				B5790FA31D4907C500608F7F /* spark.png */,
 				B5A6D8761C4FE209001B6ABA /* LaunchScreen.storyboard */,
@@ -384,7 +396,10 @@
 				B51FBBEA1D45784A008DCF94 /* removeAds.png */,
 				B51FBBE81D457706008DCF94 /* restorePurchasesIcon.png */,
 				B58CBF401D33D9C800908922 /* mazeLaunchScreen.png */,
+				B5FF5F091D4BD29900B53CEB /* treasure.png */,
+				B58CC9B81D4BBDB60084887F /* loading.png */,
 				B53479B51D1CA767001110CA /* bullet.png */,
+				B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */,
 				B51FBBF21D457E4F008DCF94 /* shootButton.png */,
 				B54294FE1C606F46007119F7 /* moveButton.png */,
 				B5790F9D1D47E26600608F7F /* logo2.png */,
@@ -551,6 +566,7 @@
 				B51FBBF31D457E4F008DCF94 /* shootButton.png in Resources */,
 				B5790FAF1D4B0C1000608F7F /* timeFreeze.png in Resources */,
 				B51FBBF11D457D6C008DCF94 /* stick.png in Resources */,
+				B58CC9B91D4BBDB60084887F /* loading.png in Resources */,
 				B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */,
 				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
 				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
@@ -564,6 +580,7 @@
 				B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */,
 				B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */,
 				B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */,
+				B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */,
 				B5790F9E1D47E26600608F7F /* logo2.png in Resources */,
 				B5A6D8B11C505A23001B6ABA /* brickBreaker.png in Resources */,
 				B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */,
@@ -575,6 +592,7 @@
 				B5A6D9401C57D7A0001B6ABA /* innerTriangle.png in Resources */,
 				B5A6D8731C4FE209001B6ABA /* Main.storyboard in Resources */,
 				B51FBBA71D3DE1D2008DCF94 /* projectile.png in Resources */,
+				B5FF5F0A1D4BD29900B53CEB /* treasure.png in Resources */,
 				B51FBBDE1D432CED008DCF94 /* random.png in Resources */,
 				B5790FAB1D4AC36300608F7F /* instakill.png in Resources */,
 				B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */,
@@ -619,10 +637,12 @@
 				B54295051C60FB56007119F7 /* Maze2GameScene.swift in Sources */,
 				B53479D21D2D6CFB001110CA /* AbilitySelectScene.swift in Sources */,
 				B53479BE1D2AB6E2001110CA /* BulletNode.swift in Sources */,
+				B58CC9B71D4BB7180084887F /* FireParticle.swift in Sources */,
 				B5790FA71D4963E600608F7F /* BrickBuilder.swift in Sources */,
 				B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */,
 				B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */,
 				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,
+				B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */,
 				B5790F981D46AA9500608F7F /* Monster.swift in Sources */,
 				B58CBF3B1D32BC1500908922 /* Helper Functions.swift in Sources */,
 				B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */,

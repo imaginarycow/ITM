@@ -23,6 +23,10 @@ let bulletCategory: UInt32 = 0x1 << 2
 let playerCategory: UInt32 = 0x1 << 3
 let monsterCategory: UInt32 = 0x1 << 4
 let brickCategory: UInt32 = 0x1 << 5
+let centerCategory: UInt32 = 0x1 << 6
+let abilityCategory: UInt32 = 0x1 << 7
+
+let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
 
 //the direction the player is currently moving the thumbstick in
 var currentDirection:PlayerDirection!
@@ -32,13 +36,12 @@ let box1 = SKSpriteNode()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    
-    
-    let center = SKShapeNode(circleOfRadius: 7.0)
+
+    let center = SKSpriteNode(imageNamed: "treasure.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
     let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
-    let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
+    
     
     var TextureArray = [SKTexture]()
     var walking: Bool = false
@@ -51,16 +54,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
     
-        box1Width = CGFloat((scene?.size.height)! * 0.85)
-        box1.size = CGSize(width: box1Width, height: box1Width)
-        box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        box1.zPosition = 5
-        //box1.color = .orangeColor()
-        self.addChild(box1)
-
+        
         //all calls will be handled in each maze scene
         createNewScene()
-        
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
@@ -142,7 +138,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Mark: End Joystick Handlers
         
         
-        loadSelectedMaze(level) 
+        loadSelectedMaze(level)
+        
+        
     }
     
     override func willMoveFromView(view: SKView) {
@@ -162,6 +160,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //mazeShiftLabel()
         createNewPlayer()
         //createNewMonster()
+        setAbilityToken()
         AdMob.sharedInstance.delegate = self
     }
     
@@ -276,11 +275,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         abilityControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.60)
         abilityControl.fillColor = SKColor.whiteColor()
+        abilityControl.strokeColor = .clearColor()
         
+        setAbilityForUse(abilityTokens)
+ 
         switch abilitySelected {
-        case ability.wallBuster:
+        case ability.brickBreaker:
             abilityControl.fillTexture = SKTexture(imageNamed: "brickBreaker.png")
-        case ability.speedDemon:
+        case ability.instaKill:
             abilityControl.fillTexture = SKTexture(imageNamed: "instakill.png")
         case ability.timeFreeze:
             abilityControl.fillTexture = SKTexture(imageNamed: "timeFreeze.png")
@@ -293,6 +295,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene!.addChild(abilityControl)
     }
     
+    func setAbilityToken() {
+        
+        //TODO: set ability token position in each MazeScene
+        abilityToken.zPosition = 200
+        abilityToken.size = CGSize(width: 20.0 * scale, height: 20.0 * scale)
+        abilityToken.physicsBody = SKPhysicsBody(circleOfRadius: abilityToken.size.width/2)
+        abilityToken.physicsBody?.dynamic = false
+        abilityToken.physicsBody?.usesPreciseCollisionDetection = true
+        abilityToken.physicsBody?.categoryBitMask = abilityCategory
+        abilityToken.physicsBody?.contactTestBitMask = playerCategory
+        let abilityFadeOut = SKAction.fadeAlphaTo(0.0, duration: 1.0)
+        let abilityFadeIn = SKAction.fadeAlphaTo(1.0, duration: 1.0)
+        let abilityAction = SKAction.sequence([abilityFadeOut,abilityFadeIn])
+        abilityToken.runAction(SKAction.repeatActionForever(abilityAction))
+    }
+    
+    //box that encloses entire scene
+    //so as not to let player go off-screen
     func createBoundingBox() {
 
         boundingBox.color = SKColor.blackColor()
@@ -307,9 +327,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         boundingBox.physicsBody?.contactTestBitMask = bulletCategory | playerCategory
         boundingBox.name = "boundingBox"
         scene!.addChild(boundingBox)
-        
-        createCenter()
-
 
     }
     
@@ -317,12 +334,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createCenter() {
         
         center.position = CGPointMake(0.0, 0.0)
-        center.physicsBody = SKPhysicsBody(circleOfRadius: 7.0)
-        center.fillColor = .greenColor()
+        center.size = CGSize(width: 20.0 * scale, height: 20.0 * scale)
+        center.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: center.size.width, height: center.size.height))
+        center.physicsBody?.usesPreciseCollisionDetection = true
+        center.physicsBody?.categoryBitMask = centerCategory
+        center.physicsBody?.contactTestBitMask = playerCategory
         center.zPosition = 11
         center.name = "center"
-        boundingBox.addChild(center)
-        center.physicsBody?.restitution = 0.6
+        box1.addChild(center)
         
     }
     //texture array for Player
@@ -346,10 +365,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mazeSelectScene.scaleMode = self.scaleMode
         Player?.removeFromParent()
         Player = nil
+        fireParticle.removeAllActions()
+        fireParticle.removeFromParent()
+        fireParticle.resetSimulation()
         boundingBox.removeAllChildren()
         boundingBox.removeFromParent()
+        box1.removeAllActions()
         box1.removeAllChildren()
         box1.removeFromParent()
+        self.scene?.removeAllActions()
         self.scene?.removeAllChildren()
         let transition = SKTransition.crossFadeWithDuration(1.0)
         self.scene!.view?.presentScene(mazeSelectScene, transition: transition)
@@ -385,11 +409,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bulletNode.position = CGPoint(x: Player!.position.x + xOffset, y: Player!.position.y + yOffset)
                 bulletNode.zRotation = DegToRad(rotation)
                 bullets.insert(bulletNode, atIndex: 0)
-                addChild(bullets[0])
+                addChild(bulletNode)
+                
+                let fire = SKTexture(imageNamed: "spark.png")
+                let fireball = createFireball(fire, point: CGPointZero, target: bulletNode)
+                bulletNode.addChild(fireball)
                 
                 let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
                 bullets[0].physicsBody?.applyImpulse(vector)
                 
+            }
+            
+            if abilityControl.containsPoint(location) {
+                
+                if abilityTokens > 0 {
+                    useAbility(abilitySelected)
+                }
             }
             
             if backButton.containsPoint(location) {
@@ -430,20 +465,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("bullet bounding box")
             removeBullet(secondBody.node!)
         }
-        
         if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == brickCategory) {
             print("bullet hit brick wall")
-            removeBrick(secondBody.node!)
-            
+            removeBullet(firstBody.node!)
         }
         if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == bulletCategory) {
-            removeBrick(firstBody.node!)
+            removeBullet(secondBody.node!)
         }
-        if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == playerCategory) {
-            
+        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == centerCategory) {
+            print("Player got treasure")
+            removeTreasure(secondBody.node!)
+            //TODO: Show animation
         }
-        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == brickCategory) {
-            
+        if (firstBody.categoryBitMask == centerCategory && secondBody.categoryBitMask == playerCategory) {
+            print("Player got treasure")
+            removeTreasure(firstBody.node!)
+            //TODO: Show animation
+        }
+        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == abilityCategory) {
+            print("player got ability token")
+            abilityTokens += 1
+            removeToken(secondBody.node!)
+            setAbilityForUse(abilityTokens)
         }
 
     }
