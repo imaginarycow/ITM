@@ -51,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
     
-        box1Width = CGFloat((scene?.size.height)! * 0.80)
+        box1Width = CGFloat((scene?.size.height)! * 0.85)
         box1.size = CGSize(width: box1Width, height: box1Width)
         box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         box1.zPosition = 5
@@ -279,9 +279,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch abilitySelected {
         case ability.wallBuster:
-            abilityControl.fillTexture = SKTexture(imageNamed: "wallBuster.png")
+            abilityControl.fillTexture = SKTexture(imageNamed: "brickBreaker.png")
         case ability.speedDemon:
-            abilityControl.fillTexture = SKTexture(imageNamed: "speedDemon.png")
+            abilityControl.fillTexture = SKTexture(imageNamed: "instakill.png")
         case ability.timeFreeze:
             abilityControl.fillTexture = SKTexture(imageNamed: "timeFreeze.png")
         default:
@@ -355,12 +355,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene!.view?.presentScene(mazeSelectScene, transition: transition)
     }
     
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        shootControl.alpha = 1.0
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first as UITouch! {
             let location = touch.locationInNode(self)
             
             //check to see if a bullet should be fired
             if shootControl.containsPoint(location) {
+                
+                shootControl.alpha = 0.4
                 
                 print("Bullet fired")
                 
