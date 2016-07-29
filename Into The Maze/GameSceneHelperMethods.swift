@@ -16,6 +16,37 @@ import SpriteKit
 //GameScene Helper Methods
 extension GameScene {
     
+    func loadSelectedMaze(level: Int) {
+        
+        switch level {
+        case 1:
+            loadMaze1()
+        case 2:
+            loadMaze2()
+        case 3:
+            loadMaze1()
+        case 4:
+            loadMaze1()
+        case 5:
+            loadMaze2()
+        case 6:
+            loadMaze1()
+        case 7:
+            loadMaze1()
+        case 8:
+            loadMaze1()
+        case 9:
+            loadMaze2()
+        case 10:
+            loadMaze1()
+        case 11:
+            loadMaze2()
+        default:
+            loadMaze1()
+        }
+        
+    }
+    
     
     func delay(delay:Double, closure:()->()) {
         dispatch_after(

@@ -26,14 +26,14 @@ class NewPlayer:SKSpriteNode {
     class func createNewPlayer() -> SKSpriteNode {
         
         let newPlayer = SKSpriteNode(imageNamed: "PlayerWalk01")
-        newPlayer.size = CGSize(width: 40 * scale, height: 40 * scale)
+        newPlayer.size = CGSize(width: 30 * scale, height: 30 * scale)
         newPlayer.zPosition = 100
-        
-        newPlayer.physicsBody = SKPhysicsBody(rectangleOfSize: newPlayer.frame.size)
-        //newPlayer.physicsBody?.dynamic = false
+        let rad:CGFloat = newPlayer.frame.width * 0.4
+        newPlayer.physicsBody = SKPhysicsBody(circleOfRadius: rad)
+        newPlayer.physicsBody?.usesPreciseCollisionDetection = true
         newPlayer.physicsBody?.categoryBitMask = playerCategory
-        newPlayer.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory
-        newPlayer.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory
+        newPlayer.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | brickCategory
+        newPlayer.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | brickCategory
         
         return newPlayer
 

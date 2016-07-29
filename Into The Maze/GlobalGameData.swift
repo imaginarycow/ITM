@@ -18,7 +18,7 @@ let labelFont = "Charcoal"
 var level = 0
 
 
-
+//let mazeColor: UIColor = UIColor(red: 0/255.0, green: 195/255.0, blue: 199/255.0, alpha: 1.0)
 let mazeColor: UIColor = UIColor(red: 0/255.0, green: 152/255.0, blue: 153/255.0, alpha: 1.0)
 
 //create arrays of locked and unlocked levels

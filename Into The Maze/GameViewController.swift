@@ -17,15 +17,19 @@ protocol AdmobInterstitialDelegate {
 class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitialDelegate, AdmobInterstitialDelegate {
     
     let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6450694282232724/6482008496")
-    var presentingController : UIViewController!
-    
+
     var scene:SKScene!
+    
+    let rate = RateMyApp.sharedInstance
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AdMob.sharedInstance.setup(viewController: self, interID: "ca-app-pub-6450694282232724/6482008496")
+        rate.appID = "1052643535"
+        rate.trackAppUsage()
+        
         
         scene = MainMenuScene()
         
@@ -35,8 +39,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         skView.multipleTouchEnabled = true
         skView.showsFPS = true
         skView.showsNodeCount = true
-        skView.showsPhysics = false
-        
+        skView.showsPhysics = true
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
@@ -54,14 +57,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     
     override func viewWillAppear(animated: Bool) {
         
-    }
-    
-    
-    
-    func setViewController() {
-        presentingController = self
-        print(presentingController)
-        print("view controller set")
     }
     
     func loadRequest() {

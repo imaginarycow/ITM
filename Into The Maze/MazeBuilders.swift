@@ -10,6 +10,7 @@ import Foundation
 import SpriteKit
 
 //triangle Maze Builder
+//only used for launch triangle and animation
 class Triangle {
     
     
@@ -17,7 +18,7 @@ class Triangle {
         
         //set length of side of Triangle based on scale passed in
         //which determines size of triangle
-        let sideLength = (scene.size.height * 0.6) * scale
+        let sideLength = (scene.size.height * 0.7) * scale
         let sideA = (sideLength/2)
         let sideB = sqrt((sideLength * sideLength) - (sideA * sideA))
         let startPoint = CGPointMake(-sideLength/2, (-sideB/2 + 20) + buffer)

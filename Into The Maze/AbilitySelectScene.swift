@@ -38,16 +38,16 @@ class AbilitySelectScene: SKScene {
             
             if i == 0 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.7)
-                icon.name = "Wall Buster"
-                icon.fillTexture = SKTexture(imageNamed: "wallBuster.png")
-                iconTitle.text = "Wall Buster"
+                icon.name = "Brick Breaker"
+                icon.fillTexture = SKTexture(imageNamed: "brickBreaker.png")
+                iconTitle.text = "Brick Breaker"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.7)
             }
             if i == 1 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.5)
-                icon.name = "Speed Demon"
-                icon.fillTexture = SKTexture(imageNamed: "flash.png")
-                iconTitle.text = "Speed Demon"
+                icon.name = "InstaKill"
+                icon.fillTexture = SKTexture(imageNamed: "instakill.png")
+                iconTitle.text = "InstaKill"
                 iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
             }
             if i == 2 {

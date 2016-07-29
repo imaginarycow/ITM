@@ -21,15 +21,22 @@ var bullets = [bulletNode]
 let boundingBoxCategory: UInt32 = 0x1 << 1
 let bulletCategory: UInt32 = 0x1 << 2
 let playerCategory: UInt32 = 0x1 << 3
+let monsterCategory: UInt32 = 0x1 << 4
+let brickCategory: UInt32 = 0x1 << 5
 
 //the direction the player is currently moving the thumbstick in
 var currentDirection:PlayerDirection!
 
+var box1Width:CGFloat = 0.0
+let box1 = SKSpriteNode()
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var center = SKShapeNode(circleOfRadius: 7.0)
+    
+    
+    let center = SKShapeNode(circleOfRadius: 7.0)
     //on screen buttons
-    let backButton = SKLabelNode(text: "Back")
+    let backButton = SKLabelNode(text: "Quit")
     let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
     let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
     
@@ -43,9 +50,99 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 
     override func didMoveToView(view: SKView) {
-        
+    
+        box1Width = CGFloat((scene?.size.height)! * 0.80)
+        box1.size = CGSize(width: box1Width, height: box1Width)
+        box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        box1.zPosition = 5
+        //box1.color = .orangeColor()
+        self.addChild(box1)
+
         //all calls will be handled in each maze scene
+        createNewScene()
         
+        
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+        self.physicsWorld.contactDelegate = self
+        
+        //Mark: Joystick Handlers
+        joystick.startHandler = { [unowned self] in
+            
+            //          guard let aN = self.Player else { return }
+            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+            
+            self.Player!.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self.TextureArray, timePerFrame: 0.2)))
+            self.walking = true
+            
+        }
+        
+        //handles player position and rotation and gives direction for projectiles
+        joystick.trackingHandler = { [unowned self] data in
+            
+            guard let plr = self.Player else { return }
+            plr.position = CGPointMake(plr.position.x + (data.velocity.x * playerSpeed), plr.position.y + (data.velocity.y * playerSpeed))
+            let x = data.velocity.x
+            let y = data.velocity.y
+            print("x:\(x)")
+            print("y:\(y)")
+            
+            let xNum:CGFloat = 10.0
+            let yNum:CGFloat = 15.0
+            
+            
+            if x > xNum {
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.East
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthEast
+                    self.turnPlayer(currentDirection)
+                } else {
+                    currentDirection = PlayerDirection.SouthEast
+                    self.turnPlayer(currentDirection)
+                }
+                //test if x < 0
+            }else if x < -xNum{
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.West
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthWest
+                    self.turnPlayer(currentDirection)
+                }else {
+                    currentDirection = PlayerDirection.SouthWest
+                    self.turnPlayer(currentDirection)
+                }
+                //test if x == 0
+            }else {
+                if y > 0 {
+                    currentDirection = PlayerDirection.North
+                    self.turnPlayer(currentDirection)
+                }else {
+                    currentDirection = PlayerDirection.South
+                    self.turnPlayer(currentDirection)
+                }
+                
+            }
+            print(currentDirection)
+            
+            
+            
+        }
+        
+        joystick.stopHandler = { [unowned self] in
+            
+            //          guard let aN = self.Player else { return }
+            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+            self.Player!.removeAllActions()
+            self.Player!.texture = SKTexture(imageNamed: "PlayerWalk01.png")
+            self.walking = false
+            
+        }
+        //Mark: End Joystick Handlers
+        
+        
+        loadSelectedMaze(level) 
     }
     
     override func willMoveFromView(view: SKView) {
@@ -63,8 +160,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createControls()
         backgroundColor = backgroundColor
         //mazeShiftLabel()
-
+        createNewPlayer()
+        //createNewMonster()
         AdMob.sharedInstance.delegate = self
+    }
+    
+    func createNewMonster() {
+        
+        let monster = Monster.newMonster()
+        monster.position = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.9)
+        addChild(monster)
     }
     
     func createNewPlayer() {
@@ -77,10 +182,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(Player!)
         
-        Player?.position = CGPoint(x: ((scene?.size.width)!/2), y: (scene?.size.height)! * 0.1)
-        
-        //give player's start direction
-        currentDirection = PlayerDirection.North
+        //give player's start direction and location
+        Player?.position = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
+        currentDirection = PlayerDirection.East
         turnPlayer(currentDirection)
     }
     
@@ -190,11 +294,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createBoundingBox() {
-        
-        //boundingBox.color = SKColor.clearColor()
+
         boundingBox.color = SKColor.blackColor()
         boundingBox.size = CGSize(width: scene!.size.width, height: scene!.size.height)
-        //boundingBox.texture = SKTexture(imageNamed: "cobblestone.png")
         boundingBox.position = CGPointMake(scene!.size.width/2, scene!.size.height/2)
         boundingBox.zPosition = 0
         boundingBox.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: boundingBox.anchorPoint.x - boundingBox.size.width/2, y: boundingBox.anchorPoint.y - boundingBox.size.height/2, width: boundingBox.size.width, height: boundingBox.size.height))
@@ -207,33 +309,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene!.addChild(boundingBox)
         
         createCenter()
-        //createOuterWall()
 
-    }
-    
-    func createOuterWall() {
-        
-        let thickness:CGFloat = 20.0
-        
-        let wall1 = SKShapeNode(rectOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
-        let wall2 = SKShapeNode(rectOfSize: CGSize(width: thickness, height: (scene?.size.height)!))
-        let wall3 = SKShapeNode(rectOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
-        let wall4 = SKShapeNode(rectOfSize: CGSize(width: thickness, height: (scene?.size.height)!))
-        
-        wall1.position = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.97)
-        wall1.fillColor = mazeColor
-        wall1.zPosition = 5
-        wall1.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: (scene?.size.width)!, height: thickness))
-        wall1.physicsBody?.affectedByGravity = false
-        wall1.physicsBody?.dynamic = false
-        addChild(wall1)
-        
-        wall3.position = CGPoint(x: (scene?.size.width)!/2, y: (scene?.size.height)! * 0.03)
-        wall3.fillColor = mazeColor
-        wall3.zPosition = 5
-        addChild(wall3)
-        
-        
+
     }
     
     //create target area for player to reach
@@ -242,12 +319,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         center.position = CGPointMake(0.0, 0.0)
         center.physicsBody = SKPhysicsBody(circleOfRadius: 7.0)
         center.fillColor = .greenColor()
-        center.zPosition = 5
+        center.zPosition = 11
         center.name = "center"
         boundingBox.addChild(center)
         center.physicsBody?.restitution = 0.6
+        
     }
-    
+    //texture array for Player
     func createTextureArray() -> [SKTexture]{
         
         
@@ -261,7 +339,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return TextureArray
     }
 
-        
     func goBackToPreviousScene() {
         
         let mazeSelectScene = MazeSelectScene()
@@ -271,8 +348,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Player = nil
         boundingBox.removeAllChildren()
         boundingBox.removeFromParent()
+        box1.removeAllChildren()
+        box1.removeFromParent()
         self.scene?.removeAllChildren()
-        let transition = SKTransition.crossFadeWithDuration(2.0)
+        let transition = SKTransition.crossFadeWithDuration(1.0)
         self.scene!.view?.presentScene(mazeSelectScene, transition: transition)
     }
     
@@ -323,24 +402,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didBeginContact(contact: SKPhysicsContact) {
         
-        let firstBody = SKPhysicsBody()
-        let secondBody = SKPhysicsBody()
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
         
-        firstBody.categoryBitMask = contact.bodyA.categoryBitMask
-        secondBody.categoryBitMask = contact.bodyB.categoryBitMask
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
         
         print("firstBody bitmask: \(firstBody.categoryBitMask)")
         print("secondBody bitmask: \(secondBody.categoryBitMask)")
         
-        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == bulletCategory) || (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == playerCategory) {
-            print("bullet hit player")
+        if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == boundingBoxCategory)  {
+            print("bullet bounding box")
+            removeBullet(firstBody.node!)
         }
-        if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == boundingBoxCategory) || (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == bulletCategory) {
-            print("bullet hit wall")
-            for bullet in bullets {
-                //Add animation for bullet hitting wall
-                bullet.removeFromParent()
-            }
+        if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == bulletCategory) {
+            print("bullet bounding box")
+            removeBullet(secondBody.node!)
+        }
+        
+        if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == brickCategory) {
+            print("bullet hit brick wall")
+            removeBrick(secondBody.node!)
+            
+        }
+        if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == bulletCategory) {
+            removeBrick(firstBody.node!)
+        }
+        if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == playerCategory) {
+            
+        }
+        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == brickCategory) {
+            
         }
 
     }

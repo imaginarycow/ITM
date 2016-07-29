@@ -32,11 +32,11 @@ import GoogleMobileAds
 
 /// Hide print statements for release
 /// Dont forget to add the custom "-D DEBUG" flag in Targets -> BuildSettings -> SwiftCompiler-CustomFlags -> DEBUG) for your tvOS target
-func print(items: Any..., separator: String = " ", terminator: String = "\n") {
-    #if DEBUG
-        Swift.print(items[0], separator: separator, terminator: terminator)
-    #endif
-}
+//func print(items: Any..., separator: String = " ", terminator: String = "\n") {
+//    #if DEBUG
+//        Swift.print(items[0], separator: separator, terminator: terminator)
+//    #endif
+//}
 
 /// Delegates
 protocol AdMobDelegate: class {
@@ -357,6 +357,7 @@ extension AdMob: GADInterstitialDelegate {
     func interstitialDidFailToPresentScreen(ad: GADInterstitial!) {
         print("AdMob interstitial did fail to present")
         // Not sure if to reload here
+        
     }
     
     func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {

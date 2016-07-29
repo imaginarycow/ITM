@@ -10,6 +10,11 @@
 import Foundation
 import SpriteKit
 
+//remove bullet from scene
+func removeBullet(node:SKNode) {
+    print("attempting to remove bullet")
+    node.removeFromParent()
+}
 
 //get offset and rotation for bullet based on direction player is facing
 func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {

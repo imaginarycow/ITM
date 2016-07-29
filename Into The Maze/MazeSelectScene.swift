@@ -87,41 +87,13 @@ class MazeSelectScene: SKScene {
     
     func moveToSelectedMaze(level: Int) {
         
-        var GameScene = SKScene()
+        let gameScene = GameScene()
         
-        switch level {
-        case 1:
-            GameScene = Maze1GameScene()
-        case 2:
-            GameScene = Maze2GameScene()
-        case 3:
-            GameScene = Maze2GameScene()
-        case 4:
-            GameScene = Maze2GameScene()
-        case 5:
-            GameScene = Maze2GameScene()
-        case 6:
-            GameScene = Maze2GameScene()
-        case 7:
-            GameScene = Maze2GameScene()
-        case 8:
-            GameScene = Maze2GameScene()
-        case 9:
-            GameScene = Maze2GameScene()
-        case 10:
-            GameScene = Maze2GameScene()
-        case 11:
-            GameScene = Maze1GameScene()
-        default:
-            GameScene = Maze1GameScene()
-        }
-        
-        
-        GameScene.size = self.size
-        GameScene.scaleMode = self.scaleMode
+        gameScene.size = self.size
+        gameScene.scaleMode = self.scaleMode
         
         let transition = SKTransition.doorwayWithDuration(2.0)
-        self.scene!.view?.presentScene(GameScene, transition: transition)
+        self.scene!.view?.presentScene(gameScene, transition: transition)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mazeLaunchScreen2.png" translatesAutoresizingMaskIntoConstraints="NO" id="RPn-5U-4nL">
-                                <rect key="frame" x="258" y="65" width="220" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="RPn-5U-4nL">
+                                <rect key="frame" x="258" y="65" width="220" height="230"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Idj-C3-naB"/>
+                                    <constraint firstAttribute="height" constant="230" id="Idj-C3-naB"/>
                                     <constraint firstAttribute="width" constant="220" id="OqI-Qf-Mp0"/>
                                 </constraints>
                             </imageView>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mazeLaunchScreen2.png" width="404" height="337"/>
+        <image name="logo2.png" width="289" height="338"/>
     </resources>
 </document>

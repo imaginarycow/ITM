@@ -1,121 +1,71 @@
 
 import SpriteKit
-import GameplayKit
 
 
-
-class Maze1GameScene: GameScene {
+extension GameScene {
     
-    let parent1 = SKSpriteNode()
-    let parent2 = SKSpriteNode()
-    let parent3 = SKSpriteNode()
-    
-    override func didMoveToView(view: SKView) {
+
+    func loadMaze1() {
+        
+        let sideA = box1Width/2
+        let sideB = sqrt((box1Width * box1Width) - (sideA * sideA))
+        let yOffset:CGFloat = (box1Width - sideB)
+        
+        let parent1 = SKSpriteNode()
+        let parent2 = SKSpriteNode()
+        let parent3 = SKSpriteNode()
+        let parent4 = SKSpriteNode()
+        
+        parent1.zPosition = 10
+        parent1.position = CGPoint(x: startPoint.x - parent1.size.width/2, y: startPoint.y + yOffset)
+        parent1.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        parent1.size = CGSize(width: box1Width, height: brickHeight + 5)
+        //parent1.color = .blueColor()
+        parent1.zRotation = DegToRad(0.0)
+        box1.addChild(parent1)
+        
+        parent2.zPosition = 10
+        parent2.position = CGPoint(x: startPoint.x + brickHeight, y: startPoint.y + yOffset)
+        parent2.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        parent2.size = CGSize(width: box1Width, height: brickHeight + 5)
+        //parent2.color = .redColor()
+        parent2.zRotation = DegToRad(60.0)
+        box1.addChild(parent2)
+        
+        parent3.zPosition = 10
+        parent3.position = CGPoint(x: startPoint.x + box1Width, y: startPoint.y + yOffset + brickHeight/2)
+        parent3.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        parent3.size = CGSize(width: box1Width, height: brickHeight + 5)
+        //parent3.color = .redColor()
+        parent3.zRotation = DegToRad(120.0)
+        box1.addChild(parent3)
+
+        
+        parent4.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        boundingBox.addChild(parent4)
         
         
-        createNewScene()
-        createNewPlayer()
         
-        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
-        self.physicsWorld.contactDelegate = self
-        
-        //Mark: Joystick Handlers
-        joystick.startHandler = { [unowned self] in
+        //build outer triangle
+        for i in 0...numbOfBricks-1 {
             
-            //          guard let aN = self.Player else { return }
-            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
-            
-            self.Player!.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self.TextureArray, timePerFrame: 0.2)))
-            self.walking = true
-            
-        }
-        
-        //handles player position and rotation and gives direction for projectiles
-        joystick.trackingHandler = { [unowned self] data in
-            
-            guard let plr = self.Player else { return }
-            plr.position = CGPointMake(plr.position.x + (data.velocity.x * playerSpeed), plr.position.y + (data.velocity.y * playerSpeed))
-            let x = data.velocity.x
-            let y = data.velocity.y
-            print("x:\(x)")
-            print("y:\(y)")
-            
-            let xNum:CGFloat = 10.0
-            let yNum:CGFloat = 15.0
-            
-            
-            if x > xNum {
-                if y < yNum && y > -yNum {
-                    currentDirection = PlayerDirection.East
-                    self.turnPlayer(currentDirection)
-                }else if y >= yNum {
-                    currentDirection = PlayerDirection.NorthEast
-                    self.turnPlayer(currentDirection)
-                } else {
-                    currentDirection = PlayerDirection.SouthEast
-                    self.turnPlayer(currentDirection)
-                }
-                //test if x < 0
-            }else if x < -xNum{
-                if y < yNum && y > -yNum {
-                    currentDirection = PlayerDirection.West
-                    self.turnPlayer(currentDirection)
-                }else if y >= yNum {
-                    currentDirection = PlayerDirection.NorthWest
-                    self.turnPlayer(currentDirection)
-                }else {
-                    currentDirection = PlayerDirection.SouthWest
-                    self.turnPlayer(currentDirection)
-                }
-                //test if x == 0
-            }else {
-                if y > 0 {
-                    currentDirection = PlayerDirection.North
-                    self.turnPlayer(currentDirection)
-                }else {
-                    currentDirection = PlayerDirection.South
-                    self.turnPlayer(currentDirection)
-                }
-                
+            let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2), rotation: 0.0)
+            parent1.addChild(brick)
+            if i != numbOfBricks/2 {
+                let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2), rotation: 0.0)
+                parent2.addChild(brick2)
             }
-            print(currentDirection)
-            
-            
-            
-        }
-        
-        joystick.stopHandler = { [unowned self] in
-            
-            //          guard let aN = self.Player else { return }
-            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
-            self.Player!.removeAllActions()
-            self.Player!.texture = SKTexture(imageNamed: "PlayerWalk01.png")
-            self.walking = false
+            let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2), rotation: 0.0)
+            parent3.addChild(brick3)
             
         }
-        //Mark: End Joystick Handlers
+
         
-        
-        parent1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        addChild(parent1)
-        
-        parent2.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        addChild(parent2)
-        
-        parent3.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        addChild(parent3)
-        
-        let triangle1 = Triangle.createTriangle(self, scale: 1.0, buffer: 0.0, color: .redColor())
-        
-        let triangle2 = Triangle.createTriangle(self, scale: 0.7, buffer: -10.0, color: .redColor())
-        
-        let triangle3 = Triangle.createTriangle(self, scale: 0.4, buffer: -20.0, color: .redColor())
-        
-        parent1.addChild(triangle1)
-        parent2.addChild(triangle2)
-        parent3.addChild(triangle3)
+        delay(2.0) {
+            let action = SKAction.rotateByAngle(self.DegToRad(360), duration: 2.0)
+            box1.runAction(action)
+        }
         
     }
-
-} //Mark: End Maze1GameScene
+}//Mark: End Extension
     

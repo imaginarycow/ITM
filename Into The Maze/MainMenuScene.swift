@@ -69,9 +69,9 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         addChild(parent3)
         
         
-        let triangle1 = Triangle.createTriangle(self, scale: 1.0, buffer: 0.0, color: .redColor())
-        let triangle2 = Triangle.createTriangle(self, scale: 0.7, buffer: -10.0, color: .redColor())
-        let triangle3 = Triangle.createTriangle(self, scale: 0.4, buffer: -20.0, color: .redColor())
+        let triangle1 = Triangle.createTriangle(self, scale: 0.9, buffer: 0.0, color: .redColor())
+        let triangle2 = Triangle.createTriangle(self, scale: 0.6, buffer: -10.0, color: .redColor())
+        let triangle3 = Triangle.createTriangle(self, scale: 0.3, buffer: -20.0, color: .redColor())
         parent1.addChild(triangle1)
         parent2.addChild(triangle2)
         parent3.addChild(triangle3)
@@ -89,12 +89,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     
     
     override func willMoveFromView(view: SKView) {
-        
-    }
-    
-    func getViewController(vc: UIViewController) {
-        
-        
+        self.removeAllChildren()
     }
     
     //set scale of game based on screen size of player's device
@@ -127,6 +122,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     func moveToAbilitySelectScene() {
         
         showAnimation = false
+        userNameField.removeFromSuperview()
         
         let abilitySelectScene = AbilitySelectScene()
         abilitySelectScene.size = self.size
@@ -136,6 +132,18 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
 
     }
     
+    func moveToHelpScene() {
+        
+        showAnimation = false
+        userNameField.removeFromSuperview()
+        
+        let helpScene = HelpScene()
+        helpScene.size = self.size
+        helpScene.scaleMode = self.scaleMode
+        let transition = SKTransition.fadeWithDuration(1.0)
+        self.scene!.view?.presentScene(helpScene, transition: transition)
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         if let touch = touches.first as UITouch! {
@@ -143,7 +151,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             
             if goLabel.containsPoint(location) {
                 print("Go label touched")
-                userNameField.removeFromSuperview()
+                
                 moveToAbilitySelectScene()
             }
             
@@ -151,6 +159,15 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
                 print("Attempting to load Ads")
                 
                 adsRemoved = true
+            }
+            
+            if restorePurchasesLabel.containsPoint(location) {
+                
+                
+            }
+            
+            if helpLabel.containsPoint(location) {
+                moveToHelpScene()
             }
         }
     }
