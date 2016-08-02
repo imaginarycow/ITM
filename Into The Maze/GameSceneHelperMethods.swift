@@ -10,13 +10,43 @@ import Foundation
 import SpriteKit
 
 
-import SpriteKit
-
-
 //GameScene Helper Methods
 extension GameScene {
     
+    //maze shift timer
+    func updateClock() {
+        
+        timer.position = CGPoint(x: frame.size.width * 0.15, y: frame.size.height * 0.80)
+        timer.fontName = labelFont
+        timer.fontSize = 18.0
+        timer.fontColor = .redColor()
+        self.addChild(timer)
+
+        let actionwait = SKAction.waitForDuration(1.0)
+        var seconds = 15
+        let actionrun = SKAction.runBlock({
+            
+            self.timer.text = "Maze Shift in: \(seconds)"
+            if seconds == 3 {
+                vc.playSoundEffect(Sound.alarmSound)
+            }
+            if seconds == 0 {
+                //TODO: mazeShift()
+                vc.alarmSound!.stop()
+                seconds = 16
+            }
+            
+            seconds -= 1
+            //if timesecond == mazeShift()
+
+            
+        })
+        self.timer.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
+    }
+    
     func loadSelectedMaze(level: Int) {
+        
+        
         
         switch level {
         case 1:

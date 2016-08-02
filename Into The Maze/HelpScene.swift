@@ -55,6 +55,7 @@ class HelpScene: SKScene{
             let location = touch.locationInNode(self)
             
             if backButton.containsPoint(location) {
+                vc.playSoundEffect(.buttonPress)
                 goToMainMenuScene()
             }
         }

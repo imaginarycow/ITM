@@ -57,7 +57,7 @@ extension GameScene {
         
         //Mark: Begin Middle Triangle
         
-        let box2 = SKSpriteNode()
+        
         box2.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2 - 20)
         let box2Width = box1Width * 0.7
         box2.size = CGSize(width: box2Width, height: box2Width)
@@ -183,34 +183,41 @@ extension GameScene {
             let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth3/2) + (brickWidth3 * CGFloat(k)), y: 0.0 + brickHeight/2),brickWidth: brickWidth3, rotation: 0.0)
             parent9.addChild(brick3)
         }
-        
-        //rotation action
-        delay(10.0) {
-            let action = SKAction.rotateByAngle(self.DegToRad(360), duration: 2.0)
-            box1.runAction(action)
+   
             
-            let action2 = SKAction.rotateByAngle(self.DegToRad(-360), duration: 2.0)
-            box2.runAction(action2)
-            parent4.removeAllChildren()
-            parent5.removeAllChildren()
-            parent6.removeAllChildren()
-            for j in 0...numbBricks2-1 {
-                
-                let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-                parent5.addChild(brick)
-                if j != numbBricks2/3 {
-                    let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-                    parent4.addChild(brick2)
-                }
-                let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-                parent6.addChild(brick3)
-            }
+    
 
+    //maze1 shift animation
+    delay(3.0) {
+        let action = SKAction.rotateByAngle(self.DegToRad(360), duration: 2.0)
+        box1.runAction(action)
+        
+        let action2 = SKAction.rotateByAngle(self.DegToRad(-360), duration: 2.0)
+        box2.runAction(action2)
+        parent4.removeAllChildren()
+        parent5.removeAllChildren()
+        parent6.removeAllChildren()
+        
+        for j in 0...numbBricks2-1 {
             
-            let action3 = SKAction.rotateByAngle(self.DegToRad(360), duration: 2.0)
-            box3.runAction(action3)
+            let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
+            parent5.addChild(brick)
+            if j != numbBricks2/3 {
+                let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
+                parent4.addChild(brick2)
+            }
+            let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
+            parent6.addChild(brick3)
         }
         
-    }
+        
+        let action3 = SKAction.rotateByAngle(self.DegToRad(360), duration: 2.0)
+        box3.runAction(action3)
+        
+        }
+
+    }//Mark: End maze1 build
+
+
 }//Mark: End Extension
     

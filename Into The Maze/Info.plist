@@ -28,8 +28,10 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Something_Strange.ttf</string>
+		<string>Cracked.ttf</string>
 		<string>Prida65.otf</string>
+		<string>lf.ttf</string>
+		<string>kata.ttf</string>
 		<string>Halo3.ttf</string>
 		<string>Charcoal.otf</string>
 	</array>

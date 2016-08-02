@@ -9,17 +9,19 @@
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 import GoogleMobileAds
 
-let backGroundColor = SKColor.darkGrayColor()
+var backGroundColor = SKColor.darkGrayColor()
 var scaledWidth:CGFloat!
 var scaledHeight:CGFloat!
 var showAnimation = true
 
+let vc = GameViewController()
+var musicIsPlaying = false
+
 class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     
-    
-    let vc = GameViewController()
     let mazeSelectLabel = SKLabelNode(text: "Into The Maze")
     
     //next three nodes built in function fadeInLabels()
@@ -34,9 +36,21 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     let parent3 = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
-    
+        
+        for family: String in UIFont.familyNames()
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNamesForFamilyName(family)
+            {
+                print("== \(names)")
+            }
+        }
 
-        vc.loadRequest()
+        if musicIsPlaying == false {
+            vc.playBGMusic()
+            musicIsPlaying = true
+            print("bg music was nil, starting background music")
+        }
         
         setScale()
         
@@ -92,6 +106,8 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         self.removeAllChildren()
     }
     
+    
+    
     //set scale of game based on screen size of player's device
     func setScale() {
         screenHeight = scene!.size.height
@@ -123,6 +139,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         
         showAnimation = false
         userNameField.removeFromSuperview()
+
         
         let abilitySelectScene = AbilitySelectScene()
         abilitySelectScene.size = self.size
@@ -136,7 +153,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         
         showAnimation = false
         userNameField.removeFromSuperview()
-        
+
         let helpScene = HelpScene()
         helpScene.size = self.size
         helpScene.scaleMode = self.scaleMode
@@ -151,26 +168,28 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             
             if goLabel.containsPoint(location) {
                 print("Go label touched")
-                
+                vc.playSoundEffect(.buttonPress)
                 moveToAbilitySelectScene()
             }
             
             if removeAdsLabel.containsPoint(location) {
                 print("Attempting to load Ads")
-                
+                vc.playSoundEffect(.buttonPress)
                 adsRemoved = true
             }
             
             if restorePurchasesLabel.containsPoint(location) {
-                
+                vc.playSoundEffect(.buttonPress)
                 
             }
             
             if helpLabel.containsPoint(location) {
+                vc.playSoundEffect(.buttonPress)
                 moveToHelpScene()
             }
         }
     }
+
     
     func fadeInLabels(del: Double) {
         // top label

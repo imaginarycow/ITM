@@ -130,6 +130,7 @@ class AbilitySelectScene: SKScene {
                     }else {
                         abilitySelected = .timeFreeze
                     }
+                    vc.playSoundEffect(.buttonPress)
                     moveToMazeSelectScene()
                 }
                 
@@ -138,6 +139,7 @@ class AbilitySelectScene: SKScene {
             
             if backButton.containsPoint(location) {
                 print("Back button tapped")
+                vc.playSoundEffect(.buttonPress)
                 moveToMainMenuScene()
             }
         }

@@ -7,14 +7,15 @@
 //
 
 import Foundation
-import UIKit
+import SpriteKit
 
 //screen height and width of user's device
 var screenHeight:CGFloat = 0.0
 var screenWidth:CGFloat = 0.0
 var scale:CGFloat = 1.0
 
-let labelFont = "Charcoal"
+
+let labelFont = "KatalystinactiveBRK"
 var level = 0
 
 
@@ -27,6 +28,7 @@ var unlockedLevels: [Int] = []
 
 var gameHasRun = false
 let gameData = NSUserDefaults.standardUserDefaults()
+
 
 
 func updateScore() {

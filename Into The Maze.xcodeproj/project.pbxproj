@@ -99,6 +99,23 @@
 		B5FF5F0A1D4BD29900B53CEB /* treasure.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F091D4BD29900B53CEB /* treasure.png */; };
 		B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */; };
 		B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */; };
+		B5FF5F101D4CEBDC00B53CEB /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF5F0F1D4CEBDC00B53CEB /* Sounds.swift */; };
+		B5FF5F171D4CF1C300B53CEB /* redeemSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F161D4CF1C300B53CEB /* redeemSound.m4a */; };
+		B5FF5F191D4CF54700B53CEB /* alarmSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F181D4CF54700B53CEB /* alarmSound.wav */; };
+		B5FF5F1B1D4CF90D00B53CEB /* shiftSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F1A1D4CF90D00B53CEB /* shiftSound.wav */; };
+		B5FF5F1D1D4CFAC700B53CEB /* abilitySound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F1C1D4CFAC700B53CEB /* abilitySound.wav */; };
+		B5FF5F1F1D4CFD5A00B53CEB /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F1E1D4CFD5A00B53CEB /* laser.wav */; };
+		B5FF5F211D4CFEF100B53CEB /* shotgun.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F201D4CFEF100B53CEB /* shotgun.wav */; };
+		B5FF5F231D4D007000B53CEB /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F221D4D007000B53CEB /* buttonPress.wav */; };
+		B5FF5F251D4D03DF00B53CEB /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F241D4D03DF00B53CEB /* click.wav */; };
+		B5FF5F271D4D04D800B53CEB /* laser2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F261D4D04D800B53CEB /* laser2.wav */; };
+		B5FF5F291D4D059800B53CEB /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F281D4D059800B53CEB /* diamond.png */; };
+		B5FF5F2B1D4E3FE600B53CEB /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F2A1D4E3FE600B53CEB /* background.mp3 */; };
+		B5FF5F2D1D4E41EF00B53CEB /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F2C1D4E41EF00B53CEB /* bg.mp3 */; };
+		B5FF5F2F1D4E500400B53CEB /* menuBg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F2E1D4E500400B53CEB /* menuBg.mp3 */; };
+		B5FF5F311D505D8100B53CEB /* kata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F301D505D8100B53CEB /* kata.ttf */; };
+		B5FF5F331D505D9000B53CEB /* If.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F321D505D9000B53CEB /* If.ttf */; };
+		B5FF5F351D5064CA00B53CEB /* alarm2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F341D5064CA00B53CEB /* alarm2.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +160,6 @@
 		B51FBBD91D3F4A0D008DCF94 /* HelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
 		B51FBBDB1D431B5E008DCF94 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		B51FBBDD1D432CED008DCF94 /* random.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = random.png; sourceTree = "<group>"; };
-		B51FBBE01D433457008DCF94 /* lf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lf.ttf; sourceTree = "<group>"; };
 		B51FBBE11D433977008DCF94 /* Prida65.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Prida65.otf; sourceTree = "<group>"; };
 		B51FBBE21D433CB7008DCF94 /* flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash.png; sourceTree = "<group>"; };
 		B51FBBE81D457706008DCF94 /* restorePurchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restorePurchasesIcon.png; sourceTree = "<group>"; };
@@ -219,6 +235,23 @@
 		B5FF5F091D4BD29900B53CEB /* treasure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treasure.png; sourceTree = "<group>"; };
 		B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityToken.png; sourceTree = "<group>"; };
 		B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityHelper.swift; sourceTree = "<group>"; };
+		B5FF5F0F1D4CEBDC00B53CEB /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		B5FF5F161D4CF1C300B53CEB /* redeemSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = redeemSound.m4a; sourceTree = "<group>"; };
+		B5FF5F181D4CF54700B53CEB /* alarmSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarmSound.wav; sourceTree = "<group>"; };
+		B5FF5F1A1D4CF90D00B53CEB /* shiftSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shiftSound.wav; sourceTree = "<group>"; };
+		B5FF5F1C1D4CFAC700B53CEB /* abilitySound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = abilitySound.wav; sourceTree = "<group>"; };
+		B5FF5F1E1D4CFD5A00B53CEB /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
+		B5FF5F201D4CFEF100B53CEB /* shotgun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shotgun.wav; sourceTree = "<group>"; };
+		B5FF5F221D4D007000B53CEB /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonPress.wav; sourceTree = "<group>"; };
+		B5FF5F241D4D03DF00B53CEB /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		B5FF5F261D4D04D800B53CEB /* laser2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser2.wav; sourceTree = "<group>"; };
+		B5FF5F281D4D059800B53CEB /* diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diamond.png; sourceTree = "<group>"; };
+		B5FF5F2A1D4E3FE600B53CEB /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		B5FF5F2C1D4E41EF00B53CEB /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		B5FF5F2E1D4E500400B53CEB /* menuBg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuBg.mp3; sourceTree = "<group>"; };
+		B5FF5F301D505D8100B53CEB /* kata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kata.ttf; sourceTree = "<group>"; };
+		B5FF5F321D505D9000B53CEB /* If.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = If.ttf; sourceTree = "<group>"; };
+		B5FF5F341D5064CA00B53CEB /* alarm2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm2.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +316,8 @@
 		B54295111C6106BD007119F7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B51FBBE01D433457008DCF94 /* lf.ttf */,
+				B5FF5F301D505D8100B53CEB /* kata.ttf */,
+				B5FF5F321D505D9000B53CEB /* If.ttf */,
 				B51FBBE11D433977008DCF94 /* Prida65.otf */,
 				B542950D1C6104E6007119F7 /* Halo3.ttf */,
 				B5A6D8CA1C51F291001B6ABA /* DESTROY_.ttf */,
@@ -351,6 +385,7 @@
 			children = (
 				B5A6D93B1C57D769001B6ABA /* Scenes */,
 				B59BCC8E1C5D760C007DAA27 /* Supporting Files */,
+				B5FF5F111D4CEC2F00B53CEB /* Sounds */,
 				B5A6D8741C4FE209001B6ABA /* Assets.xcassets */,
 				B59BCC8C1C5D41BE007DAA27 /* Icons */,
 				B5A6D8A51C5015C6001B6ABA /* images */,
@@ -380,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				B5790FAC1D4B04C200608F7F /* brickBreaker.png */,
+				B5FF5F281D4D059800B53CEB /* diamond.png */,
 				B5790F991D46AC0E00608F7F /* monster.png */,
 				B51FBBDD1D432CED008DCF94 /* random.png */,
 				B51FBBE21D433CB7008DCF94 /* flash.png */,
@@ -435,6 +471,27 @@
 				B54295041C60FB56007119F7 /* Maze2GameScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		B5FF5F111D4CEC2F00B53CEB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF5F0F1D4CEBDC00B53CEB /* Sounds.swift */,
+				B5FF5F2E1D4E500400B53CEB /* menuBg.mp3 */,
+				B5FF5F2C1D4E41EF00B53CEB /* bg.mp3 */,
+				B5FF5F2A1D4E3FE600B53CEB /* background.mp3 */,
+				B5FF5F261D4D04D800B53CEB /* laser2.wav */,
+				B5FF5F241D4D03DF00B53CEB /* click.wav */,
+				B5FF5F221D4D007000B53CEB /* buttonPress.wav */,
+				B5FF5F201D4CFEF100B53CEB /* shotgun.wav */,
+				B5FF5F1E1D4CFD5A00B53CEB /* laser.wav */,
+				B5FF5F1C1D4CFAC700B53CEB /* abilitySound.wav */,
+				B5FF5F1A1D4CF90D00B53CEB /* shiftSound.wav */,
+				B5FF5F341D5064CA00B53CEB /* alarm2.wav */,
+				B5FF5F181D4CF54700B53CEB /* alarmSound.wav */,
+				B5FF5F161D4CF1C300B53CEB /* redeemSound.m4a */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -546,8 +603,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FF5F251D4D03DF00B53CEB /* click.wav in Resources */,
 				B51FBBE31D433CB7008DCF94 /* flash.png in Resources */,
 				B53479B61D1CA767001110CA /* bullet.png in Resources */,
+				B5FF5F351D5064CA00B53CEB /* alarm2.wav in Resources */,
+				B5FF5F1F1D4CFD5A00B53CEB /* laser.wav in Resources */,
 				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
 				B51FBBEF1D457CDF008DCF94 /* substrate.png in Resources */,
 				B5790FA41D4907C500608F7F /* fire.sks in Resources */,
@@ -556,8 +616,15 @@
 				B5A6D8AD1C504C72001B6ABA /* maze.png in Resources */,
 				B51FBBEB1D45784A008DCF94 /* removeAds.png in Resources */,
 				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
+				B5FF5F271D4D04D800B53CEB /* laser2.wav in Resources */,
+				B5FF5F1B1D4CF90D00B53CEB /* shiftSound.wav in Resources */,
+				B5FF5F1D1D4CFAC700B53CEB /* abilitySound.wav in Resources */,
+				B5FF5F191D4CF54700B53CEB /* alarmSound.wav in Resources */,
+				B5FF5F2D1D4E41EF00B53CEB /* bg.mp3 in Resources */,
 				B542950E1C610522007119F7 /* Halo3.ttf in Resources */,
 				B534798A1D19D6EB001110CA /* abilityButton.png in Resources */,
+				B5FF5F2B1D4E3FE600B53CEB /* background.mp3 in Resources */,
+				B5FF5F291D4D059800B53CEB /* diamond.png in Resources */,
 				B5A6D8A91C504886001B6ABA /* muscle.png in Resources */,
 				B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */,
 				B5A6D8B51C507038001B6ABA /* faster.png in Resources */,
@@ -566,8 +633,10 @@
 				B51FBBF31D457E4F008DCF94 /* shootButton.png in Resources */,
 				B5790FAF1D4B0C1000608F7F /* timeFreeze.png in Resources */,
 				B51FBBF11D457D6C008DCF94 /* stick.png in Resources */,
+				B5FF5F2F1D4E500400B53CEB /* menuBg.mp3 in Resources */,
 				B58CC9B91D4BBDB60084887F /* loading.png in Resources */,
 				B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */,
+				B5FF5F171D4CF1C300B53CEB /* redeemSound.m4a in Resources */,
 				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
 				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
 				B51FBBC61D3DF061008DCF94 /* Mediation Adapters in Resources */,
@@ -576,13 +645,16 @@
 				B5A6D8B71C5074F2001B6ABA /* stopWatch.png in Resources */,
 				B54294FF1C606F46007119F7 /* moveButton.png in Resources */,
 				B5A6D8751C4FE209001B6ABA /* Assets.xcassets in Resources */,
+				B5FF5F311D505D8100B53CEB /* kata.ttf in Resources */,
 				B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */,
 				B5A6D8A71C501964001B6ABA /* generalMaze.png in Resources */,
 				B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */,
 				B5A6D9411C57D7A0001B6ABA /* innerTriangle2.png in Resources */,
 				B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */,
 				B5790F9E1D47E26600608F7F /* logo2.png in Resources */,
+				B5FF5F211D4CFEF100B53CEB /* shotgun.wav in Resources */,
 				B5A6D8B11C505A23001B6ABA /* brickBreaker.png in Resources */,
+				B5FF5F331D505D9000B53CEB /* If.ttf in Resources */,
 				B5A6D8C71C51DF26001B6ABA /* Charcoal.otf in Resources */,
 				B58CBF481D34014100908922 /* mazeLaunchScreen2.png in Resources */,
 				B5A6D8BD1C51D644001B6ABA /* mazeIntro.png in Resources */,
@@ -597,6 +669,7 @@
 				B5790FAB1D4AC36300608F7F /* instakill.png in Resources */,
 				B5A6D8A41C5015B6001B6ABA /* lockImg.png in Resources */,
 				B5A6D9431C57D7A0001B6ABA /* outerTriangle.png in Resources */,
+				B5FF5F231D4D007000B53CEB /* buttonPress.wav in Resources */,
 				B51FBBCC1D3EBE34008DCF94 /* speedDemon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +712,7 @@
 				B53479BE1D2AB6E2001110CA /* BulletNode.swift in Sources */,
 				B58CC9B71D4BB7180084887F /* FireParticle.swift in Sources */,
 				B5790FA71D4963E600608F7F /* BrickBuilder.swift in Sources */,
+				B5FF5F101D4CEBDC00B53CEB /* Sounds.swift in Sources */,
 				B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */,
 				B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */,
 				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,

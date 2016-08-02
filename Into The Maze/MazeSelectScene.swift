@@ -26,7 +26,14 @@ class MazeSelectScene: SKScene {
 
     var index = 2
     
+    
     override func didMoveToView(view: SKView) {
+        
+        if musicIsPlaying == false {
+            musicIsPlaying = true
+            print("bg music was nil, starting background music")
+            vc.playBGMusic()
+        }
         
         numberOfMazes = mazeImages.count
         
@@ -87,6 +94,9 @@ class MazeSelectScene: SKScene {
     
     func moveToSelectedMaze(level: Int) {
         
+        vc.stopBGMusic()
+        musicIsPlaying = false
+        
         let gameScene = GameScene()
         
         gameScene.size = self.size
@@ -101,6 +111,7 @@ class MazeSelectScene: SKScene {
             let location = touch.locationInNode(self)
             
             if leftArrow.containsPoint(location) {
+                vc.playSoundEffect(.buttonClick)
                 leftArrow.alpha = 0.3
                 if mazeNumb == 1 {
                     mazeNumb = numberOfMazes
@@ -110,6 +121,7 @@ class MazeSelectScene: SKScene {
                 
             }
             if rightArrow.containsPoint(location) {
+                vc.playSoundEffect(.buttonClick)
                 rightArrow.alpha = 0.3
                 if mazeNumb == numberOfMazes {
                     mazeNumb = 1
@@ -123,6 +135,7 @@ class MazeSelectScene: SKScene {
             mazeNumLabel.text = String(mazeNumb)
             
             if goLabel.containsPoint(location) {
+                vc.playSoundEffect(.buttonPress)
                 
                 if mazeNumb == numberOfMazes {
                     print("random maze selected")
@@ -133,7 +146,7 @@ class MazeSelectScene: SKScene {
             
             
             if backButton.containsPoint(location) {
-                
+                vc.playSoundEffect(.buttonPress)
                 let abilityScene = AbilitySelectScene()
                 abilityScene.size = self.size
                 abilityScene.scaleMode = self.scaleMode

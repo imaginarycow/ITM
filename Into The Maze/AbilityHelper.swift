@@ -20,8 +20,6 @@ enum ability {
 
 func useAbility(special: ability) {
     
-    
-    
     switch special {
     case .brickBreaker:
         useBrickBreaker()
@@ -49,6 +47,7 @@ func useBrickBreaker() {
 
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
+    vc.playSoundEffect(.abilitySound)
     
     delay(0.5) {
         fireball.removeFromParent()
@@ -61,9 +60,11 @@ func useInstaKill() {
     print("Player using instaKill ability")
     fireParticle.removeFromParent()
     fireParticle.resetSimulation()
+    
     let texture = SKTexture(imageNamed: "instakill.png")
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
+    vc.playSoundEffect(.abilitySound)
     
     delay(0.5) {
         fireball.removeFromParent()
@@ -78,6 +79,7 @@ func useTimeFreeze() {
     let texture = SKTexture(imageNamed: "timeFreeze.png")
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
+    vc.playSoundEffect(.abilitySound)
     
     delay(0.5) {
         fireball.removeFromParent()
@@ -103,6 +105,7 @@ func setAbilityForUse(tokens: Int) {
 }
 
 func removeToken(node: SKNode) {
+
     node.removeAllActions()
     node.removeFromParent()
 }

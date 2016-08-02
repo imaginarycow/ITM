@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 import GoogleMobileAds
 
 
@@ -33,11 +34,13 @@ var currentDirection:PlayerDirection!
 
 var box1Width:CGFloat = 0.0
 let box1 = SKSpriteNode()
+let box2 = SKSpriteNode()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-
-    let center = SKSpriteNode(imageNamed: "treasure.png")
+    
+    let timer = SKLabelNode(text: "")
+    let center = SKSpriteNode(imageNamed: "diamond.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
     let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
@@ -55,8 +58,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
     
         
-        //all calls will be handled in each maze scene
+        //all mazeBuilds will be handled in each maze scene file
         createNewScene()
+        
+        updateClock()
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
@@ -151,6 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //call to all functions for new scene
     func createNewScene() {
         
+        vc.playSoundEffect(.gameSound)
         createBackButton()
         createBoundingBox()
         createScoreLabel()
@@ -229,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createScoreLabel() {
         
-        let scoreLabel = SKLabelNode(fontNamed: "RUBBBI__")
+        let scoreLabel = SKLabelNode(fontNamed: labelFont)
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = mazeColor
         scoreLabel.fontSize = 16.0
@@ -240,7 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func levelLabel(level: Int) {
         
-        let levelLabel = SKLabelNode(fontNamed: "RUBBBI__")
+        let levelLabel = SKLabelNode(fontNamed: labelFont)
         levelLabel.name = "levelLabel"
         levelLabel.fontColor = .yellowColor()
         levelLabel.text = "Level: \(level)"
@@ -251,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func mazeShiftLabel() {
         
-        let timerLabel = SKLabelNode(fontNamed: "Courier")
+        let timerLabel = SKLabelNode(fontNamed: labelFont)
         timerLabel.name = "timerLabel"
         timerLabel.fontColor = SKColor.redColor()
         timerLabel.text = "Next Maze Shift in: "
@@ -363,6 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let mazeSelectScene = MazeSelectScene()
         mazeSelectScene.size = self.size
         mazeSelectScene.scaleMode = self.scaleMode
+        
         Player?.removeFromParent()
         Player = nil
         fireParticle.removeAllActions()
@@ -408,12 +415,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bulletNode = createProjectile()
                 bulletNode.position = CGPoint(x: Player!.position.x + xOffset, y: Player!.position.y + yOffset)
                 bulletNode.zRotation = DegToRad(rotation)
-                bullets.insert(bulletNode, atIndex: 0)
+                bullets.insert(bulletNode, atIndex: 0) 
                 addChild(bulletNode)
-                
-                let fire = SKTexture(imageNamed: "spark.png")
-                let fireball = createFireball(fire, point: CGPointZero, target: bulletNode)
-                bulletNode.addChild(fireball)
+                vc.playSoundEffect(Sound.gunSound)
+//                let fire = SKTexture(imageNamed: "spark.png")
+//                let fireball = createFireball(fire, point: CGPointZero, target: bulletNode)
+//                bulletNode.addChild(fireball)
                 
                 let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
                 bullets[0].physicsBody?.applyImpulse(vector)
@@ -428,6 +435,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if backButton.containsPoint(location) {
+                vc.alarmSound?.pause()
+                vc.alarmSound?.stop()
+                vc.gameSound?.pause()
+                vc.gameSound?.stop()
+                vc.playSoundEffect(Sound.buttonPress)
                 scene?.removeAllChildren()
                 
                 if adsRemoved == false {
@@ -474,6 +486,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == centerCategory) {
             print("Player got treasure")
+            vc.playSoundEffect(.redeemSound)
             removeTreasure(secondBody.node!)
             //TODO: Show animation
         }
@@ -485,6 +498,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == abilityCategory) {
             print("player got ability token")
             abilityTokens += 1
+            vc.playSoundEffect(.redeemSound)
             removeToken(secondBody.node!)
             setAbilityForUse(abilityTokens)
         }
