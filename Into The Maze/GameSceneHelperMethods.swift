@@ -13,71 +13,6 @@ import SpriteKit
 //GameScene Helper Methods
 extension GameScene {
     
-    //maze shift timer
-    func updateClock() {
-        
-        timer.position = CGPoint(x: frame.size.width * 0.15, y: frame.size.height * 0.80)
-        timer.fontName = labelFont
-        timer.fontSize = 18.0
-        timer.fontColor = .redColor()
-        self.addChild(timer)
-
-        let actionwait = SKAction.waitForDuration(1.0)
-        var seconds = 15
-        let actionrun = SKAction.runBlock({
-            
-            self.timer.text = "Maze Shift in: \(seconds)"
-            if seconds == 3 {
-                vc.playSoundEffect(Sound.alarmSound)
-            }
-            if seconds == 0 {
-                //TODO: mazeShift()
-                vc.alarmSound!.stop()
-                seconds = 16
-            }
-            
-            seconds -= 1
-            //if timesecond == mazeShift()
-
-            
-        })
-        self.timer.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
-    }
-    
-    func loadSelectedMaze(level: Int) {
-        
-        
-        
-        switch level {
-        case 1:
-            loadMaze1()
-        case 2:
-            loadMaze2()
-        case 3:
-            loadMaze1()
-        case 4:
-            loadMaze1()
-        case 5:
-            loadMaze2()
-        case 6:
-            loadMaze1()
-        case 7:
-            loadMaze1()
-        case 8:
-            loadMaze1()
-        case 9:
-            loadMaze2()
-        case 10:
-            loadMaze1()
-        case 11:
-            loadMaze2()
-        default:
-            loadMaze1()
-        }
-        
-        createCenter()
-        
-    }
     
     func removeTreasure(node: SKNode) {
         node.removeFromParent()
@@ -93,7 +28,84 @@ extension GameScene {
         }
     }
     
-
+    func setJoystickHandler() {
+        
+        //Mark: Joystick Handlers
+        joystick.startHandler = { [unowned self] in
+            
+            //          guard let aN = self.Player else { return }
+            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+            
+            self.Player!.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self.TextureArray, timePerFrame: 0.2)))
+            self.walking = true
+            
+        }
+        
+        //handles player position and rotation and gives direction for projectiles
+        joystick.trackingHandler = { [unowned self] data in
+            
+            guard let plr = self.Player else { return }
+            plr.position = CGPointMake(plr.position.x + (data.velocity.x * playerSpeed), plr.position.y + (data.velocity.y * playerSpeed))
+            let x = data.velocity.x
+            let y = data.velocity.y
+            print("x:\(x)")
+            print("y:\(y)")
+            
+            let xNum:CGFloat = 10.0
+            let yNum:CGFloat = 15.0
+            
+            
+            if x > xNum {
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.East
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthEast
+                    self.turnPlayer(currentDirection)
+                } else {
+                    currentDirection = PlayerDirection.SouthEast
+                    self.turnPlayer(currentDirection)
+                }
+                //test if x < 0
+            }else if x < -xNum{
+                if y < yNum && y > -yNum {
+                    currentDirection = PlayerDirection.West
+                    self.turnPlayer(currentDirection)
+                }else if y >= yNum {
+                    currentDirection = PlayerDirection.NorthWest
+                    self.turnPlayer(currentDirection)
+                }else {
+                    currentDirection = PlayerDirection.SouthWest
+                    self.turnPlayer(currentDirection)
+                }
+                //test if x == 0
+            }else {
+                if y > 0 {
+                    currentDirection = PlayerDirection.North
+                    self.turnPlayer(currentDirection)
+                }else {
+                    currentDirection = PlayerDirection.South
+                    self.turnPlayer(currentDirection)
+                }
+                
+            }
+            print(currentDirection)
+            
+            
+            
+        }
+        
+        joystick.stopHandler = { [unowned self] in
+            
+            //          guard let aN = self.Player else { return }
+            //          aN.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+            self.Player!.removeAllActions()
+            self.Player!.texture = SKTexture(imageNamed: "PlayerWalk01.png")
+            self.walking = false
+            
+        }
+        //Mark: End Joystick Handlers
+    }
     
     func delay(delay:Double, closure:()->()) {
         dispatch_after(

@@ -87,7 +87,6 @@ func createProjectile() -> SKSpriteNode {
     bullet.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory
     bullet.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory
     
-    
     return bullet
 }
 

@@ -79,7 +79,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.abilityUse?.play()
         case .alarmSound:
             self.alarmSound = setupAudioPlayerWithFile("alarm2", type: "wav")
-            self.alarmSound?.volume = 0.6
+            self.alarmSound?.volume = 0.4
             self.alarmSound?.play()
         case .buttonClick:
             self.buttonClick = setupAudioPlayerWithFile("click", type: "wav")
@@ -91,18 +91,20 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.buttonPress?.play()
         case .gunSound:
             self.gunShot = setupAudioPlayerWithFile("shotgun", type: "wav")
+            self.gunShot?.volume = 0.4
             self.gunShot?.play()
         case .redeemSound:
             self.redeemSound = setupAudioPlayerWithFile("redeemSound", type: "m4a")
+            self.redeemSound?.volume = 1.0
             self.redeemSound?.play()
         case .shiftSound:
             self.shiftSound = setupAudioPlayerWithFile("shiftSound", type: "wav")
             self.shiftSound?.volume = 0.6
             self.shiftSound?.play()
         case .gameSound:
-            self.gameSound = setupAudioPlayerWithFile("background", type: "mp3")
+            self.gameSound = setupAudioPlayerWithFile("background", type: "wav")
             self.gameSound?.numberOfLoops = 30
-            self.gameSound?.volume = 0.1
+            self.gameSound?.volume = 0.2
             self.gameSound?.play()
         default:
             self.abilityUse = setupAudioPlayerWithFile("laser2", type: "wav")

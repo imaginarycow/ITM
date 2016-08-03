@@ -43,7 +43,6 @@ func useBrickBreaker() {
     print("Player using Brick Breaker ability")
     //let texture = SKTexture(imageNamed: "spark.png")
     let texture = SKTexture(imageNamed: "brickBreaker.png")
-    fireParticle.removeFromParent()
 
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
@@ -51,15 +50,15 @@ func useBrickBreaker() {
     
     delay(0.5) {
         fireball.removeFromParent()
-        fireParticle.targetNode = nil
-        fireParticle.resetSimulation()
+        fireball.targetNode = nil
+        fireball.resetSimulation()
     }
 }
 
 func useInstaKill() {
     print("Player using instaKill ability")
-    fireParticle.removeFromParent()
-    fireParticle.resetSimulation()
+    
+    removeAllEnemies()
     
     let texture = SKTexture(imageNamed: "instakill.png")
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
@@ -68,14 +67,15 @@ func useInstaKill() {
     
     delay(0.5) {
         fireball.removeFromParent()
-        fireParticle.targetNode = nil
-        fireParticle.resetSimulation()
+        fireball.targetNode = nil
+        fireball.resetSimulation()
     }
 }
 
 func useTimeFreeze() {
     print("Player using TimeFreeze ability")
-    fireParticle.resetSimulation()
+    timerIsFrozen = true
+    
     let texture = SKTexture(imageNamed: "timeFreeze.png")
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
@@ -83,8 +83,8 @@ func useTimeFreeze() {
     
     delay(0.5) {
         fireball.removeFromParent()
-        fireParticle.targetNode = nil
-        fireParticle.resetSimulation()
+        fireball.targetNode = nil
+        fireball.resetSimulation()
     }
 }
 

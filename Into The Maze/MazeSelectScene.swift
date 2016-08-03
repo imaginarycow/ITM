@@ -97,7 +97,34 @@ class MazeSelectScene: SKScene {
         vc.stopBGMusic()
         musicIsPlaying = false
         
-        let gameScene = GameScene()
+        var gameScene = Maze1GameScene()
+        
+        switch level {
+        case 1:
+            gameScene = Maze1GameScene()
+        case 2:
+            gameScene = Maze1GameScene()
+        case 3:
+            gameScene = Maze1GameScene()
+        case 4:
+            gameScene = Maze1GameScene()
+        case 5:
+            gameScene = Maze1GameScene()
+        case 6:
+            gameScene = Maze1GameScene()
+        case 7:
+            gameScene = Maze1GameScene()
+        case 8:
+            gameScene = Maze1GameScene()
+        case 9:
+            gameScene = Maze1GameScene()
+        case 10:
+            gameScene = Maze1GameScene()
+        case 11:
+            gameScene = Maze1GameScene()
+        default:
+            gameScene = Maze1GameScene()
+        }
         
         gameScene.size = self.size
         gameScene.scaleMode = self.scaleMode

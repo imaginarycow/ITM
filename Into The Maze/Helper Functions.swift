@@ -19,3 +19,8 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+//convert degrees to radians
+func DegToRad(degrees: Double)->CGFloat {
+    return CGFloat(degrees * M_PI / 180.0)
+}

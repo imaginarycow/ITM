@@ -10,8 +10,8 @@ import Foundation
 import SpriteKit
 
 var playerName:String = ""
-var playerSpeed : CGFloat = 0.1
-
+var playerSpeed: CGFloat = 0.1
+var playerWidth: CGFloat = 20.0
 
 enum PlayerDirection {
     case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
@@ -22,7 +22,7 @@ class NewPlayer:SKSpriteNode {
     class func createNewPlayer() -> SKSpriteNode {
         
         let newPlayer = SKSpriteNode(imageNamed: "PlayerWalk01")
-        newPlayer.size = CGSize(width: 20 * scale, height: 20 * scale)
+        newPlayer.size = CGSize(width: playerWidth * scale, height: playerWidth * scale)
         newPlayer.zPosition = 100
         let rad:CGFloat = newPlayer.frame.width * 0.4
         newPlayer.physicsBody = SKPhysicsBody(circleOfRadius: rad)
