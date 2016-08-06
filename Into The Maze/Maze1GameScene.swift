@@ -306,7 +306,7 @@ class Maze1GameScene: GameScene {
             if timerIsFrozen {
                 self.timer.fontColor = SKColor.blueColor()
                 self.timer.text = "Time Freeze"
-                if freezeTimer > 7 {
+                if freezeTimer > 8 {
                     let texture = SKTexture(imageNamed: "spark.png")
                     let sparks = createSpark(texture, point: CGPointZero, target: self.timer)
                     self.timer.addChild(sparks)
@@ -328,13 +328,11 @@ class Maze1GameScene: GameScene {
                 
                 
             } else {
-                if seconds % 5 == 0 {
-                    if monsterCount < 5 {
-                        self.createNewMonster(getRandomEnemyPoint())
-                        monsterCount += 1
-                        print("monster count: \(monsterCount)")
-                    }
-                
+                if seconds % 5 == 0 && monsterCount < 5 {
+                    
+                    self.createNewMonster(getRandomEnemyPoint())
+                    monsterCount += 1
+                    print("monster count: \(monsterCount)")
                 }
                 
                 self.timer.text = "Maze Shift in: \(seconds)"

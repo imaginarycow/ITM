@@ -74,10 +74,10 @@ extension GameScene {
             
             addChild(superBullet)
             //check to see if super bullet has already collided with wall before applying vector
-            if let node = self.childNodeWithName("superB"){
+            if self.childNodeWithName("superB")?.parent != nil {
                 
                 let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
-                node.physicsBody?.applyImpulse(vector)
+                superBullet.physicsBody?.applyImpulse(vector)
             }
             
 
@@ -129,31 +129,38 @@ extension GameScene {
             if x > maxX * 0.25 {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
 
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.EastNorthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
 
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.East
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.EastSouthEast
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                 }
                 
             }
@@ -161,31 +168,38 @@ extension GameScene {
             if x < -maxX * 0.25 {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.WestNorthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.West
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.WestSouthWest
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                 }
 
             }
@@ -193,10 +207,13 @@ extension GameScene {
             if x >= -maxX * 0.25 && x <= maxX * 0.25 {
                 if y > 0 {
                     currentDirection = PlayerDirection.North
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
+                    
                 }else {
                     currentDirection = PlayerDirection.South
-                    self.turnPlayer(currentDirection)
+                    self.turnNode(Player!, direction: currentDirection)
+                    self.turnNode(playerBase, direction: currentDirection)
                 }
             }
 

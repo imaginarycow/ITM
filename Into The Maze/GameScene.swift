@@ -28,15 +28,15 @@ let centerCategory: UInt32 = 0x1 << 6
 let abilityCategory: UInt32 = 0x1 << 7
 let superBulletCategory: UInt32 = 0x1 << 8
 let finishCategory: UInt32 = 0x1 << 9
-
-let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
+let buttonRad = joystickDiameter/2
+let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: buttonRad)
 
 //the direction the player is currently moving the thumbstick in
 var currentDirection:PlayerDirection!
 var Player : SKSpriteNode?
 var playerPosition: CGPoint = (Player?.position)!
 var playerSpawn: CGPoint!
-let playerBase = SKShapeNode(circleOfRadius: playerWidth * scale)
+let playerBase = SKSpriteNode(imageNamed: "directionArrow.png")
 
 var box1Width:CGFloat = 0.0
 let box1 = SKSpriteNode()
@@ -57,7 +57,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let finish = SKSpriteNode(imageNamed: "finish.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
-    let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
+    
+    let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: buttonRad)
     
     var TextureArray = [SKTexture]()
     var walking: Bool = false
@@ -101,8 +102,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createNewMonster(point: CGPoint) {
         
-        let monster = Monster.newMonster()
+        let monster = Monster(id: monsterIndex)
+        monsterIndex += 1
         monster.position = point
+        monster.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
+        monster.zPosition = 100
+        monster.name = "monster"
+    
+        monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.frame.size)
+        monster.physicsBody?.usesPreciseCollisionDetection = true
+        monster.physicsBody?.categoryBitMask = monsterCategory
+        monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
+        monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
         addChild(monster)
     }
     
@@ -118,16 +129,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //give player's start direction and location
         Player?.position = CGPoint(x: playerSpawn.x, y: playerSpawn.y)
         currentDirection = PlayerDirection.East
-        turnPlayer(currentDirection)
+        turnNode(Player!, direction: currentDirection)
         
-        playerBase.fillColor = .greenColor()
         playerBase.zPosition = 50
-        playerBase.alpha = 0.3
+        playerBase.size = CGSize(width: (Player?.size.width)!, height: Player!.size.height)
+        turnNode(playerBase, direction: currentDirection)
+        playerBase.alpha = 0.9
         playerBase.position = (Player?.position)!
         addChild(playerBase)
     }
     
-    func turnPlayer(direction: PlayerDirection) {
+    func turnNode(node: SKSpriteNode, direction: PlayerDirection) {
         
         var deg = 0.0
         
@@ -169,7 +181,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             deg = 0.0
         }
         
-        Player?.zRotation = DegToRad(deg)
+        node.zRotation = DegToRad(deg)
         currentDirection = direction
     }
     
@@ -212,6 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createControls() {
         
         joystick.position = CGPoint(x: scene!.size.width * 0.085, y: scene!.size.height * 0.25)
+        //joystick.physicsBody = SKPhysicsBody(circleOfRadius: buttonRad)
         scene?.addChild(joystick)
         
         shootControl.fillTexture = SKTexture(imageNamed: "shootButton.png")
@@ -220,12 +233,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shootControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.25)
         shootControl.zPosition = 100
         shootControl.name = "shootControl"
+        
+        //shootControl.physicsBody = SKPhysicsBody(circleOfRadius: buttonRad)
         scene!.addChild(shootControl)
         
         
         abilityControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.60)
         abilityControl.fillColor = SKColor.whiteColor()
         abilityControl.strokeColor = .clearColor()
+        //abilityControl.physicsBody = SKPhysicsBody(circleOfRadius: buttonRad)
         
         setAbilityForUse(abilityTokens)
  
@@ -456,7 +472,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateScore(25)
         }
         if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == monsterCategory) {
-            print("monster hit bounding box, removing monster")
+            print("")
             //removeEnemy(secondBody.node!)
         }
         if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == superBulletCategory) {

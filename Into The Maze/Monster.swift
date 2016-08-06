@@ -22,32 +22,41 @@ enum MonsterDirection {
 
 class Monster:SKSpriteNode {
     
-    class func newMonster() -> SKSpriteNode {
-        
-        let newMonster = SKSpriteNode(imageNamed: "monster")
-        newMonster.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
-        newMonster.zPosition = 100
-        newMonster.name = "monster"
-        
-        newMonster.physicsBody = SKPhysicsBody(rectangleOfSize: newMonster.frame.size)
-        newMonster.physicsBody?.usesPreciseCollisionDetection = true
-        newMonster.physicsBody?.categoryBitMask = monsterCategory
-        newMonster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-        newMonster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-        
-        monstersArray.append(newMonster)
-        
-        return newMonster
-        
+    var id = monsterIndex
+    var alive = true
+    
+    init(id: Int) {
+        self.alive = true
+        let texture = SKTexture(imageNamed: "monster")
+        super.init(texture: texture, color: .whiteColor(), size: texture.size())
     }
     
+    func getIsAlive() -> Bool{
+        return self.alive
+    }
+    func setIsAlive(bool: Bool) {
+        self.alive = bool
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 func removeAllEnemies() {
+    monstersArray = []
     print("attempting to remove all monsters with instakill")
     print("monters in monstersArray: \(monstersArray.count)")
     
+    //find all nodes in current scene with name "monster"
+    activeScene.enumerateChildNodesWithName("monster", usingBlock: { (node, stop) -> Void in
+        if node.name == "monster" {
+            let monster = node as! SKSpriteNode
+            monstersArray.append(monster)
+        }
+    })
+    
     for monster in monstersArray {
-        
+            
         //createAnimationAtPoint(activeScene, point: monster.position, imageNamed: "instakill.png")
         let texture = SKTexture(imageNamed: "fireTexture.png")
         let fireball = createFireball(texture, point: CGPointZero, target: monster)
@@ -62,6 +71,7 @@ func removeAllEnemies() {
             monster.removeFromParent()
         }
         
+
     }
     monstersArray = []
     monsterCount = 0
@@ -70,7 +80,6 @@ func removeAllEnemies() {
 func removeEnemy(node:SKNode) {
     
     print("attempting to remove enemy")
-    
     let texture = SKTexture(imageNamed: "fireTexture.png")
     let fireball = createFireball(texture, point: CGPointZero, target: node)
     node.addChild(fireball)

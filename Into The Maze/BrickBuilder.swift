@@ -23,7 +23,7 @@ class Brick {
     class func createBrick(point:CGPoint, brickWidth: CGFloat, rotation:Double) -> SKSpriteNode {
         
         
-        let brick = SKSpriteNode(imageNamed: "brick.png")
+        let brick = SKSpriteNode(imageNamed: "brickTexture.png")
         brick.size = CGSize(width: brickWidth, height: brickHeight)
         brick.position = CGPoint(x: point.x, y: point.y)
         brick.zPosition = 50.0
@@ -31,6 +31,7 @@ class Brick {
         brick.name = "brick"
         brick.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: brick.size.width, height: brick.size.height))
         brick.physicsBody?.affectedByGravity = false
+        //brick.physicsBody?.dynamic = false
         brick.physicsBody?.mass = 1000
         brick.physicsBody?.usesPreciseCollisionDetection = true
         brick.physicsBody?.categoryBitMask = brickCategory
