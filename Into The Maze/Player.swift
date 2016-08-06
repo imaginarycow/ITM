@@ -26,7 +26,8 @@ class NewPlayer:SKSpriteNode {
         newPlayer.zPosition = 100
         let rad:CGFloat = newPlayer.frame.width * 0.4
         newPlayer.physicsBody = SKPhysicsBody(circleOfRadius: rad)
-        //newPlayer.physicsBody?.dynamic = false
+        newPlayer.physicsBody?.allowsRotation = false
+        newPlayer.physicsBody?.restitution = 0
         newPlayer.physicsBody?.usesPreciseCollisionDetection = true
         newPlayer.physicsBody?.categoryBitMask = playerCategory
         newPlayer.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | brickCategory

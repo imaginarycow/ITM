@@ -32,7 +32,7 @@ class Brick {
         brick.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: brick.size.width, height: brick.size.height))
         brick.physicsBody?.affectedByGravity = false
         //brick.physicsBody?.dynamic = false
-        brick.physicsBody?.mass = 1000
+        brick.physicsBody?.mass = 5000
         brick.physicsBody?.usesPreciseCollisionDetection = true
         brick.physicsBody?.categoryBitMask = brickCategory
         brick.physicsBody?.collisionBitMask = playerCategory | monsterCategory

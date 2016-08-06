@@ -19,29 +19,99 @@ var monstersArray: [SKSpriteNode] = []
 enum MonsterDirection {
     case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
 }
+enum Stuck {
+    case x, y
+}
 
 class Monster:SKSpriteNode {
     
     var id = monsterIndex
-    var alive = true
     
     init(id: Int) {
-        self.alive = true
+        
         let texture = SKTexture(imageNamed: "monster")
         super.init(texture: texture, color: .whiteColor(), size: texture.size())
     }
     
-    func getIsAlive() -> Bool{
-        return self.alive
+    func moveMonster(point1: CGPoint, point2: CGPoint) -> CGPoint {
+        var moveToPoint = CGPoint()
+        let x1 = point1.x
+        let x2 = point2.x
+        let y1 = point1.y
+        let y2 = point2.y
+        
+        if x1 < x2 {
+            moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
+        }else {
+            moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
+        }
+        if y1 < y2 {
+            moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
+        }else {
+            moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
+        }
+        
+        return moveToPoint
     }
-    func setIsAlive(bool: Bool) {
-        self.alive = bool
+    
+    func moveMonsterAgain(point1: CGPoint, point2: CGPoint, stuck: Stuck) -> CGPoint {
+        var moveToPoint = CGPoint()
+        let x1 = point1.x
+        let x2 = point2.x
+        let y1 = point1.y
+        let y2 = point2.y
+        
+        switch stuck {
+        case .x:
+            if x1 < x2 {
+                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
+            }
+            if y1 < y2 {
+                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
+            }
+
+        case .y:
+            if x1 < x2 {
+                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
+            }
+            if y1 < y2 {
+                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
+            }
+
+        default:
+            if x1 < x2 {
+                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
+            }
+            if y1 < y2 {
+                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
+            }else {
+                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
+            }
+
+        }
+        
+        
+        return moveToPoint
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
 }
+
+
 func removeAllEnemies() {
     monstersArray = []
     print("attempting to remove all monsters with instakill")

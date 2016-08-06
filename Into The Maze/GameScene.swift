@@ -19,6 +19,7 @@ var outerWall = [SKSpriteNode]()
 var bulletNode = SKSpriteNode()
 var bullets = [bulletNode]
 
+//category bit masks
 let boundingBoxCategory: UInt32 = 0x1 << 1
 let bulletCategory: UInt32 = 0x1 << 2
 let playerCategory: UInt32 = 0x1 << 3
@@ -28,6 +29,7 @@ let centerCategory: UInt32 = 0x1 << 6
 let abilityCategory: UInt32 = 0x1 << 7
 let superBulletCategory: UInt32 = 0x1 << 8
 let finishCategory: UInt32 = 0x1 << 9
+
 let buttonRad = joystickDiameter/2
 let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: buttonRad)
 
@@ -475,6 +477,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("")
             //removeEnemy(secondBody.node!)
         }
+        if (firstBody.categoryBitMask == monsterCategory && secondBody.categoryBitMask == brickCategory) {
+            
+        }
         if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == superBulletCategory) {
             print("superBullet hit wall")
             if let superNode = secondBody.node {
@@ -504,16 +509,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: NSTimeInterval) {
         
         playerBase.position = (Player!.position)
-        //print("monster count is: \(monsterCount)")
+        
         if checkForInBounds(Player!) == false {
             print("player went out of bounds, replacing at spawn point")
             Player?.position = playerSpawn
         }
         
-        for monster in monstersArray {
+        // monster movement
+        var monsterArray: [Monster] = []
+        //find all nodes in current scene with name "monster"
+        activeScene.enumerateChildNodesWithName("monster", usingBlock: { (node, stop) -> Void in
+            if node.name == "monster" {
+                let monster = node as! Monster
+                monsterArray.append(monster)
+            }
+        })
+        for monster in monsterArray {
             if checkForInBounds(monster) == false {
                 print("monster went out of bounds, placing at new spawn point")
                 monster.position = getRandomEnemyPoint()
+            }else {
+                let firstPosition = monster.position
+                monster.position = monster.moveMonster(monster.position, point2: Player!.position)
+                
+                //check if monster is stuck on wall
+                if (monster.position.x == firstPosition.x) || (monster.position.y == firstPosition.y) {
+                    if monster.position.x == firstPosition.x {
+                        monster.position = monster.moveMonsterAgain(Player!.position, point2: monster.position, stuck: Stuck.x)
+                    }else {
+                        monster.position = monster.moveMonsterAgain(Player!.position, point2: monster.position, stuck: Stuck.y)
+                    }
+                    
+                }
             }
         }
     }

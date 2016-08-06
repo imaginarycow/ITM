@@ -26,7 +26,7 @@ class Maze1GameScene: GameScene {
         buildMiddleTriangle()
         buildInnerTriangle()
         updateClock()
-        setEnemySpawnPoints(CGPointMake((scene?.size.width)!/2, (scene?.size.height)!/2), point2: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.85), point3: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.2), point4: CGPointMake((scene?.size.width)! * 0.8, (scene?.size.height)!/2), point5: CGPointMake((scene?.size.width)! * 0.2, (scene?.size.height)!/2))
+        setEnemySpawnPoints(CGPointMake((scene?.size.width)!/2, (scene?.size.height)!/2), point2: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.85), point3: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.2), point4: CGPointMake((scene?.size.width)! * 0.8, (scene?.size.height)!/2), point5: CGPointMake((scene?.size.width)! * 0.1, (scene?.size.height)!/2))
     }
     
     override func willMoveFromView(view: SKView) {
