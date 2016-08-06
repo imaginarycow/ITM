@@ -12,7 +12,7 @@ import AVFoundation
 import GoogleMobileAds
 
 
-
+var activeScene: SKScene!
 var boundingBox = SKSpriteNode()
 var outerWall = [SKSpriteNode]()
 
@@ -26,11 +26,17 @@ let monsterCategory: UInt32 = 0x1 << 4
 let brickCategory: UInt32 = 0x1 << 5
 let centerCategory: UInt32 = 0x1 << 6
 let abilityCategory: UInt32 = 0x1 << 7
+let superBulletCategory: UInt32 = 0x1 << 8
+let finishCategory: UInt32 = 0x1 << 9
 
 let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
 
 //the direction the player is currently moving the thumbstick in
 var currentDirection:PlayerDirection!
+var Player : SKSpriteNode?
+var playerPosition: CGPoint = (Player?.position)!
+var playerSpawn: CGPoint!
+let playerBase = SKShapeNode(circleOfRadius: playerWidth * scale)
 
 var box1Width:CGFloat = 0.0
 let box1 = SKSpriteNode()
@@ -42,11 +48,13 @@ var timerIsFrozen = false
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    
     var levelScore = 0
     let scoreLabel = SKLabelNode(fontNamed: labelFont)
     var mazeShiftIndex = 0
     let timer = SKLabelNode(text: "")
     let center = SKSpriteNode(imageNamed: "diamond.png")
+    let finish = SKSpriteNode(imageNamed: "finish.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
     let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: 40.0 * scale)
@@ -55,11 +63,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var walking: Bool = false
     var playerFacing = PlayerDirection.North
     
-    var Player : SKSpriteNode?
-    let joystick = AnalogJoystick(diameter: 80.0 * scale, colors: (.clearColor(), .clearColor()), images: (UIImage(named: "substrate.png"), UIImage(named: "stick.png")))
+    let joystick = AnalogJoystick(diameter: joystickDiameter, colors: (.clearColor(), .clearColor()), images: (UIImage(named: "substrate.png"), UIImage(named: "stick.png")))
     
     
-
     override func didMoveToView(view: SKView) {
     
         
@@ -67,13 +73,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
 
-
     //call to all functions for new scene
     func createNewScene() {
+        
+        activeScene = self
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
         
+        monsterCount = 0
+        monsterIndex = 0
         vc.playSoundEffect(.gameSound)
         createBackButton()
         createBoundingBox()
@@ -102,15 +111,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //create texture array for player movement
         TextureArray = createTextureArray()
         
-        self.Player = NewPlayer.createNewPlayer()
+        Player = NewPlayer.createNewPlayer()
         Player!.name = "Player"
-        
         addChild(Player!)
         
         //give player's start direction and location
-        Player?.position = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
+        Player?.position = CGPoint(x: playerSpawn.x, y: playerSpawn.y)
         currentDirection = PlayerDirection.East
         turnPlayer(currentDirection)
+        
+        playerBase.fillColor = .greenColor()
+        playerBase.zPosition = 50
+        playerBase.alpha = 0.3
+        playerBase.position = (Player?.position)!
+        addChild(playerBase)
     }
     
     func turnPlayer(direction: PlayerDirection) {
@@ -121,20 +135,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case .North:
             deg = 0.0
+        case .NorthNorthEast:
+            deg = -22.5
         case .NorthEast:
             deg = -45.0
+        case .EastNorthEast:
+            deg = -67.5
         case .NorthWest:
             deg = 45.0
         case .South:
             deg = 180.0
         case .SouthEast:
-            deg = 220.0
+            deg = 225.0
         case .SouthWest:
             deg = 135.0
         case .East:
             deg = 270.0
+        case .EastSouthEast:
+            deg = 247.5
+        case .SouthSouthEast:
+            deg = 202.5
         case .West:
             deg = 90.0
+        case .WestSouthWest:
+            deg = 112.5
+        case .SouthSouthWest:
+            deg = 157.5
+        case .NorthNorthWest:
+            deg = 22.5
+        case .WestNorthWest:
+            deg = 67.5
         default:
             deg = 0.0
         }
@@ -286,7 +316,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         monstersArray = []
         Player?.removeFromParent()
-        Player = nil
 
         boundingBox.removeAllChildren()
         boundingBox.removeFromParent()
@@ -338,9 +367,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bullets.insert(bulletNode, atIndex: 0) 
                 addChild(bulletNode)
                 vc.playSoundEffect(Sound.gunSound)
-//                let fire = SKTexture(imageNamed: "spark.png")
-//                let fireball = createFireball(fire, point: CGPointZero, target: bulletNode)
-//                bulletNode.addChild(fireball)
                 
                 let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
                 bullets[0].physicsBody?.applyImpulse(vector)
@@ -351,6 +377,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if abilityTokens > 0 {
                     useAbility(abilitySelected)
+                    if abilitySelected == .brickBreaker {
+                        print("attempting to call shootSuperBullet()")
+                        shootSuperBullet()
+                    }
                 }
             }
             
@@ -386,23 +416,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
+        let contactPoint: CGPoint = contact.contactPoint
+        
         print("firstBody bitmask: \(firstBody.categoryBitMask)")
         print("secondBody bitmask: \(secondBody.categoryBitMask)")
         
-        if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == boundingBoxCategory)  {
-            print("bullet bounding box")
-            removeBullet(firstBody.node!)
-        }
         if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == bulletCategory) {
             print("bullet bounding box")
             removeBullet(secondBody.node!)
+            createAnimationAtPoint(self, point: contactPoint)
         }
         if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == brickCategory) {
             print("bullet hit brick wall")
             removeBullet(firstBody.node!)
+            createAnimationAtPoint(self, point: contactPoint)
         }
-        if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == bulletCategory) {
-            removeBullet(secondBody.node!)
+        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == monsterCategory) {
+            print("Monster got player, player died")
+            //playerDied()
         }
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == centerCategory) {
             print("Player got treasure")
@@ -421,20 +452,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == monsterCategory) {
             print("bullet hit enemy")
             removeEnemy(secondBody.node!)
+            removeBullet(firstBody.node!)
             updateScore(25)
         }
         if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == monsterCategory) {
             print("monster hit bounding box, removing monster")
-            removeEnemy(secondBody.node!)
+            //removeEnemy(secondBody.node!)
         }
-        
+        if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == superBulletCategory) {
+            print("superBullet hit wall")
+            if let superNode = secondBody.node {
+                removeBullet(superNode)
+            }
+            createAnimationAtPoint(self, point: contactPoint)
+            removeBrick(firstBody.node!)
+        }
+        if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == superBulletCategory) {
+            print("superBullet hit boundingBox")
+            if let superNode = secondBody.node {
+                removeBullet(superNode)
+            }
+            createAnimationAtPoint(self, point: contactPoint)
+            removeBrick(firstBody.node!)
+        }
+        if (firstBody.categoryBitMask == monsterCategory && secondBody.categoryBitMask == superBulletCategory) {
+            print("superBullet hit monster")
+            if let superNode = secondBody.node {
+                removeBullet(superNode)
+            }
+            removeEnemy(firstBody.node!)
+        }
 
     }
     
-    
     override func update(currentTime: NSTimeInterval) {
         
-
+        playerBase.position = (Player!.position)
+        //print("monster count is: \(monsterCount)")
+        if checkForInBounds(Player!) == false {
+            print("player went out of bounds, replacing at spawn point")
+            Player?.position = playerSpawn
+        }
+        
+        for monster in monstersArray {
+            if checkForInBounds(monster) == false {
+                print("monster went out of bounds, placing at new spawn point")
+                monster.position = getRandomEnemyPoint()
+            }
+        }
     }
     
         

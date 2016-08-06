@@ -17,29 +17,48 @@ var sparkCount = 0
 
 let fire1 = NSBundle.mainBundle().pathForResource("fire1", ofType: "sks")
 let fireParticle1 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire1!) as! SKEmitterNode
-
 let fire2 = NSBundle.mainBundle().pathForResource("fire2", ofType: "sks")
 let fireParticle2 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire2!) as! SKEmitterNode
+let fire3 = NSBundle.mainBundle().pathForResource("fire3", ofType: "sks")
+let fireParticle3 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire3!) as! SKEmitterNode
+let fire4 = NSBundle.mainBundle().pathForResource("fire4", ofType: "sks")
+let fireParticle4 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire4!) as! SKEmitterNode
+let fire5 = NSBundle.mainBundle().pathForResource("fire5", ofType: "sks")
+let fireParticle5 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire5!) as! SKEmitterNode
+let fire6 = NSBundle.mainBundle().pathForResource("fire6", ofType: "sks")
+let fireParticle6 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire6!) as! SKEmitterNode
+let fire7 = NSBundle.mainBundle().pathForResource("fire7", ofType: "sks")
+let fireParticle7 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire7!) as! SKEmitterNode
+let fire8 = NSBundle.mainBundle().pathForResource("fire8", ofType: "sks")
+let fireParticle8 = NSKeyedUnarchiver.unarchiveObjectWithFile(fire8!) as! SKEmitterNode
 
 func getParticleToUse(type: ParticleType) -> SKEmitterNode {
     
     var particle = SKEmitterNode()
     
     if type == .fire {
-        if fireCount % 2 == 0 {
-            particle = fireParticle2
-            fireParticle2.removeAllActions()
-            fireParticle2.removeFromParent()
-            fireParticle2.resetSimulation()
-            fireParticle2.targetNode = nil
-        }else {
+        
+        switch fireCount {
+        case 0:
             particle = fireParticle1
-            fireParticle1.removeAllActions()
-            fireParticle1.removeFromParent()
-            fireParticle1.resetSimulation()
-            fireParticle1.targetNode = nil
+        case 1:
+            particle = fireParticle2
+        case 2:
+            particle = fireParticle3
+        case 3:
+            particle = fireParticle4
+        case 4:
+            particle = fireParticle5
+        case 5:
+            particle = fireParticle6
+        case 6:
+            particle = fireParticle7
+        case 7:
+            particle = fireParticle8
+        default:
+            particle = fireParticle1
         }
-        fireCount += 1
+        if fireCount < 7 { fireCount += 1 } else { fireCount = 0 }
     }
     if type == .spark {
         if sparkCount % 2 == 0 {

@@ -43,7 +43,7 @@ class Brick {
 }
 //only called when user has brick breaker ability
 func removeBrick(node:SKNode) {
-    
+    print("attemting to remove brick")
     node.removeFromParent()
 }
 

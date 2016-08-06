@@ -14,9 +14,13 @@ class Maze1GameScene: GameScene {
     let parent4 = SKSpriteNode()
     let parent5 = SKSpriteNode()
     let parent6 = SKSpriteNode()
+    let parent7 = SKSpriteNode()
+    let parent8 = SKSpriteNode()
+    let parent9 = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
         
+        playerSpawn = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
         createNewScene()
         buildOuterTriangle()
         buildMiddleTriangle()
@@ -50,7 +54,6 @@ class Maze1GameScene: GameScene {
         let sideB = sqrt((box1Width * box1Width) - (sideA * sideA))
         let yOffset:CGFloat = (box1Width - sideB)
         
-        
         abilityToken.position = CGPoint(x: 0.0 + (box1Width/2) - (abilityToken.size.width * 1.5), y: startPoint.y + yOffset + abilityToken.size.height)
         box1.addChild(abilityToken)
         
@@ -58,7 +61,7 @@ class Maze1GameScene: GameScene {
         parent1.position = CGPoint(x: startPoint.x - parent1.size.width/2, y: startPoint.y + yOffset)
         parent1.anchorPoint = CGPoint(x: 0.0, y: 0.0)
         parent1.size = CGSize(width: box1Width, height: brickHeight)
-        parent1.color = .blueColor()
+        //parent1.color = .blueColor()
         parent1.zRotation = DegToRad(0.0)
         box1.addChild(parent1)
         
@@ -163,10 +166,6 @@ class Maze1GameScene: GameScene {
         let side3A = box3Width/2
         let side3B = sqrt((box3Width * box3Width) - (side3A * side3A))
         let yOffset3:CGFloat = (box3Width - side3B)
-        
-        let parent7 = SKSpriteNode()
-        let parent8 = SKSpriteNode()
-        let parent9 = SKSpriteNode()
         let startPoint3 = CGPointMake((box3.anchorPoint.x - box3Width/2), (box3.anchorPoint.y - box3Width/2)+brickHeight/2)
         
         parent7.zPosition = 10
@@ -307,6 +306,19 @@ class Maze1GameScene: GameScene {
             if timerIsFrozen {
                 self.timer.fontColor = SKColor.blueColor()
                 self.timer.text = "Time Freeze"
+                if freezeTimer > 7 {
+                    let texture = SKTexture(imageNamed: "spark.png")
+                    let sparks = createSpark(texture, point: CGPointZero, target: self.timer)
+                    self.timer.addChild(sparks)
+                    
+                    delay(0.3) {
+                        sparks.removeFromParent()
+                        sparks.targetNode = nil
+                        sparks.resetSimulation()
+                    }
+
+                }
+                
                 freezeTimer -= 1
                 if freezeTimer == 0 {
                     timerIsFrozen = false
@@ -320,6 +332,7 @@ class Maze1GameScene: GameScene {
                     if monsterCount < 5 {
                         self.createNewMonster(getRandomEnemyPoint())
                         monsterCount += 1
+                        print("monster count: \(monsterCount)")
                     }
                 
                 }

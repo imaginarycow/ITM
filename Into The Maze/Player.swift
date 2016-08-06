@@ -14,7 +14,7 @@ var playerSpeed: CGFloat = 0.1
 var playerWidth: CGFloat = 20.0
 
 enum PlayerDirection {
-    case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+    case North, NorthNorthEast, NorthEast, EastNorthEast, East, EastSouthEast, SouthEast, SouthSouthEast, South, SouthSouthWest, SouthWest, WestSouthWest, West, NorthWest, WestNorthWest, NorthNorthWest
 }
 
 class NewPlayer:SKSpriteNode {

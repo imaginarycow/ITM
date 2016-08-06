@@ -7,6 +7,8 @@
 //
 import SpriteKit
 
+let joystickDiameter = 80.0 * scale
+
 //MARK: AnalogJoystickData
 public struct AnalogJoystickData: CustomStringConvertible {
     

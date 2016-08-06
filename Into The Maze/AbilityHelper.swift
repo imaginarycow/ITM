@@ -11,7 +11,7 @@ import SpriteKit
 
 var abilitySelected:ability = .brickBreaker
 var abilityEnabled = false
-var abilityTokens = 10
+var abilityTokens = 20
 let abilityToken = SKSpriteNode(imageNamed: "abilityToken.png")
 
 enum ability {
@@ -41,9 +41,9 @@ func useAbility(special: ability) {
 
 func useBrickBreaker() {
     print("Player using Brick Breaker ability")
-    //let texture = SKTexture(imageNamed: "spark.png")
+    //shoot super bullet function found in GameSceneHelperMethods.swift
+    
     let texture = SKTexture(imageNamed: "brickBreaker.png")
-
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
     abilityControl.addChild(fireball)
     vc.playSoundEffect(.abilitySound)

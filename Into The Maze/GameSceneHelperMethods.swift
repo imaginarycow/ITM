@@ -9,10 +9,80 @@
 import Foundation
 import SpriteKit
 
+//creates explosion sprite at contact point
+func createAnimationAtPoint(scene: SKScene, point: CGPoint, imageNamed: String = "explosion.png") {
+    
+    let explosion = SKSpriteNode(imageNamed: imageNamed)
+    explosion.position = point
+    explosion.size = CGSize(width: 30.0 * scale, height: 30.0 * scale)
+    explosion.zPosition = 101
+    scene.addChild(explosion)
+    
+    delay(0.1) {
+        explosion.removeFromParent()
+    }
+    
+}
+
+func checkForInBounds(node: SKSpriteNode) -> Bool{
+    var isInbounds = true
+    
+    if (node.position.x > activeScene.size.width) || (node.position.x < 0.0) {
+        isInbounds = false
+    }
+    if (node.position.y > activeScene.size.height) || (node.position.y < 0.0) {
+        isInbounds = false
+    }
+    
+    return isInbounds
+}
 
 //GameScene Helper Methods
 extension GameScene {
     
+    //called when player killed in maze
+    func playerDied() {
+        
+        vc.gameSound?.stop()
+    }
+    
+    func playerBeatMaze(level: Int) {
+        
+        vc.gameSound?.stop()
+    }
+    
+    //super bullet for brick breaker ability
+    func shootSuperBullet() {
+        print("shooting super bullet")
+        
+        //get bullet direction, rotation and speed
+        if let plr = Player {
+            
+            let xOffset:CGFloat = getBulletOffset(currentDirection).0
+            let yOffset:CGFloat = getBulletOffset(currentDirection).1
+            
+            var bulletSpeedX:CGFloat = 0.0
+            var bulletSpeedY:CGFloat = 0.0
+            
+            bulletSpeedX = getBulletImpulse(currentDirection).0 * 10
+            bulletSpeedY = getBulletImpulse(currentDirection).1 * 10
+            let rotation = getBulletOffset(currentDirection).2
+            let superBullet = createSuperBullet()
+            superBullet.name = "superB"
+            superBullet.position = CGPoint(x: plr.position.x + xOffset, y: plr.position.y + yOffset)
+            superBullet.zRotation = DegToRad(rotation)
+            
+            addChild(superBullet)
+            //check to see if super bullet has already collided with wall before applying vector
+            if let node = self.childNodeWithName("superB"){
+                
+                let vector = CGVectorMake(bulletSpeedX, bulletSpeedY)
+                node.physicsBody?.applyImpulse(vector)
+            }
+            
+
+        }
+    }
     
     func removeTreasure(node: SKNode) {
         node.removeFromParent()
@@ -36,7 +106,7 @@ extension GameScene {
             //          guard let aN = self.Player else { return }
             //          aN.runAction(SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
             
-            self.Player!.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self.TextureArray, timePerFrame: 0.2)))
+            Player!.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(self.TextureArray, timePerFrame: 0.2)))
             self.walking = true
             
         }
@@ -44,42 +114,83 @@ extension GameScene {
         //handles player position and rotation and gives direction for projectiles
         joystick.trackingHandler = { [unowned self] data in
             
-            guard let plr = self.Player else { return }
+            guard let plr = Player else { return }
             plr.position = CGPointMake(plr.position.x + (data.velocity.x * playerSpeed), plr.position.y + (data.velocity.y * playerSpeed))
+            
             let x = data.velocity.x
             let y = data.velocity.y
             print("x:\(x)")
             print("y:\(y)")
             
-            let xNum:CGFloat = 10.0
-            let yNum:CGFloat = 15.0
+            let maxX:CGFloat = joystickDiameter/2
+            let maxY:CGFloat = joystickDiameter/2
             
-            
-            if x > xNum {
-                if y < yNum && y > -yNum {
-                    currentDirection = PlayerDirection.East
+            //check to see if x is positive
+            if x > maxX * 0.25 {
+                if y > maxY * 0.75 {
+                    currentDirection = PlayerDirection.NorthNorthEast
                     self.turnPlayer(currentDirection)
-                }else if y >= yNum {
+                    
+                }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthEast
                     self.turnPlayer(currentDirection)
-                } else {
+
+                }else if y > maxY * 0.25 {
+                    currentDirection = PlayerDirection.EastNorthEast
+                    self.turnPlayer(currentDirection)
+
+                }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
+                    currentDirection = PlayerDirection.East
+                    self.turnPlayer(currentDirection)
+
+                }else if y < -maxY * 0.75 {
+                    currentDirection = PlayerDirection.SouthSouthEast
+                    self.turnPlayer(currentDirection)
+
+                }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthEast
                     self.turnPlayer(currentDirection)
-                }
-                //test if x < 0
-            }else if x < -xNum{
-                if y < yNum && y > -yNum {
-                    currentDirection = PlayerDirection.West
+
+                }else if y < -maxY * 0.25 {
+                    currentDirection = PlayerDirection.EastSouthEast
                     self.turnPlayer(currentDirection)
-                }else if y >= yNum {
+                }
+                
+            }
+            //check to see if x is negative
+            if x < -maxX * 0.25 {
+                if y > maxY * 0.75 {
+                    currentDirection = PlayerDirection.NorthNorthWest
+                    self.turnPlayer(currentDirection)
+                    
+                }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthWest
                     self.turnPlayer(currentDirection)
-                }else {
+                    
+                }else if y > maxY * 0.25 {
+                    currentDirection = PlayerDirection.WestNorthWest
+                    self.turnPlayer(currentDirection)
+                    
+                }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
+                    currentDirection = PlayerDirection.West
+                    self.turnPlayer(currentDirection)
+                    
+                }else if y < -maxY * 0.75 {
+                    currentDirection = PlayerDirection.SouthSouthWest
+                    self.turnPlayer(currentDirection)
+                    
+                }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthWest
                     self.turnPlayer(currentDirection)
+                    
+                }else if y < -maxY * 0.25 {
+                    currentDirection = PlayerDirection.WestSouthWest
+                    self.turnPlayer(currentDirection)
                 }
-                //test if x == 0
-            }else {
+
+            }
+            //check to see if x is in center area
+            if x >= -maxX * 0.25 && x <= maxX * 0.25 {
                 if y > 0 {
                     currentDirection = PlayerDirection.North
                     self.turnPlayer(currentDirection)
@@ -87,8 +198,8 @@ extension GameScene {
                     currentDirection = PlayerDirection.South
                     self.turnPlayer(currentDirection)
                 }
-                
             }
+
             print(currentDirection)
             
             
@@ -99,37 +210,14 @@ extension GameScene {
             
             //          guard let aN = self.Player else { return }
             //          aN.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
-            self.Player!.removeAllActions()
-            self.Player!.texture = SKTexture(imageNamed: "PlayerWalk01.png")
+            Player!.removeAllActions()
+            Player!.texture = SKTexture(imageNamed: "PlayerWalk01.png")
             self.walking = false
             
         }
         //Mark: End Joystick Handlers
     }
-    
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    }
-    
-    
-    func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-    
-    func random(min min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
-    }
 
-    
-    //convert degrees to radians
-    func DegToRad(degrees: Double)->CGFloat {
-        return CGFloat(degrees * M_PI / 180.0)
-    }
     
 } //Mark: End Extension
 

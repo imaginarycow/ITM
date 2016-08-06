@@ -33,15 +33,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     var shiftSound: AVAudioPlayer?
     var gameSound: AVAudioPlayer?
     
-    let rate = RateMyApp.sharedInstance
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AdMob.sharedInstance.setup(viewController: self, interID: "ca-app-pub-6450694282232724/6482008496")
-        rate.appID = "1052643535"
-        rate.trackAppUsage()
+        let appID = "1052643535"
+
   
         scene = MainMenuScene()
         
@@ -90,7 +88,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.buttonPress?.volume = 0.3
             self.buttonPress?.play()
         case .gunSound:
-            self.gunShot = setupAudioPlayerWithFile("shotgun", type: "wav")
+            self.gunShot = setupAudioPlayerWithFile("laserSound", type: "wav")
             self.gunShot?.volume = 0.4
             self.gunShot?.play()
         case .redeemSound:
