@@ -40,7 +40,7 @@ class MazeSelectScene: SKScene {
         self.backgroundColor = backgroundColor
         createLabels()
         createMazePicker()
-        
+        setEnemyTexture()
     }
     
     func createMazePicker() {

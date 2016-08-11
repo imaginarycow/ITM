@@ -37,7 +37,7 @@ let abilityControl: SKShapeNode = SKShapeNode(circleOfRadius: buttonRad)
 var currentDirection:PlayerDirection!
 var Player : SKSpriteNode?
 var playerPosition: CGPoint = (Player?.position)!
-var playerSpawn: CGPoint!
+
 let playerBase = SKSpriteNode(imageNamed: "directionArrow.png")
 var finishPosition = CGPoint(x: 0,y: 0)
 
@@ -105,20 +105,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createNewMonster(point: CGPoint) {
         
-        let spawnImage = SKSpriteNode(imageNamed: "teleport.png")
-        spawnImage.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
+        let spawnImage = SKSpriteNode(imageNamed: "spiderWeb.png")
+        spawnImage.size = CGSize(width: monsterSize * 1.5, height: monsterSize * 1.5)
         spawnImage.position = point
         spawnImage.zPosition = 50
         spawnImage.alpha = 0.0
         addChild(spawnImage)
-        let fade = SKAction.fadeInWithDuration(1.0)
+        let fade = SKAction.fadeInWithDuration(1.5)
         spawnImage.runAction(fade)
-        
+        vc.playSoundEffect(.spawnSound)
         delay(1.5) {
             let monster = Monster(id: monsterIndex)
             monsterIndex += 1
             monster.position = point
-            monster.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
+            monster.size = CGSize(width: monsterSize, height: monsterSize)
             monster.zPosition = 100
             monster.name = "monster"
             
@@ -127,8 +127,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             monster.physicsBody?.categoryBitMask = monsterCategory
             monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
             monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-            self.addChild(monster)
+            monster.alpha = 0
             
+            self.addChild(monster)
+            monster.runAction(fade)
+            turnNode(monster, direction: .North)
             spawnImage.removeFromParent()
         }
         
@@ -156,52 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(playerBase)
     }
     
-    func turnNode(node: SKSpriteNode, direction: PlayerDirection) {
         
-        var deg = 0.0
-        
-        switch direction {
-            
-        case .North:
-            deg = 0.0
-        case .NorthNorthEast:
-            deg = -22.5
-        case .NorthEast:
-            deg = -45.0
-        case .EastNorthEast:
-            deg = -67.5
-        case .NorthWest:
-            deg = 45.0
-        case .South:
-            deg = 180.0
-        case .SouthEast:
-            deg = 225.0
-        case .SouthWest:
-            deg = 135.0
-        case .East:
-            deg = 270.0
-        case .EastSouthEast:
-            deg = 247.5
-        case .SouthSouthEast:
-            deg = 202.5
-        case .West:
-            deg = 90.0
-        case .WestSouthWest:
-            deg = 112.5
-        case .SouthSouthWest:
-            deg = 157.5
-        case .NorthNorthWest:
-            deg = 22.5
-        case .WestNorthWest:
-            deg = 67.5
-        default:
-            deg = 0.0
-        }
-        
-        node.zRotation = DegToRad(deg)
-        currentDirection = direction
-    }
-    
     func createBackButton() {
         
         backButton.fontColor = .redColor()
@@ -311,19 +269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         box1.addChild(center)
         
     }
-    //texture array for Player
-    func createTextureArray() -> [SKTexture]{
-        
-        
-        var TextureArray = [SKTexture]()
-        var TextureAtlas = SKTextureAtlas(named: "walkCycle")
-        for i in 1...(TextureAtlas.textureNames.count - 2) {
-            
-            var Name = "PlayerWalk0\(i)"
-            TextureArray.append(SKTexture(imageNamed: Name))
-        }
-        return TextureArray
-    }
+    
 
     func goBackToPreviousScene() {
         
@@ -524,6 +470,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 monsterArray.append(monster)
             }
         })
+        for monster in monsterArray {
+            monster.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(monsterTextures, timePerFrame: 0.2)))
+        }
+        
         for monster in monsterArray {
             if checkForInBounds(monster) == false {
                 print("monster went out of bounds, placing at new spawn point")

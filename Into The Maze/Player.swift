@@ -40,6 +40,65 @@ class NewPlayer:SKSpriteNode {
     
 }
 
+func turnNode(node: SKSpriteNode, direction: PlayerDirection) {
+    
+    var deg = 0.0
+    
+    switch direction {
+        
+    case .North:
+        deg = 0.0
+    case .NorthNorthEast:
+        deg = -22.5
+    case .NorthEast:
+        deg = -45.0
+    case .EastNorthEast:
+        deg = -67.5
+    case .NorthWest:
+        deg = 45.0
+    case .South:
+        deg = 180.0
+    case .SouthEast:
+        deg = 225.0
+    case .SouthWest:
+        deg = 135.0
+    case .East:
+        deg = 270.0
+    case .EastSouthEast:
+        deg = 247.5
+    case .SouthSouthEast:
+        deg = 202.5
+    case .West:
+        deg = 90.0
+    case .WestSouthWest:
+        deg = 112.5
+    case .SouthSouthWest:
+        deg = 157.5
+    case .NorthNorthWest:
+        deg = 22.5
+    case .WestNorthWest:
+        deg = 67.5
+    default:
+        deg = 0.0
+    }
+    
+    node.zRotation = DegToRad(deg)
+    //currentDirection = direction
+}
+
+//texture array for Player
+func createTextureArray() -> [SKTexture]{
+    
+    var TextureArray = [SKTexture]()
+    var TextureAtlas = SKTextureAtlas(named: "walkCycle")
+    for i in 1...(TextureAtlas.textureNames.count - 2) {
+        
+        var Name = "PlayerWalk0\(i)"
+        TextureArray.append(SKTexture(imageNamed: Name))
+    }
+    return TextureArray
+}
+
 
 
 

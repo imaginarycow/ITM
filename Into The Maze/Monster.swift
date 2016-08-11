@@ -11,11 +11,13 @@ import SpriteKit
 
 var MonsterSpeed : CGFloat = 0.2
 let monsterSize:CGFloat = 15.0 * scale
-var enemySpawnPoints: [CGPoint] = []
+let teleportSize: CGFloat = 15.0 * scale
+
 var monsterCount = 0
 var monsterIndex = 0
 var monstersArray: [SKSpriteNode] = []
 var monstersKilled = 0
+var monsterTextures = [SKTexture]()
 
 enum MonsterDirection {
     case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
@@ -30,7 +32,7 @@ class Monster:SKSpriteNode {
     
     init(id: Int) {
         
-        let texture = SKTexture(imageNamed: "monster")
+        let texture = SKTexture(imageNamed: "walk01.png")
         super.init(texture: texture, color: .whiteColor(), size: texture.size())
     }
     
@@ -52,6 +54,38 @@ class Monster:SKSpriteNode {
             moveToPoint.y = y1 - (MonsterSpeed)
         }
         
+        // then turn the zombie
+        if moveToPoint.x == x1 {
+            if moveToPoint.y == y1 {
+                turnNode(self, direction: PlayerDirection.South)
+            }else if moveToPoint.y > y1 {
+                turnNode(self, direction: PlayerDirection.North)
+            }else {
+                turnNode(self, direction: PlayerDirection.South)
+            }
+            
+        }
+        if moveToPoint.x > x1 {
+            if moveToPoint.y == y1 {
+                turnNode(self, direction: PlayerDirection.East)
+            }else if moveToPoint.y > y1 {
+                turnNode(self, direction: PlayerDirection.NorthEast)
+            }else {
+                turnNode(self, direction: PlayerDirection.SouthEast)
+            }
+            
+        }
+        if moveToPoint.x < x1 {
+            if moveToPoint.y == y1 {
+                turnNode(self, direction: PlayerDirection.West)
+            }else if moveToPoint.y > y1 {
+                turnNode(self, direction: PlayerDirection.NorthWest)
+            }else {
+                turnNode(self, direction: PlayerDirection.SouthWest)
+            }
+            
+        }
+        
         return moveToPoint
     }
     
@@ -60,13 +94,10 @@ class Monster:SKSpriteNode {
         let x1 = point1.x
         let y1 = point1.y
         
-        let teleportSprite1 = SKSpriteNode(imageNamed: "teleport.png")
-        teleportSprite1.size = CGSize(width: monsterSize, height: monsterSize)
-        self.addChild(teleportSprite1)
+//        let teleportSprite1 = SKSpriteNode(imageNamed: "teleport.png")
+//        teleportSprite1.size = CGSize(width: monsterSize, height: monsterSize)
+//        self.addChild(teleportSprite1)
         
-        delay(1.0) {
-            teleportSprite1.removeFromParent()
-        }
         
         switch direction {
         case .left:
@@ -163,23 +194,23 @@ func removeEnemy(node:SKNode) {
     }
 }
 
-func setEnemySpawnPoints(point1:CGPoint, point2:CGPoint, point3:CGPoint, point4: CGPoint, point5:CGPoint) {
-    
-    enemySpawnPoints.append(point1)
-    enemySpawnPoints.append(point2)
-    enemySpawnPoints.append(point3)
-    enemySpawnPoints.append(point4)
-    enemySpawnPoints.append(point5)
-    
-}
 
-func getRandomEnemyPoint() -> CGPoint {
-    
-    let randomPoint = Int(arc4random_uniform(5))
-    print("enemy spawn point is point: \(randomPoint)")
-    let point = enemySpawnPoints[randomPoint]
-    
-    return point
+//build monster texture atlas
+func setEnemyTexture() {
+    monsterTextures = []
+    let TextureAtlas = SKTextureAtlas(named: "zombieWalk")
+    var Name = ""
+    for i in 01...(TextureAtlas.textureNames.count - 1) {
+        if i < 10 {
+            Name = "walk0\(i)"
+        }else {
+            Name = "walk\(i)"
+        }
+        
+        monsterTextures.append(SKTexture(imageNamed: Name))
+    }
+    print("number in monsterTextures: \(monsterTextures.count)")
+   
 }
 
 

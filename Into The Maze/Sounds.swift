@@ -12,5 +12,5 @@ import AVFoundation
 
 
 enum Sound {
-    case alarmSound, redeemSound, shiftSound, abilitySound, gunSound, buttonPress, buttonClick, gameSound, explosionSound, freezeSound
+    case alarmSound, redeemSound, shiftSound, abilitySound, gunSound, buttonPress, buttonClick, gameSound, explosionSound, freezeSound, spawnSound
 }

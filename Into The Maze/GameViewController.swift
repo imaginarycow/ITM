@@ -33,6 +33,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     var gameSound: AVAudioPlayer?
     var explosionSound: AVAudioPlayer?
     var freezeSound: AVAudioPlayer?
+    var spawnSound: AVAudioPlayer?
     
 
     override func viewDidLoad() {
@@ -45,8 +46,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         // Configure the view.
         let skView = self.view as! SKView
         skView.multipleTouchEnabled = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.showsPhysics = false
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
@@ -109,6 +110,11 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.freezeSound = setupAudioPlayerWithFile("freeze", type: "wav")
             self.freezeSound?.volume = 1.0
             self.freezeSound?.play()
+        case .spawnSound:
+            self.spawnSound = setupAudioPlayerWithFile("spawnSound", type: "wav")
+            self.spawnSound?.volume = 0.2
+            self.spawnSound?.play()
+            
         default:
             self.abilityUse = setupAudioPlayerWithFile("laser2", type: "wav")
              self.abilityUse?.play()
@@ -177,11 +183,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .Landscape
-        } else {
-            return .All
-        }
+        
+        return .Landscape
+        
     }
     
 }

@@ -231,38 +231,38 @@ extension GameScene {
             if x > maxX * 0.25 {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
 
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.EastNorthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
 
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.East
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
 
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.EastSouthEast
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                 }
                 
             }
@@ -270,38 +270,38 @@ extension GameScene {
             if x < -maxX * 0.25 {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.WestNorthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.West
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.WestSouthWest
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                 }
 
             }
@@ -309,13 +309,13 @@ extension GameScene {
             if x >= -maxX * 0.25 && x <= maxX * 0.25 {
                 if y > 0 {
                     currentDirection = PlayerDirection.North
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                     
                 }else {
                     currentDirection = PlayerDirection.South
-                    self.turnNode(Player!, direction: currentDirection)
-                    self.turnNode(playerBase, direction: currentDirection)
+                    turnNode(Player!, direction: currentDirection)
+                    turnNode(playerBase, direction: currentDirection)
                 }
             }
 
