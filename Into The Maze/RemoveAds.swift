@@ -46,9 +46,9 @@ extension MainMenuScene:  SKProductsRequestDelegate, SKPaymentTransactionObserve
                 print("Purchased Failed")
                 let alert = UIAlertView(title: "Purchase failed", message: "Please try again.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
-                queue.finishTransaction(transaction)
             case .Restored:
                 restoreTransaction(transaction)
+                queue.finishTransaction(transaction)
                 break
             case .Deferred:
                 break

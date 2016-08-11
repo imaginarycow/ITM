@@ -38,7 +38,7 @@ var currentDirection:PlayerDirection!
 var Player : SKSpriteNode?
 var playerPosition: CGPoint = (Player?.position)!
 
-let playerBase = SKSpriteNode(imageNamed: "directionArrow.png")
+let playerGun = SKSpriteNode(imageNamed: "gun.png")
 var finishPosition = CGPoint(x: 0,y: 0)
 
 var box1Width:CGFloat = 0.0
@@ -151,12 +151,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         currentDirection = PlayerDirection.East
         turnNode(Player!, direction: currentDirection)
         
-        playerBase.zPosition = 50
-        playerBase.size = CGSize(width: (Player?.size.width)!, height: Player!.size.height)
-        //turnNode(playerBase, direction: currentDirection)
-        playerBase.alpha = 0.9
-        playerBase.position = (Player?.position)!
-        addChild(playerBase)
+        playerGun.zPosition = 50
+        playerGun.size = CGSize(width: (Player?.size.width)!, height: Player!.size.height * 1.5)
+        turnNode(playerGun, direction: currentDirection)
+        playerGun.alpha = 1.0
+        playerGun.position = (Player?.position)!
+        addChild(playerGun)
     }
     
         
@@ -454,7 +454,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: NSTimeInterval) {
         
-        playerBase.position = (Player!.position)
+        playerGun.position = (Player!.position)
         
         if checkForInBounds(Player!) == false {
             print("player went out of bounds, replacing at spawn point")

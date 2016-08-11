@@ -21,7 +21,7 @@ class Maze1GameScene: GameScene {
     override func didMoveToView(view: SKView) {
         
         playerSpawn = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
-        finishPosition = CGPoint(x: ((scene?.size.width)! * 0.8), y: (scene?.size.height)! * 0.8)
+        finishPosition = CGPoint(x: ((scene?.size.width)! * 0.9), y: (scene?.size.height)! * 0.85)
         createNewScene()
         buildOuterTriangle()
         buildMiddleTriangle()

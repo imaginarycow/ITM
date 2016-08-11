@@ -64,6 +64,10 @@ extension GameScene {
         finishFlag.physicsBody?.contactTestBitMask = playerCategory
         finishFlag.physicsBody?.collisionBitMask = playerCategory
         self.addChild(finishFlag)
+        
+        let fadeIn = SKAction.fadeAlphaTo(1.0, duration: 1.5)
+        let fadeOut = SKAction.fadeAlphaTo(0.0, duration: 1.5)
+        finishFlag.runAction((SKAction.repeatActionForever(SKAction.sequence([fadeIn,fadeOut]))))
     }
     
     //called when player killed in maze
@@ -188,10 +192,10 @@ extension GameScene {
     
     func removeTreasure(node: SKNode) {
         node.removeFromParent()
-        let treasureLabel = SKLabelNode(text: "Got the Treasure")
+        let treasureLabel = SKLabelNode(text: "Got the loot!")
         treasureLabel.zPosition = 100
         treasureLabel.fontName = labelFont
-        treasureLabel.fontSize = 24.0
+        treasureLabel.fontSize = 24.0 * scale
         treasureLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         treasureLabel.fontColor = .greenColor()
         scene?.addChild(treasureLabel)
@@ -232,37 +236,37 @@ extension GameScene {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
 
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.EastNorthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
 
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.East
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
 
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
 
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
 
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.EastSouthEast
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                 }
                 
             }
@@ -271,37 +275,37 @@ extension GameScene {
                 if y > maxY * 0.75 {
                     currentDirection = PlayerDirection.NorthNorthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y > maxY * 0.5 {
                     currentDirection = PlayerDirection.NorthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y > maxY * 0.25 {
                     currentDirection = PlayerDirection.WestNorthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y <= maxY * 0.25 && y >= -maxY * 0.25 {
                     currentDirection = PlayerDirection.West
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y < -maxY * 0.75 {
                     currentDirection = PlayerDirection.SouthSouthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y < -maxY * 0.5 {
                     currentDirection = PlayerDirection.SouthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else if y < -maxY * 0.25 {
                     currentDirection = PlayerDirection.WestSouthWest
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                 }
 
             }
@@ -310,12 +314,12 @@ extension GameScene {
                 if y > 0 {
                     currentDirection = PlayerDirection.North
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                     
                 }else {
                     currentDirection = PlayerDirection.South
                     turnNode(Player!, direction: currentDirection)
-                    turnNode(playerBase, direction: currentDirection)
+                    turnNode(playerGun, direction: currentDirection)
                 }
             }
 

@@ -187,7 +187,8 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             
             if restorePurchasesLabel.containsPoint(location) {
                 vc.playSoundEffect(.buttonPress)
-                buyProduct("net.beliro.Maze.removeAds")
+                //buyProduct("net.beliro.Maze.removeAds")
+                restorePurchases()
             }
             
             if helpLabel.containsPoint(location) {
@@ -213,7 +214,12 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         restorePurchasesLabel.position = CGPoint(x: (scene?.size.width)! * 0.06, y: (scene?.size.height)! * 0.5)
         restorePurchasesLabel.size = CGSize(width: scaledWidth, height: scaledHeight)
         
-        goLabel.position = CGPoint(x: scene!.size.width/2, y: (scene?.size.height)! * 0.41)
+        if self.scene?.size.height >= 750 {
+            goLabel.position = CGPoint(x: scene!.size.width/2, y: (scene?.size.height)! * 0.44)
+        }else {
+            goLabel.position = CGPoint(x: scene!.size.width/2, y: (scene?.size.height)! * 0.41)
+        }
+        
         goLabel.fontColor = .whiteColor()
         goLabel.fontName = labelFont
         goLabel.zPosition = 100
@@ -237,8 +243,14 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     }
     
     func animateTextField(textField: UITextField, up: Bool) {
-        let movementDistance:CGFloat = -140
+        var movementDistance:CGFloat = 0
         let movementDuration: Double = 0.3
+        
+        if scale > 1.35 {
+            movementDistance = -180
+        }else {
+            movementDistance = -140
+        }
         
         var movement:CGFloat = 0
         if up {

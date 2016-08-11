@@ -87,7 +87,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.buttonPress?.volume = 0.3
             self.buttonPress?.play()
         case .gunSound:
-            self.gunShot = setupAudioPlayerWithFile("laserSound", type: "wav")
+            //self.gunShot = setupAudioPlayerWithFile("laserSound", type: "wav")
+            self.gunShot = setupAudioPlayerWithFile("m4a1", type: "wav")
             self.gunShot?.volume = 0.4
             self.gunShot?.play()
         case .redeemSound:
@@ -127,7 +128,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         if let bgMusic = setupAudioPlayerWithFile("menuBg", type: "mp3") {
             self.bgMusic = bgMusic
         }
-        self.bgMusic?.numberOfLoops = 5
+        self.bgMusic?.numberOfLoops = 10
         self.bgMusic?.volume = 1.0
         self.bgMusic?.play()
     }

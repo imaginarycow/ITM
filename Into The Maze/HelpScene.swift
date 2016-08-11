@@ -35,7 +35,7 @@ class HelpScene: SKScene{
         addChild(title)
         
         backButton.fontName = labelFont
-        backButton.fontSize = 12.0 * scale
+        backButton.fontSize = 14.0 * scale
         backButton.color = .redColor()
         backButton.position = CGPoint(x: (scene?.size.width)! * 0.1, y: (scene?.size.height)! * 0.85)
         addChild(backButton)
@@ -47,14 +47,14 @@ class HelpScene: SKScene{
         text1.color = mazeColor
         text1.fontSize = 16.0 * scale
         text1.fontName = "TimesNewRomanPS-BoldMT"
-        text1.text = "1. Pick an ability to use in the maze"
+        text1.text = "1. Choose an ability"
         text1.position = CGPoint(x: (self.scene?.size.width)!/2, y: (scene?.size.height)! * 0.7)
         
         let text2 = SKLabelNode(text: "")
         text2.color = mazeColor
         text2.fontSize = 16.0 * scale
         text2.fontName = "TimesNewRomanPS-BoldMT"
-        text2.text = "2. Pick a maze"
+        text2.text = "2. Choose a maze"
         text2.position = CGPoint(x: (self.scene?.size.width)!/2, y: (scene?.size.height)! * 0.6)
         
         let text3 = SKLabelNode(text: "")
@@ -75,7 +75,7 @@ class HelpScene: SKScene{
         text5.color = mazeColor
         text5.fontSize = 16.0 * scale
         text5.fontName = "TimesNewRomanPS-BoldMT"
-        text5.text = "5. Get out alive!"
+        text5.text = "5. Get to the checkpoint alive!"
         text5.position = CGPoint(x: (self.scene?.size.width)!/2, y: (scene?.size.height)! * 0.3)
         
         let text6 = SKLabelNode(text: "")

@@ -74,35 +74,35 @@ class AbilitySelectScene: SKScene {
         
         for i in 0...2 {
             
-            let icon = SKShapeNode(circleOfRadius: 30.0)
+            let icon = SKShapeNode(circleOfRadius: 30.0 * scale)
             icon.fillColor = SKColor.whiteColor()
             icon.strokeColor = .clearColor()
             
             let iconTitle = SKLabelNode()
             iconTitle.fontColor = mazeColor
             iconTitle.fontName = "TimesNewRomanPS-BoldMT"
-            iconTitle.fontSize = 16.0
+            iconTitle.fontSize = 16.0 * scale
             
             if i == 0 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.7)
                 icon.name = "Brick Breaker"
                 icon.fillTexture = SKTexture(imageNamed: "brickBreaker.png")
-                iconTitle.text = "Brick Breaker - face a wall, and blast it!"
-                iconTitle.position = CGPoint(x: self.size.width * 0.6 , y: self.size.height * 0.7)
+                iconTitle.text = "Brick Breaker"
+                iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.7)
             }
             if i == 1 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.5)
                 icon.name = "InstaKill"
                 icon.fillTexture = SKTexture(imageNamed: "instakill.png")
-                iconTitle.text = "InstaKill - instantly kill all enemies!"
-                iconTitle.position = CGPoint(x: self.size.width * 0.6 , y: self.size.height * 0.5)
+                iconTitle.text = "InstaKill"
+                iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
             }
             if i == 2 {
                 icon.position = CGPoint(x: self.size.width * 0.2 , y: self.size.height * 0.3)
                 icon.name = "Time Freeze"
                 icon.fillTexture = SKTexture(imageNamed: "timeFreeze.png")
-                iconTitle.text = "Time Freeze - stop the maze shift for 10 seconds!"
-                iconTitle.position = CGPoint(x: self.size.width * 0.6 , y: self.size.height * 0.3)
+                iconTitle.text = "Time Freeze"
+                iconTitle.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.3)
             }
 
             iconArray.append(icon)
@@ -128,7 +128,7 @@ class AbilitySelectScene: SKScene {
         playerNameLabel.fontSize = 31.0
         self.addChild(playerNameLabel)
         
-        backButton.fontSize = 14.0
+        backButton.fontSize = 14.0 * scale
         backButton.fontColor = .redColor()
         backButton.fontName = labelFont
         backButton.position = CGPoint(x: self.size.width * 0.06, y: self.size.height * 0.92)
