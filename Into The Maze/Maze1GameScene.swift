@@ -21,12 +21,14 @@ class Maze1GameScene: GameScene {
     override func didMoveToView(view: SKView) {
         
         playerSpawn = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
+        finishPosition = CGPoint(x: ((scene?.size.width)! * 0.8), y: (scene?.size.height)! * 0.8)
         createNewScene()
         buildOuterTriangle()
         buildMiddleTriangle()
         buildInnerTriangle()
+        updateShiftTimer()
         updateClock()
-        setEnemySpawnPoints(CGPointMake((scene?.size.width)!/2, (scene?.size.height)!/2), point2: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.85), point3: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.2), point4: CGPointMake((scene?.size.width)! * 0.8, (scene?.size.height)!/2), point5: CGPointMake((scene?.size.width)! * 0.1, (scene?.size.height)!/2))
+        setEnemySpawnPoints(CGPointMake((scene?.size.width)!/2, (scene?.size.height)!/2), point2: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.85), point3: CGPointMake((scene?.size.width)!/2, (scene?.size.height)! * 0.2), point4: CGPointMake((scene?.size.width)! * 0.8, (scene?.size.height)!/2), point5: CGPointMake((scene?.size.width)! * 0.1, (scene?.size.height)! * 0.3))
     }
     
     override func willMoveFromView(view: SKView) {
@@ -36,9 +38,15 @@ class Maze1GameScene: GameScene {
         parent4.removeAllActions()
         parent5.removeAllActions()
         parent6.removeAllActions()
+        box1.removeAllActions()
         box1.removeAllChildren()
+        box1.removeFromParent()
+        box2.removeAllActions()
         box2.removeAllChildren()
+        box2.removeFromParent()
+        box3.removeAllActions()
         box3.removeAllChildren()
+        box3.removeFromParent()
     }
     
     func buildOuterTriangle() {
@@ -210,7 +218,7 @@ class Maze1GameScene: GameScene {
     //maze1 shift1 animation
     func maze1Shift(index: Int) {
         
-        let duration = 3.0
+        let duration = 6.0
         
         if index % 2 == 0 {
             
@@ -289,7 +297,7 @@ class Maze1GameScene: GameScene {
     } // End: Maze1Shift
 
     //maze shift timer
-    func updateClock() {
+    func updateShiftTimer() {
         
         timer.position = CGPoint(x: frame.size.width * 0.15, y: frame.size.height * 0.80)
         timer.fontName = labelFont
@@ -304,9 +312,9 @@ class Maze1GameScene: GameScene {
             
             //check if user is using TimeFreeze ability
             if timerIsFrozen {
-                self.timer.fontColor = SKColor.blueColor()
+                self.timer.fontColor = freezeColor
                 self.timer.text = "Time Freeze"
-                if freezeTimer > 8 {
+                if freezeTimer > 9 {
                     let texture = SKTexture(imageNamed: "spark.png")
                     let sparks = createSpark(texture, point: CGPointZero, target: self.timer)
                     self.timer.addChild(sparks)

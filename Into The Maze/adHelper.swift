@@ -11,7 +11,7 @@ import UIKit
 import SpriteKit
 
 // bool to see if ad banner should load
-var adsRemoved = false
+var adsRemoved = gameData.boolForKey("adsRemoved")
 
 extension GameScene: AdMobDelegate {
     

@@ -40,15 +40,117 @@ func checkForInBounds(node: SKSpriteNode) -> Bool{
 //GameScene Helper Methods
 extension GameScene {
     
+    func updateClock() {
+        totalTime = 0
+        let actionwait = SKAction.waitForDuration(1.0)
+        var seconds = 0
+        let actionrun = SKAction.runBlock({
+            
+            self.totalTime += 1
+        })
+        self.timer.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
+
+    }
+    
+    func setFinishFlag(position: CGPoint) {
+        
+        finishFlag.size = CGSize(width: 20.0 * scale, height: 30.0 * scale)
+        finishFlag.position = position
+        finishFlag.zPosition = 100
+        let rad: CGFloat = finishFlag.size.width
+        finishFlag.physicsBody = SKPhysicsBody(circleOfRadius: rad)
+        finishFlag.physicsBody?.usesPreciseCollisionDetection = true
+        finishFlag.physicsBody?.categoryBitMask = finishCategory
+        finishFlag.physicsBody?.contactTestBitMask = playerCategory
+        finishFlag.physicsBody?.collisionBitMask = playerCategory
+        self.addChild(finishFlag)
+    }
+    
     //called when player killed in maze
     func playerDied() {
         
-        vc.gameSound?.stop()
+        vc.alarmSound?.pause()
+        vc.alarmSound?.stop()
+        
+        let notification = SKLabelNode(text: "You Died!")
+        notification.position = centerOfScene
+        notification.fontName = labelFont
+        notification.fontColor = .redColor()
+        notification.fontSize = 50.0 * scale
+        notification.zPosition = 100
+        box1 = SKSpriteNode()
+        box2 = SKSpriteNode()
+        box3 = SKSpriteNode()
+        box4 = SKSpriteNode()
+        self.scene?.removeAllActions()
+        self.scene?.removeAllChildren()
+        addChild(notification)
+        
+        delay(2.0) {
+            
+            vc.gameSound?.pause()
+            vc.gameSound?.stop()
+            self.scene?.removeAllChildren()
+            
+            if adsRemoved == false {
+                
+                AdMob.sharedInstance.showInterstitial()
+            }else {
+                self.goBackToPreviousScene()
+            }
+
+        }
     }
     
     func playerBeatMaze(level: Int) {
         
-        vc.gameSound?.stop()
+        vc.alarmSound?.pause()
+        vc.alarmSound?.stop()
+        
+        let notification = SKLabelNode(text: "You Beat the Maze")
+        notification.position = centerOfScene
+        notification.fontName = labelFont
+        notification.fontColor = mazeColor
+        notification.fontSize = 50.0 * scale
+        notification.zPosition = 100
+        
+        //convert time if seconds > 60 
+        var minutes = 0
+        var seconds = totalTime
+        if totalTime >= 60 {
+            minutes = (totalTime / 60) % 60
+            seconds = (totalTime % 60)
+        }
+        
+        let notification2 = SKLabelNode(text: "in \(minutes) minutes, \(seconds) seconds!")
+        notification2.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y - 60.0)
+        notification2.fontName = labelFont
+        notification2.fontColor = mazeColor
+        notification2.fontSize = 30.0 * scale
+        notification2.zPosition = 100
+        box1 = SKSpriteNode()
+        box2 = SKSpriteNode()
+        box3 = SKSpriteNode()
+        box4 = SKSpriteNode()
+        self.scene?.removeAllActions()
+        self.scene?.removeAllChildren()
+        addChild(notification)
+        addChild(notification2)
+        
+        delay(3.0) {
+            vc.gameSound?.pause()
+            vc.gameSound?.stop()
+            self.scene?.removeAllChildren()
+            
+            if adsRemoved == false {
+                
+                AdMob.sharedInstance.showInterstitial()
+            }else {
+                self.goBackToPreviousScene()
+            }
+            
+        }
+
     }
     
     //super bullet for brick breaker ability

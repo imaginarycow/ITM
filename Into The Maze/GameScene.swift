@@ -11,7 +11,7 @@ import SpriteKit
 import AVFoundation
 import GoogleMobileAds
 
-
+var centerOfScene = CGPoint()
 var activeScene: SKScene!
 var boundingBox = SKSpriteNode()
 var outerWall = [SKSpriteNode]()
@@ -39,24 +39,25 @@ var Player : SKSpriteNode?
 var playerPosition: CGPoint = (Player?.position)!
 var playerSpawn: CGPoint!
 let playerBase = SKSpriteNode(imageNamed: "directionArrow.png")
+var finishPosition = CGPoint(x: 0,y: 0)
 
 var box1Width:CGFloat = 0.0
-let box1 = SKSpriteNode()
-let box2 = SKSpriteNode()
-let box3 = SKSpriteNode()
-let box4 = SKSpriteNode()
+var box1 = SKSpriteNode()
+var box2 = SKSpriteNode()
+var box3 = SKSpriteNode()
+var box4 = SKSpriteNode()
 
 var timerIsFrozen = false
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    
+    var totalTime:Int = 0
     var levelScore = 0
     let scoreLabel = SKLabelNode(fontNamed: labelFont)
     var mazeShiftIndex = 0
     let timer = SKLabelNode(text: "")
     let center = SKSpriteNode(imageNamed: "diamond.png")
-    let finish = SKSpriteNode(imageNamed: "finish.png")
+    let finishFlag = SKSpriteNode(imageNamed: "finish.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
     
@@ -78,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //call to all functions for new scene
     func createNewScene() {
-        
+        centerOfScene = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
         activeScene = self
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
@@ -104,19 +105,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createNewMonster(point: CGPoint) {
         
-        let monster = Monster(id: monsterIndex)
-        monsterIndex += 1
-        monster.position = point
-        monster.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
-        monster.zPosition = 100
-        monster.name = "monster"
-    
-        monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.frame.size)
-        monster.physicsBody?.usesPreciseCollisionDetection = true
-        monster.physicsBody?.categoryBitMask = monsterCategory
-        monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-        monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-        addChild(monster)
+        let spawnImage = SKSpriteNode(imageNamed: "teleport.png")
+        spawnImage.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
+        spawnImage.position = point
+        spawnImage.zPosition = 50
+        spawnImage.alpha = 0.0
+        addChild(spawnImage)
+        let fade = SKAction.fadeInWithDuration(1.0)
+        spawnImage.runAction(fade)
+        
+        delay(1.5) {
+            let monster = Monster(id: monsterIndex)
+            monsterIndex += 1
+            monster.position = point
+            monster.size = CGSize(width: monsterSize * scale, height: monsterSize * scale)
+            monster.zPosition = 100
+            monster.name = "monster"
+            
+            monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.frame.size)
+            monster.physicsBody?.usesPreciseCollisionDetection = true
+            monster.physicsBody?.categoryBitMask = monsterCategory
+            monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
+            monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
+            self.addChild(monster)
+            
+            spawnImage.removeFromParent()
+        }
+        
     }
     
     func createNewPlayer() {
@@ -135,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerBase.zPosition = 50
         playerBase.size = CGSize(width: (Player?.size.width)!, height: Player!.size.height)
-        turnNode(playerBase, direction: currentDirection)
+        //turnNode(playerBase, direction: currentDirection)
         playerBase.alpha = 0.9
         playerBase.position = (Player?.position)!
         addChild(playerBase)
@@ -263,22 +278,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene!.addChild(abilityControl)
     }
     
-    func setAbilityToken() {
-        
-        //TODO: set ability token position in each MazeScene
-        abilityToken.zPosition = 200
-        abilityToken.size = CGSize(width: 20.0 * scale, height: 20.0 * scale)
-        abilityToken.physicsBody = SKPhysicsBody(circleOfRadius: abilityToken.size.width/2)
-        abilityToken.physicsBody?.dynamic = false
-        abilityToken.physicsBody?.usesPreciseCollisionDetection = true
-        abilityToken.physicsBody?.categoryBitMask = abilityCategory
-        abilityToken.physicsBody?.contactTestBitMask = playerCategory
-        let abilityFadeOut = SKAction.fadeAlphaTo(0.0, duration: 1.0)
-        let abilityFadeIn = SKAction.fadeAlphaTo(1.0, duration: 1.0)
-        let abilityAction = SKAction.sequence([abilityFadeOut,abilityFadeIn])
-        abilityToken.runAction(SKAction.repeatActionForever(abilityAction))
-    }
-    
     //box that encloses entire scene
     //so as not to let player go off-screen
     func createBoundingBox() {
@@ -334,16 +333,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         monstersArray = []
         Player?.removeFromParent()
-
+        abilityToken = SKSpriteNode()
         boundingBox.removeAllChildren()
         boundingBox.removeFromParent()
-        box1.removeAllActions()
         box1.removeAllChildren()
-        box1.removeFromParent()
         box2.removeAllChildren()
-        box2.removeFromParent()
         box3.removeAllChildren()
-        box3.removeFromParent()
+        box4.removeAllChildren()
+        box1 = SKSpriteNode()
+        box2 = SKSpriteNode()
+        box3 = SKSpriteNode()
+        box4 = SKSpriteNode()
         self.removeAllActions()
         self.removeAllChildren()
         self.scene?.removeAllActions()
@@ -351,6 +351,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let transition = SKTransition.crossFadeWithDuration(1.0)
         self.scene!.view?.presentScene(mazeSelectScene, transition: transition)
+        self.scene?.removeFromParent()
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -451,12 +452,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == monsterCategory) {
             print("Monster got player, player died")
-            //playerDied()
+            playerDied()
         }
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == centerCategory) {
             print("Player got treasure")
             vc.playSoundEffect(.redeemSound)
             removeTreasure(secondBody.node!)
+            setFinishFlag(finishPosition)
             //TODO: Show animation
         }
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == abilityCategory) {
@@ -473,18 +475,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             removeBullet(firstBody.node!)
             updateScore(25)
         }
-        if (firstBody.categoryBitMask == boundingBoxCategory && secondBody.categoryBitMask == monsterCategory) {
-            print("")
-            //removeEnemy(secondBody.node!)
-        }
-        if (firstBody.categoryBitMask == monsterCategory && secondBody.categoryBitMask == brickCategory) {
-            
+        if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == finishCategory) {
+            print("Player beat maze")
+            playerBeatMaze(level)
         }
         if (firstBody.categoryBitMask == brickCategory && secondBody.categoryBitMask == superBulletCategory) {
             print("superBullet hit wall")
             if let superNode = secondBody.node {
                 removeBullet(superNode)
             }
+            vc.playSoundEffect(.explosionSound)
             createAnimationAtPoint(self, point: contactPoint)
             removeBrick(firstBody.node!)
         }
@@ -532,15 +532,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let firstPosition = monster.position
                 monster.position = monster.moveMonster(monster.position, point2: Player!.position)
                 
-                //check if monster is stuck on wall
-                if (monster.position.x == firstPosition.x) || (monster.position.y == firstPosition.y) {
-                    if monster.position.x == firstPosition.x {
-                        monster.position = monster.moveMonsterAgain(Player!.position, point2: monster.position, stuck: Stuck.x)
-                    }else {
-                        monster.position = monster.moveMonsterAgain(Player!.position, point2: monster.position, stuck: Stuck.y)
-                    }
+                //check if monster is stuck on wall and teleport accordingly
+                if (monster.position.x > Player?.position.x) && (monster.position.x >= firstPosition.x) {
                     
+                    monster.position = monster.teleportMonster(monster.position, direction: .left)
                 }
+                if (monster.position.x < Player?.position.x) && (monster.position.x <= firstPosition.x) {
+                    
+                    monster.position = monster.teleportMonster(monster.position, direction: .right)
+                }
+                if (monster.position.y > Player?.position.y) && (monster.position.y >= firstPosition.y) {
+                    
+                    monster.position = monster.teleportMonster(monster.position, direction: .down)
+                }
+                if (monster.position.y < Player?.position.y) && (monster.position.y <= firstPosition.y) {
+                    
+                    monster.position = monster.teleportMonster(monster.position, direction: .up)
+                }
+//                    if (monster.position.x > Player?.position.x) && (monster.position.y == Player?.position.y) {
+//                        monster.position = monster.teleportMonster(monster.position, direction: .left)
+//                    }
+//                    if (monster.position.y < Player?.position.y) && (monster.position.x == Player?.position.x) {
+//                        monster.position = monster.teleportMonster(monster.position, direction: .up)
+//                    }
+//                    if (monster.position.y > Player?.position.y) && (monster.position.x == Player?.position.x) {
+//                        monster.position = monster.teleportMonster(monster.position, direction: .down)
+//                    }
+
+                
             }
         }
     }

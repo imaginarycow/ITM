@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum ParticleType {
-    case fire, spark
+    case fire, spark, ice
 }
 
 var fireCount = 0
@@ -113,3 +113,20 @@ func createSpark(texture:SKTexture, point:CGPoint, target: SKNode) -> SKEmitterN
     return spark
     
 }
+
+let ice = NSBundle.mainBundle().pathForResource("ice", ofType: "sks")
+let iceParticle1 = NSKeyedUnarchiver.unarchiveObjectWithFile(ice!) as! SKEmitterNode
+
+func createIce(point:CGPoint, target: SKNode) -> SKEmitterNode{
+    
+    let iceParticle = iceParticle1
+    
+    iceParticle.resetSimulation()
+    iceParticle.position = point
+    iceParticle.targetNode = target
+    iceParticle.zPosition = 100
+    
+    return iceParticle
+    
+}
+

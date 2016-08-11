@@ -90,12 +90,17 @@
 		B5B099691D54F21600B6C02D /* fire6.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5B099681D54F21600B6C02D /* fire6.sks */; };
 		B5B0996B1D5500DE00B6C02D /* fire7.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5B0996A1D5500DE00B6C02D /* fire7.sks */; };
 		B5B0996D1D5500EC00B6C02D /* fire8.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5B0996C1D5500EC00B6C02D /* fire8.sks */; };
-		B5B099731D55536800B6C02D /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099721D55536800B6C02D /* monster.png */; };
 		B5B099751D55542500B6C02D /* fireTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099741D55542500B6C02D /* fireTexture.png */; };
 		B5B099771D5555EB00B6C02D /* laserSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5B099761D5555EB00B6C02D /* laserSound.wav */; };
 		B5B099791D55985A00B6C02D /* brickTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099781D55985A00B6C02D /* brickTexture.png */; };
-		B5B0997F1D55A15B00B6C02D /* directionArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B0997E1D55A15B00B6C02D /* directionArrow.png */; };
 		B5B099811D56680C00B6C02D /* maze1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099801D56680C00B6C02D /* maze1.png */; };
+		B5B099841D58E73300B6C02D /* directionArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099831D58E73300B6C02D /* directionArrow.png */; };
+		B5B099861D58EC9800B6C02D /* teleport.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099851D58EC9800B6C02D /* teleport.png */; };
+		B5B099881D5910E300B6C02D /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B099871D5910E300B6C02D /* monster.png */; };
+		B5B0998A1D5B8B5400B6C02D /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5B099891D5B8B5400B6C02D /* explosion.wav */; };
+		B5B0998D1D5BCEC200B6C02D /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5B0998C1D5BCEC200B6C02D /* freeze.wav */; };
+		B5B0998F1D5BD06F00B6C02D /* ice.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5B0998E1D5BD06F00B6C02D /* ice.sks */; };
+		B5B099911D5BDDA800B6C02D /* RemoveAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B099901D5BDDA800B6C02D /* RemoveAds.swift */; };
 		B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */; };
 		B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */; };
 		B5FF5F101D4CEBDC00B53CEB /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF5F0F1D4CEBDC00B53CEB /* Sounds.swift */; };
@@ -230,12 +235,17 @@
 		B5B099681D54F21600B6C02D /* fire6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire6.sks; sourceTree = "<group>"; };
 		B5B0996A1D5500DE00B6C02D /* fire7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire7.sks; sourceTree = "<group>"; };
 		B5B0996C1D5500EC00B6C02D /* fire8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire8.sks; sourceTree = "<group>"; };
-		B5B099721D55536800B6C02D /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 		B5B099741D55542500B6C02D /* fireTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireTexture.png; sourceTree = "<group>"; };
 		B5B099761D5555EB00B6C02D /* laserSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laserSound.wav; sourceTree = "<group>"; };
 		B5B099781D55985A00B6C02D /* brickTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brickTexture.png; sourceTree = "<group>"; };
-		B5B0997E1D55A15B00B6C02D /* directionArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directionArrow.png; sourceTree = "<group>"; };
 		B5B099801D56680C00B6C02D /* maze1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze1.png; sourceTree = "<group>"; };
+		B5B099831D58E73300B6C02D /* directionArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directionArrow.png; sourceTree = "<group>"; };
+		B5B099851D58EC9800B6C02D /* teleport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teleport.png; sourceTree = "<group>"; };
+		B5B099871D5910E300B6C02D /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		B5B099891D5B8B5400B6C02D /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		B5B0998C1D5BCEC200B6C02D /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
+		B5B0998E1D5BD06F00B6C02D /* ice.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ice.sks; sourceTree = "<group>"; };
+		B5B099901D5BDDA800B6C02D /* RemoveAds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveAds.swift; sourceTree = "<group>"; };
 		B5FF5F0B1D4BDAA200B53CEB /* abilityToken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityToken.png; sourceTree = "<group>"; };
 		B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityHelper.swift; sourceTree = "<group>"; };
 		B5FF5F0F1D4CEBDC00B53CEB /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
@@ -340,6 +350,7 @@
 		B59BCC8E1C5D760C007DAA27 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B5B099901D5BDDA800B6C02D /* RemoveAds.swift */,
 				B5790FA61D4963E600608F7F /* BrickBuilder.swift */,
 				B53479CD1D2C40ED001110CA /* MazeBuilders.swift */,
 				B53479C71D2C3281001110CA /* GameSceneHelperMethods.swift */,
@@ -421,14 +432,15 @@
 				B5B0995E1D54E05800B6C02D /* explosion.png */,
 				B5790FAC1D4B04C200608F7F /* brickBreaker.png */,
 				B5FF5F281D4D059800B53CEB /* diamond.png */,
+				B5B099831D58E73300B6C02D /* directionArrow.png */,
 				B5B099601D54E5FD00B6C02D /* finish.png */,
 				B51FBBDD1D432CED008DCF94 /* random.png */,
+				B5B099851D58EC9800B6C02D /* teleport.png */,
+				B5B099871D5910E300B6C02D /* monster.png */,
 				B5B099741D55542500B6C02D /* fireTexture.png */,
-				B5B099721D55536800B6C02D /* monster.png */,
 				B51FBBE21D433CB7008DCF94 /* flash.png */,
 				B51FBBDB1D431B5E008DCF94 /* arrow.png */,
 				B5B099781D55985A00B6C02D /* brickTexture.png */,
-				B5B0997E1D55A15B00B6C02D /* directionArrow.png */,
 				B5790FAE1D4B0C1000608F7F /* timeFreeze.png */,
 				B5790FAA1D4AC36300608F7F /* instakill.png */,
 				B51A1B1E1D4B21F800B2BFF2 /* brick.png */,
@@ -506,10 +518,12 @@
 				B5FF5F361D524E2100B53CEB /* background.wav */,
 				B5FF5F261D4D04D800B53CEB /* laser2.wav */,
 				B5FF5F241D4D03DF00B53CEB /* click.wav */,
+				B5B099891D5B8B5400B6C02D /* explosion.wav */,
 				B5FF5F221D4D007000B53CEB /* buttonPress.wav */,
 				B5FF5F201D4CFEF100B53CEB /* shotgun.wav */,
 				B5FF5F1E1D4CFD5A00B53CEB /* laser.wav */,
 				B5B099761D5555EB00B6C02D /* laserSound.wav */,
+				B5B0998C1D5BCEC200B6C02D /* freeze.wav */,
 				B5FF5F1C1D4CFAC700B53CEB /* abilitySound.wav */,
 				B5FF5F1A1D4CF90D00B53CEB /* shiftSound.wav */,
 				B5FF5F341D5064CA00B53CEB /* alarm2.wav */,
@@ -534,6 +548,7 @@
 				B5FF5F3A1D52786800B53CEB /* spark1.sks */,
 				B5FF5F3E1D52816700B53CEB /* spark2.sks */,
 				B5790FA31D4907C500608F7F /* spark.png */,
+				B5B0998E1D5BD06F00B6C02D /* ice.sks */,
 			);
 			name = ParticleEmitters;
 			sourceTree = "<group>";
@@ -608,7 +623,7 @@
 						DevelopmentTeam = VHQ88CT5TL;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -648,6 +663,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FF5F441D53CD4A00B53CEB /* superBullet.png in Resources */,
+				B5B099881D5910E300B6C02D /* monster.png in Resources */,
+				B5B099841D58E73300B6C02D /* directionArrow.png in Resources */,
 				B5B099751D55542500B6C02D /* fireTexture.png in Resources */,
 				B5FF5F251D4D03DF00B53CEB /* click.wav in Resources */,
 				B51FBBE31D433CB7008DCF94 /* flash.png in Resources */,
@@ -657,12 +674,14 @@
 				B54295131C614254007119F7 /* walkCycle.atlas in Resources */,
 				B51FBBEF1D457CDF008DCF94 /* substrate.png in Resources */,
 				B5790FA41D4907C500608F7F /* fire1.sks in Resources */,
+				B5B0998D1D5BCEC200B6C02D /* freeze.wav in Resources */,
 				B5B0996B1D5500DE00B6C02D /* fire7.sks in Resources */,
 				B5B0995F1D54E05800B6C02D /* explosion.png in Resources */,
 				B51FBBE91D457706008DCF94 /* restorePurchasesIcon.png in Resources */,
 				B51FBBEB1D45784A008DCF94 /* removeAds.png in Resources */,
 				B5B0996D1D5500EC00B6C02D /* fire8.sks in Resources */,
 				B5FF5F3F1D52816700B53CEB /* spark2.sks in Resources */,
+				B5B0998F1D5BD06F00B6C02D /* ice.sks in Resources */,
 				B5FF5F3D1D527E5200B53CEB /* fire2.sks in Resources */,
 				B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */,
 				B5B099811D56680C00B6C02D /* maze1.png in Resources */,
@@ -677,6 +696,7 @@
 				B5FF5F291D4D059800B53CEB /* diamond.png in Resources */,
 				B51FBBD81D3F48EB008DCF94 /* helpIcon.png in Resources */,
 				B51A1B1F1D4B21F800B2BFF2 /* brick.png in Resources */,
+				B5B099861D58EC9800B6C02D /* teleport.png in Resources */,
 				B5B099611D54E5FD00B6C02D /* finish.png in Resources */,
 				B51FBBF31D457E4F008DCF94 /* shootButton.png in Resources */,
 				B5790FAF1D4B0C1000608F7F /* timeFreeze.png in Resources */,
@@ -684,6 +704,7 @@
 				B51FBBF11D457D6C008DCF94 /* stick.png in Resources */,
 				B5FF5F2F1D4E500400B53CEB /* menuBg.mp3 in Resources */,
 				B5FF5F3B1D52786800B53CEB /* spark1.sks in Resources */,
+				B5B0998A1D5B8B5400B6C02D /* explosion.wav in Resources */,
 				B58CC9B91D4BBDB60084887F /* loading.png in Resources */,
 				B5B099671D54F20400B6C02D /* fire5.sks in Resources */,
 				B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */,
@@ -691,13 +712,11 @@
 				B59BCC8D1C5D41BE007DAA27 /* Icons in Resources */,
 				B5A6D8781C4FE209001B6ABA /* LaunchScreen.storyboard in Resources */,
 				B51FBBC61D3DF061008DCF94 /* Mediation Adapters in Resources */,
-				B5B0997F1D55A15B00B6C02D /* directionArrow.png in Resources */,
 				B5790FAD1D4B04C200608F7F /* brickBreaker.png in Resources */,
 				B58CBF411D33D9C800908922 /* mazeLaunchScreen.png in Resources */,
 				B5A6D8751C4FE209001B6ABA /* Assets.xcassets in Resources */,
 				B5FF5F311D505D8100B53CEB /* kata.ttf in Resources */,
 				B5A6D8CB1C51F291001B6ABA /* DESTROY_.ttf in Resources */,
-				B5B099731D55536800B6C02D /* monster.png in Resources */,
 				B51FBBCA1D3EBBBB008DCF94 /* wallBuster.png in Resources */,
 				B5FF5F0C1D4BDAA200B53CEB /* abilityToken.png in Resources */,
 				B5790F9E1D47E26600608F7F /* logo2.png in Resources */,
@@ -763,6 +782,7 @@
 				B5FF5F101D4CEBDC00B53CEB /* Sounds.swift in Sources */,
 				B53479B41D1C5222001110CA /* MazeSelectScene.swift in Sources */,
 				B534798C1D19E104001110CA /* AnalogJoystick.swift in Sources */,
+				B5B099911D5BDDA800B6C02D /* RemoveAds.swift in Sources */,
 				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,
 				B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */,
 				B5790F981D46AA9500608F7F /* Monster.swift in Sources */,

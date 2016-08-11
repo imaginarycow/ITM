@@ -18,7 +18,6 @@ protocol AdmobInterstitialDelegate {
 class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitialDelegate, AdmobInterstitialDelegate {
     
     let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6450694282232724/6482008496")
-
     var scene:SKScene!
     
     //background music and sounds for game
@@ -32,17 +31,16 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     var redeemSound: AVAudioPlayer?
     var shiftSound: AVAudioPlayer?
     var gameSound: AVAudioPlayer?
+    var explosionSound: AVAudioPlayer?
+    var freezeSound: AVAudioPlayer?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AdMob.sharedInstance.setup(viewController: self, interID: "ca-app-pub-6450694282232724/6482008496")
-        let appID = "1052643535"
-
   
         scene = MainMenuScene()
-        
         
         // Configure the view.
         let skView = self.view as! SKView
@@ -65,7 +63,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         
     }
     
@@ -77,7 +75,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.abilityUse?.play()
         case .alarmSound:
             self.alarmSound = setupAudioPlayerWithFile("alarm2", type: "wav")
-            self.alarmSound?.volume = 0.4
+            self.alarmSound?.volume = 0.25
             self.alarmSound?.play()
         case .buttonClick:
             self.buttonClick = setupAudioPlayerWithFile("click", type: "wav")
@@ -104,6 +102,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.gameSound?.numberOfLoops = 30
             self.gameSound?.volume = 0.2
             self.gameSound?.play()
+        case .explosionSound:
+            self.explosionSound = setupAudioPlayerWithFile("explosion", type: "wav")
+            self.explosionSound?.play()
+        case .freezeSound:
+            self.freezeSound = setupAudioPlayerWithFile("freeze", type: "wav")
+            self.freezeSound?.volume = 1.0
+            self.freezeSound?.play()
         default:
             self.abilityUse = setupAudioPlayerWithFile("laser2", type: "wav")
              self.abilityUse?.play()
@@ -156,7 +161,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         print("interstitial isReady: \(interstitial.isReady)")
         loadRequest()
         
-        if interstitial.isReady {
+        if interstitial.isReady && adsRemoved == false {
            
             print("rootViewController set")
             interstitial.presentFromRootViewController(self)
@@ -164,13 +169,16 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
         }
     }
     
+    
+    
+    
     override func shouldAutorotate() -> Bool {
-        return false
+        return true
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+            return .Landscape
         } else {
             return .All
         }

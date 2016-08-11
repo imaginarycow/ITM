@@ -37,6 +37,10 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
     
     override func didMoveToView(view: SKView) {
         
+        checkForNewInstall()
+        checkIfIapsEnabled()
+        
+        
         for family: String in UIFont.familyNames()
         {
             print("\(family)")
@@ -66,7 +70,7 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             userNameField.placeholder = String(gameData.valueForKey("playerName")!)
             playerName = String(gameData.valueForKey("playerName")!)
         }else {
-            userNameField.placeholder = "They call me"
+            userNameField.placeholder = "They call me..."
         }
         
         userNameField.textAlignment = .Center
@@ -98,7 +102,10 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             fadeInLabels(0.5)
         }
         
-        vc.loadRequest()
+        if adsRemoved == false {
+            vc.loadRequest()
+        }
+        
     } // End DidMoveToView
     
     
@@ -173,14 +180,14 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
             }
             
             if removeAdsLabel.containsPoint(location) {
-                print("Attempting to load Ads")
+                print("Attempting to remove Ads")
                 vc.playSoundEffect(.buttonPress)
-                adsRemoved = true
+                buyProduct("net.beliro.Maze.removeAds")
             }
             
             if restorePurchasesLabel.containsPoint(location) {
                 vc.playSoundEffect(.buttonPress)
-                
+                buyProduct("net.beliro.Maze.removeAds")
             }
             
             if helpLabel.containsPoint(location) {

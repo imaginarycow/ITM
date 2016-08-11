@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 var playerName:String = ""
-var playerSpeed: CGFloat = 0.1
+var playerSpeed: CGFloat = 0.05
 var playerWidth: CGFloat = 20.0
 
 enum PlayerDirection {
@@ -27,6 +27,7 @@ class NewPlayer:SKSpriteNode {
         let rad:CGFloat = newPlayer.frame.width * 0.4
         newPlayer.physicsBody = SKPhysicsBody(circleOfRadius: rad)
         newPlayer.physicsBody?.allowsRotation = false
+        newPlayer.physicsBody?.angularDamping = 1.0
         newPlayer.physicsBody?.restitution = 0
         newPlayer.physicsBody?.usesPreciseCollisionDetection = true
         newPlayer.physicsBody?.categoryBitMask = playerCategory

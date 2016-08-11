@@ -9,18 +9,19 @@
 import Foundation
 import SpriteKit
 
-var MonsterSpeed : CGFloat = 0.1
+var MonsterSpeed : CGFloat = 0.2
 let monsterSize:CGFloat = 15.0 * scale
 var enemySpawnPoints: [CGPoint] = []
 var monsterCount = 0
 var monsterIndex = 0
 var monstersArray: [SKSpriteNode] = []
+var monstersKilled = 0
 
 enum MonsterDirection {
     case North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
 }
-enum Stuck {
-    case x, y
+enum TeleportDirection {
+    case up, down, left, right
 }
 
 class Monster:SKSpriteNode {
@@ -41,65 +42,50 @@ class Monster:SKSpriteNode {
         let y2 = point2.y
         
         if x1 < x2 {
-            moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
+            moveToPoint.x = x1 + MonsterSpeed
         }else {
-            moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
+            moveToPoint.x = x1 - (MonsterSpeed)
         }
         if y1 < y2 {
-            moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
+            moveToPoint.y = y1 + (MonsterSpeed)
         }else {
-            moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
+            moveToPoint.y = y1 - (MonsterSpeed)
         }
         
         return moveToPoint
     }
     
-    func moveMonsterAgain(point1: CGPoint, point2: CGPoint, stuck: Stuck) -> CGPoint {
+    func teleportMonster(point1: CGPoint, direction: TeleportDirection) -> CGPoint {
         var moveToPoint = CGPoint()
         let x1 = point1.x
-        let x2 = point2.x
         let y1 = point1.y
-        let y2 = point2.y
         
-        switch stuck {
-        case .x:
-            if x1 < x2 {
-                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
-            }
-            if y1 < y2 {
-                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
-            }
-
-        case .y:
-            if x1 < x2 {
-                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
-            }
-            if y1 < y2 {
-                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
-            }
-
-        default:
-            if x1 < x2 {
-                moveToPoint.x = x1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.x = x1 - (monsterSize * MonsterSpeed)
-            }
-            if y1 < y2 {
-                moveToPoint.y = y1 + (monsterSize * MonsterSpeed)
-            }else {
-                moveToPoint.y = y1 - (monsterSize * MonsterSpeed)
-            }
-
+        let teleportSprite1 = SKSpriteNode(imageNamed: "teleport.png")
+        teleportSprite1.size = CGSize(width: monsterSize, height: monsterSize)
+        self.addChild(teleportSprite1)
+        
+        delay(1.0) {
+            teleportSprite1.removeFromParent()
         }
         
+        switch direction {
+        case .left:
+            moveToPoint.x = x1 - (monsterSize + brickHeight)
+            moveToPoint.y = y1
+        case .right:
+            moveToPoint.x = x1 + (monsterSize + brickHeight)
+            moveToPoint.y = y1
+        case .up:
+            moveToPoint.x = x1
+            moveToPoint.y = y1 + (monsterSize + brickHeight)
+        case .down:
+            moveToPoint.x = x1
+            moveToPoint.y = y1 - (monsterSize + brickHeight)
+        default:
+            moveToPoint.x = x1 + (monsterSize + brickHeight)
+            moveToPoint.y = y1
+
+        }
         
         return moveToPoint
     }
@@ -124,7 +110,7 @@ func removeAllEnemies() {
             monstersArray.append(monster)
         }
     })
-    
+    print("monters in monstersArray: \(monstersArray.count)")
     for monster in monstersArray {
             
         //createAnimationAtPoint(activeScene, point: monster.position, imageNamed: "instakill.png")
@@ -132,16 +118,15 @@ func removeAllEnemies() {
         let fireball = createFireball(texture, point: CGPointZero, target: monster)
         monster.addChild(fireball)
         
+        
         delay(0.5) {
             fireball.removeFromParent()
             fireball.targetNode = nil
             fireball.resetSimulation()
-            
             monster.removeAllActions()
             monster.removeFromParent()
         }
         
-
     }
     monstersArray = []
     monsterCount = 0
@@ -150,20 +135,32 @@ func removeAllEnemies() {
 func removeEnemy(node:SKNode) {
     
     print("attempting to remove enemy")
+    
     let texture = SKTexture(imageNamed: "fireTexture.png")
-    let fireball = createFireball(texture, point: CGPointZero, target: node)
-    node.addChild(fireball)
+    let fireball = createFireball(texture, point: CGPointZero, target: activeScene)
+    fireball.position = node.position
+    activeScene.addChild(fireball)
+    node.removeAllActions()
+    node.removeFromParent()
     
     delay(0.3) {
+        
         fireball.removeFromParent()
         fireball.targetNode = nil
         fireball.resetSimulation()
-        
-        node.removeAllActions()
-        node.removeFromParent()
     }
     monsterCount -= 1
     print("monster count: \(monsterCount)")
+    
+    if monstersKilled < 5 {
+        monstersKilled += 1
+    }
+    if monstersKilled == 5 {
+        monstersKilled = 0
+        abilityTokens += 1
+        setAbilityForUse(abilityTokens)
+        gameData.setInteger(abilityTokens, forKey: "abilityTokens")
+    }
 }
 
 func setEnemySpawnPoints(point1:CGPoint, point2:CGPoint, point3:CGPoint, point4: CGPoint, point5:CGPoint) {

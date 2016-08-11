@@ -40,11 +40,11 @@ func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {
     case .NorthNorthEast:
         xOffset = xDist
         yOffset = yDist
-        rotation = 22.5
+        rotation = 67.5
     case .EastNorthEast:
         xOffset = xDist
         yOffset = yDist
-        rotation = 67.5
+        rotation = 22.5
     case .NorthNorthWest:
         xOffset = -xDist
         yOffset = yDist
@@ -142,7 +142,7 @@ func getBulletImpulse(direction: PlayerDirection) -> (CGFloat, CGFloat) {
     var xImpulse:CGFloat = 0.0
     var yImpulse:CGFloat = 0.0
     
-    let max:CGFloat = 1.0
+    let max:CGFloat = 2.0
     
     switch direction {
         
@@ -163,10 +163,10 @@ func getBulletImpulse(direction: PlayerDirection) -> (CGFloat, CGFloat) {
         yImpulse = max
     case .NorthNorthWest:
         xImpulse = -max/2
-        yImpulse = -max
+        yImpulse = max
     case .WestNorthWest:
         xImpulse = -max
-        yImpulse = -max/2
+        yImpulse = max/2
     case .South:
         xImpulse = 0.0
         yImpulse = -max
