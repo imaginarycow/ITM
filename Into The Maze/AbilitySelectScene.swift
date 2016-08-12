@@ -14,7 +14,7 @@ class AbilitySelectScene: SKScene {
     //rate me variables
     var iMinSessions = 4
     var iTryAgainSessions = 8
-    let app_ID = "1052643535" //TODO: Change app_id to proper id
+    let app_ID = "1077037294" //TODO: Make sure is proper id before release
     
     let backButton = SKLabelNode(text: "Back")
     var iconArray = [SKShapeNode]()

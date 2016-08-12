@@ -336,7 +336,7 @@ class Maze1GameScene: GameScene {
                 
                 
             } else {
-                if seconds % 5 == 0 && monsterCount < 5 {
+                if seconds % 5 == 0 && monsterCount < maxMonsterCount {
                     
                     self.createNewMonster(getRandomEnemyPoint())
                     monsterCount += 1

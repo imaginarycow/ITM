@@ -14,6 +14,7 @@ let monsterSize:CGFloat = 15.0 * scale
 let teleportSize: CGFloat = 15.0 * scale
 
 var monsterCount = 0
+var maxMonsterCount = 10
 var monsterIndex = 0
 var monstersArray: [SKSpriteNode] = []
 var monstersKilled = 0
