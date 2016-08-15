@@ -46,6 +46,10 @@ var box1 = SKSpriteNode()
 var box2 = SKSpriteNode()
 var box3 = SKSpriteNode()
 var box4 = SKSpriteNode()
+var box5 = SKSpriteNode()
+var box6 = SKSpriteNode()
+var box7 = SKSpriteNode()
+var box8 = SKSpriteNode()
 
 var timerIsFrozen = false
 
@@ -61,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
     
-    let shootControl: SKShapeNode = SKShapeNode(circleOfRadius: buttonRad)
+    let shootControl = SKSpriteNode(imageNamed: "shootButton.png")
     
     var TextureArray = [SKTexture]()
     var walking: Bool = false
@@ -202,9 +206,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //joystick.physicsBody = SKPhysicsBody(circleOfRadius: buttonRad)
         scene?.addChild(joystick)
         
-        shootControl.fillTexture = SKTexture(imageNamed: "shootButton.png")
-        shootControl.fillColor = SKColor.whiteColor()
-        shootControl.strokeColor = .clearColor()
+        shootControl.size = CGSize(width: buttonRad * 2, height: buttonRad * 2)
         shootControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.25)
         shootControl.zPosition = 100
         shootControl.name = "shootControl"

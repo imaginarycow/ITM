@@ -59,7 +59,7 @@ class AbilitySelectScene: SKScene {
         var neverRate = gameData.boolForKey("neverRate")
         print(neverRate)
         var numLaunches = gameData.integerForKey("numLaunches") + 1
-        print(numLaunches)
+        print("number of game launches: \(numLaunches)")
         
         if (!neverRate && (numLaunches == iMinSessions || numLaunches >= (iMinSessions + iTryAgainSessions + 1)))
         {

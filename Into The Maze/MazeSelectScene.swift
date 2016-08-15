@@ -22,7 +22,7 @@ class MazeSelectScene: SKScene {
     var selectedMaze:UIImage!
     let mazeImages:[UIImage] = [UIImage(named: "maze1.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "random.png")!]
     let mazeIcon = SKSpriteNode()
-    var numberOfMazes = 1
+    var numberOfMazes = 2
 
     var index = 2
     
@@ -98,13 +98,13 @@ class MazeSelectScene: SKScene {
         vc.stopBGMusic()
         musicIsPlaying = false
         
-        var gameScene = Maze1GameScene()
+        var gameScene = SKScene()
         
         switch level {
         case 1:
             gameScene = Maze1GameScene()
         case 2:
-            gameScene = Maze1GameScene()
+            gameScene = Maze2GameScene()
         case 3:
             gameScene = Maze1GameScene()
         case 4:

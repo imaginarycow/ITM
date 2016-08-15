@@ -24,8 +24,8 @@ func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {
     var yOffset:CGFloat = 0.0
     var rotation:Double = 0.0
     
-    let xDist:CGFloat = 5.0
-    let yDist:CGFloat = 5.0
+    let xDist:CGFloat = 0.1
+    let yDist:CGFloat = 0.1
     
     switch direction {
         

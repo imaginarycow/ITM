@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-let numbOfBricks:Int = 10
+var numbOfBricks:Int = 10
 let brickWidth = box1Width/CGFloat(numbOfBricks)
 //let brickWidth = box1Width/CGFloat(numbOfBricks)
 let brickHeight = 8.0 * scale

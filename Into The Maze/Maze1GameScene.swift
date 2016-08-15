@@ -2,11 +2,12 @@
 import SpriteKit
 
 
-let numbBricks2:Int = 6
-var brickWidth2:CGFloat!
+
 
 class Maze1GameScene: GameScene {
     
+    let numbBricks2:Int = 6
+    var brickWidth2:CGFloat!
     
     let parent1 = SKSpriteNode()
     let parent2 = SKSpriteNode()
