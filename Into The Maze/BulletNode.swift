@@ -17,6 +17,52 @@ func removeBullet(node:SKNode) {
     node.removeFromParent()
 }
 
+func turnNode(name: String, node: SKSpriteNode, direction: PlayerDirection) {
+    
+    var deg = 0.0
+    
+    switch direction {
+        
+    case .North:
+        deg = 0.0
+    case .NorthNorthEast:
+        deg = -22.5
+    case .NorthEast:
+        deg = -45.0
+    case .EastNorthEast:
+        deg = -67.5
+    case .NorthWest:
+        deg = 45.0
+    case .South:
+        deg = 180.0
+    case .SouthEast:
+        deg = 225.0
+    case .SouthWest:
+        deg = 135.0
+    case .East:
+        deg = 270.0
+    case .EastSouthEast:
+        deg = 247.5
+    case .SouthSouthEast:
+        deg = 202.5
+    case .West:
+        deg = 90.0
+    case .WestSouthWest:
+        deg = 112.5
+    case .SouthSouthWest:
+        deg = 157.5
+    case .NorthNorthWest:
+        deg = 22.5
+    case .WestNorthWest:
+        deg = 67.5
+    default:
+        deg = 0.0
+    }
+    
+    node.zRotation = DegToRad(deg)
+    
+}
+
 //get offset and rotation for bullet based on direction player is facing
 func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {
     
@@ -24,8 +70,8 @@ func getBulletOffset(direction: PlayerDirection) -> (CGFloat, CGFloat, Double) {
     var yOffset:CGFloat = 0.0
     var rotation:Double = 0.0
     
-    let xDist:CGFloat = 0.1
-    let yDist:CGFloat = 0.1
+    let xDist:CGFloat = 0.3
+    let yDist:CGFloat = 0.3
     
     switch direction {
         
@@ -130,8 +176,8 @@ func createProjectile() -> SKSpriteNode {
     bullet.physicsBody?.usesPreciseCollisionDetection = true
     bullet.physicsBody?.affectedByGravity = false
     bullet.physicsBody?.categoryBitMask = bulletCategory
-    bullet.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | monsterCategory
-    bullet.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | monsterCategory
+    bullet.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | monsterCategory
+    bullet.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | monsterCategory
     
     return bullet
 }

@@ -11,7 +11,6 @@ import SpriteKit
 
 var numbOfBricks:Int = 10
 let brickWidth = box1Width/CGFloat(numbOfBricks)
-//let brickWidth = box1Width/CGFloat(numbOfBricks)
 let brickHeight = 8.0 * scale
 
 
@@ -29,9 +28,9 @@ class Brick {
         brick.zPosition = 50.0
         brick.zRotation = CGFloat(rotation)
         brick.name = "brick"
+        
         brick.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: brick.size.width, height: brick.size.height))
         brick.physicsBody?.affectedByGravity = false
-        
         brick.physicsBody?.dynamic = false
         brick.physicsBody?.mass = 5000
         //brick.physicsBody?.pinned = true

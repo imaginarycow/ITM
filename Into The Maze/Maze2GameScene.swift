@@ -3,26 +3,22 @@ import SpriteKit
 
 let boxZPosition: CGFloat = 5
 let parentZPosition: CGFloat = 10
+var circle1 = SKShapeNode()
 
 class Maze2GameScene: GameScene {
     
     let numbBricks2:Int = 6
     var brickWidth2:CGFloat!
     
-//    var parent1 = SKSpriteNode()
-//    let parent2 = SKSpriteNode()
-//    let parent3 = SKSpriteNode()
-//    let parent4 = SKSpriteNode()
-//    let parent5 = SKSpriteNode()
-//    let parent6 = SKSpriteNode()
-//    let parent7 = SKSpriteNode()
-//    let parent8 = SKSpriteNode()
-//    let parent9 = SKSpriteNode()
-//    let parent10 = SKSpriteNode()
+    let outerWall = SKSpriteNode()
+    let box2 = SKSpriteNode()
+    let box3 = SKSpriteNode()
+    let box4 = SKSpriteNode()
+    let box5 = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
         
-        playerSpawn = CGPoint(x: ((scene?.size.width)! * 0.2), y: (scene?.size.height)!/2)
+        playerSpawn = CGPoint(x: ((scene?.size.width)! * 0.1), y: (scene?.size.height)!/2)
         finishPosition = CGPoint(x: ((scene?.size.width)! * 0.9), y: (scene?.size.height)! * 0.85)
         createNewScene()
         
@@ -30,51 +26,36 @@ class Maze2GameScene: GameScene {
         updateClock()
         setEnemySpawnPoints()
         
-        abilityToken.position = CGPoint()
-        box1.addChild(abilityToken)
+        //ability token set in buildOuterWall()
         
         buildOuterWall()
         buildBox1()
         buildBoxes2_5()
         buildBox6()
         buildOuterCircle()
-        buildInnerCircle()
         
     }
     
     override func willMoveFromView(view: SKView) {
-//        parent1.removeAllActions()
-//        parent2.removeAllActions()
-//        parent3.removeAllActions()
-//        parent4.removeAllActions()
-//        parent5.removeAllActions()
-//        parent6.removeAllActions()
-//        box1.removeAllActions()
-//        box1.removeAllChildren()
-//        box1.removeFromParent()
-//        box2.removeAllActions()
-//        box2.removeAllChildren()
-//        box2.removeFromParent()
-//        box3.removeAllActions()
-//        box3.removeAllChildren()
-//        box3.removeFromParent()
+        
     }
     
     func buildOuterWall() {
         
-        let outerWall = SKSpriteNode()
         let outerWallLength = CGFloat((scene?.size.height)! * 1.0)
         outerWall.size = CGSize(width: outerWallLength, height: outerWallLength)
         outerWall.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         outerWall.zPosition = boxZPosition
-        outerWall.color = .orangeColor()
-        outerWall.alpha = 0.3
-        self.addChild(outerWall)
+        addChild(outerWall)
+        
+        abilityToken.position = CGPoint(x: 0.0 + (outerWall.size.width / 2) - abilityToken.size.width, y: 0.0 + (outerWall.size.width / 2) - abilityToken.size.width)
+        outerWall.addChild(abilityToken)
         
         let sideLength1:CGFloat = outerWallLength
         
         let size1 = CGSize(width: brickHeight, height: sideLength1)
         let size2 = CGSize(width: sideLength1, height: brickHeight)
+        
         let parent1 = Parent.newParent(CGPoint(x: 0.0 - (sideLength1 / 2), y: 0.0), size: size1)
         outerWall.addChild(parent1)
 
@@ -89,16 +70,17 @@ class Maze2GameScene: GameScene {
         
         //add bricks to outer wall parents 1-4
         for i in 0...numbOfBricks-1 {
+            print("building outer wall bricks")
             let rot = Double(DegToRad(90.0))
             let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (sideLength1 / 2) + (brickWidth/2))
-            let brick = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             
             // create entry and exit
             if i == numbOfBricks / 2 {
                 
             }else {
-                parent1.addChild(brick)
+                parent1.addChild(brick1)
                 parent2.addChild(brick2)
             }
             
@@ -111,12 +93,13 @@ class Maze2GameScene: GameScene {
     }
     
     func buildBox1() {
+        print("building box 1 bricks")
         box1Width = CGFloat((scene?.size.height)! * 0.8)
         box1.size = CGSize(width: box1Width, height: box1Width)
-        box1.color = .greenColor()
+        //box1.color = .greenColor()
         box1.zPosition = boxZPosition + 1
         box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        box1.alpha = 0.5
+        //box1.alpha = 0.2
         addChild(box1)
         
         let parentSize1 = CGSize(width: brickHeight, height: box1Width / 2)
@@ -131,114 +114,207 @@ class Maze2GameScene: GameScene {
         let parent8 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (box1Width / 2)), size: parentSize2)
         box1.addChild(parent8)
         
-        let scale = CGFloat((scene?.size.height)! * 1.0) / box1Width
-        let numbBricks = numbOfBricks * Int(scale)
+        let numbBricks = Int(parentSize1.height / brickWidth)
         
         for i in 0...numbBricks-1 {
             let rot = Double(DegToRad(90.0))
             let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (parentSize1.height / 2) + (brickWidth/2))
-            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x,y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: 0.0)
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             parent5.addChild(brick1)
+            parent6.addChild(brick2)
+            
+            let anchorPoint2: CGPoint = CGPoint(x: 0.0 - (parentSize2.width / 2) + (brickWidth/2), y: 0.0)
+            let brick3 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            let brick4 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            parent7.addChild(brick3)
+            parent8.addChild(brick4)
         }
     }
     
     func buildBoxes2_5() {
         
+        let width = CGFloat(outerWall.size.height * 0.2)
+        box2.size = CGSize(width: width, height: width)
+        box2.position = CGPoint(x: 0.0 - (width * 1.5), y: 0.0 + (width * 1.5))
+        box2.zPosition = boxZPosition
+        box2.zRotation = DegToRad(180.0)
+        //box2.color = .orangeColor()
+        outerWall.addChild(box2)
+        
+        box3.size = CGSize(width: width, height: width)
+        box3.position = CGPoint(x: 0.0 - (width * 1.5), y: 0.0 - (width * 1.5))
+        box3.zPosition = boxZPosition
+        box3.zRotation = DegToRad(180.0)
+        //box3.color = .orangeColor()
+        outerWall.addChild(box3)
+        
+        box4.size = CGSize(width: width, height: width)
+        box4.position = CGPoint(x: 0.0 + (width * 1.5), y: 0.0 + (width * 1.5))
+        box4.zPosition = boxZPosition
+        box4.zRotation = DegToRad(180.0)
+        //box4.color = .orangeColor()
+        outerWall.addChild(box4)
+        
+        box5.size = CGSize(width: width, height: width)
+        box5.position = CGPoint(x: 0.0 + (width * 1.5), y: 0.0 - (width * 1.5))
+        box5.zPosition = boxZPosition
+        box5.zRotation = DegToRad(180.0)
+        //box5.color = .orangeColor()
+        outerWall.addChild(box5)
+        
+        let size1 = CGSize(width: brickHeight, height: width)
+        let rot = DegToRad(90.0)
+        
+        let parent1 = Parent.newParent(CGPoint(x: 0.0 - (width / 2), y: 0.0), size: size1)
+        box2.addChild(parent1)
+        let parent2 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (width / 2)), size: size1)
+        parent2.zRotation = rot
+        box2.addChild(parent2)
+        
+        let parent3 = Parent.newParent(CGPoint(x: 0.0 - (width / 2), y: 0.0), size: size1)
+        box3.addChild(parent3)
+        let parent4 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (width / 2)), size: size1)
+        parent4.zRotation = rot
+        box3.addChild(parent4)
+        
+        let parent5 = Parent.newParent(CGPoint(x: 0.0 + (width / 2), y: 0.0), size: size1)
+        box4.addChild(parent5)
+        let parent6 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (width / 2)), size: size1)
+        parent6.zRotation = rot
+        box4.addChild(parent6)
+        
+        let parent7 = Parent.newParent(CGPoint(x: 0.0 + (width / 2), y: 0.0), size: size1)
+        box5.addChild(parent7)
+        let parent8 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (width / 2)), size: size1)
+        parent8.zRotation = rot
+        box5.addChild(parent8)
+        
+        let numbBricks = Int(size1.height / brickWidth)
+        for i in 0...numbBricks-1 {
+            let rot = Double(DegToRad(90.0))
+            let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (size1.height / 2) + (brickWidth/2))
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent1.addChild(brick1)
+            parent2.addChild(brick2)
+            
+            let brick3 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick4 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent3.addChild(brick3)
+            parent4.addChild(brick4)
+
+            let brick5 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick6 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent5.addChild(brick5)
+            parent6.addChild(brick6)
+
+            let brick7 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick8 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent7.addChild(brick7)
+            parent8.addChild(brick8)
+        }
+
     }
     
     func buildBox6() {
         
+        let width = CGFloat(outerWall.size.height * 0.5)
+        box6.size = CGSize(width: width, height: width)
+        box6.position = CGPoint(x: 0.0, y: 0.0)
+        box6.zPosition = boxZPosition
+        box6.zRotation = DegToRad(45.0)
+        //box6.color = .greenColor()
+        outerWall.addChild(box6)
         
+        let length = width * 0.8
+        let size1 = CGSize(width: brickHeight, height: length)
+        let size2 = CGSize(width: length, height: brickHeight)
+        
+        let parent1 = Parent.newParent(CGPoint(x: 0.0 - (width / 2), y: 0.0), size: size1)
+        box6.addChild(parent1)
+        let parent2 = Parent.newParent(CGPoint(x: 0.0 + (width / 2), y: 0.0), size: size1)
+        box6.addChild(parent2)
+        let parent3 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (width / 2)), size: size2)
+        box6.addChild(parent3)
+        let parent4 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (width / 2)), size: size2)
+        box6.addChild(parent4)
+        
+        let numbBricks = Int(size1.height / brickWidth)
+        for i in 0...numbBricks-1 {
+            let rot = Double(DegToRad(90.0))
+            let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (size1.height / 2) + (brickWidth/2))
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent1.addChild(brick1)
+            parent2.addChild(brick2)
+            
+            let anchorPoint2: CGPoint = CGPoint(x: 0.0 - (size1.height / 2) + (brickWidth/2), y: 0.0)
+            let brick3 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            let brick4 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            parent3.addChild(brick3)
+            parent4.addChild(brick4)
+        }
     }
     
     func buildOuterCircle() {
         
-    }
-    
-    func buildInnerCircle() {
+        let width = CGFloat(outerWall.size.height * 0.3)
+        box7.size = CGSize(width: width, height: width)
+        box7.position = CGPoint(x: 0.0, y: 0.0)
+        box7.zPosition = boxZPosition
+        //box7.color = .redColor()
+        outerWall.addChild(box7)
         
+        let length = width * 0.4
+        let size1 = CGSize(width: brickHeight, height: length)
+        let rot = DegToRad(90.0)
+        
+        let parent1 = Parent.newParent(CGPoint(x: 0.0 - (width / 2), y: 0.0), size: size1)
+        parent1.zRotation = rot
+        box7.addChild(parent1)
+        let parent2 = Parent.newParent(CGPoint(x: 0.0 + (width / 2), y: 0.0), size: size1)
+        parent2.zRotation = rot
+        box7.addChild(parent2)
+        let parent3 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (width / 2)), size: size1)
+        box7.addChild(parent3)
+        let parent4 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (width / 2)), size: size1)
+        box7.addChild(parent4)
+        
+        let numbBricks = Int(size1.height / brickWidth)
+        for i in 0...numbBricks-1 {
+            let rot = Double(DegToRad(90.0))
+            let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (size1.height / 2) + (brickWidth/2))
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent1.addChild(brick1)
+            parent2.addChild(brick2)
+            
+            let anchorPoint2: CGPoint = CGPoint(x: 0.0 - (size1.height / 2) + (brickWidth/2), y: 0.0)
+            let brick3 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: rot)
+            let brick4 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: rot)
+            parent3.addChild(brick3)
+            parent4.addChild(brick4)
+        }
+
     }
     
-    //maze1 shift1 animation
-//    func maze2Shift(index: Int) {
-//        
-//        let duration = 6.0
-//        
-//        if index % 2 == 0 {
-//            
-//            let action = SKAction.rotateByAngle(DegToRad(360), duration: duration)
-//            box1.runAction(action)
-//            
-//            let action2 = SKAction.rotateByAngle(DegToRad(-360), duration: duration)
-//            box2.runAction(action2)
-//            parent4.removeAllChildren()
-//            parent5.removeAllChildren()
-//            parent6.removeAllChildren()
-//            
-//            for j in 0...numbBricks2-1 {
-//                
-//                let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-//                parent5.addChild(brick)
-//                
-//                if j != numbBricks2/3 {
-//                    let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-//                    parent4.addChild(brick2)
-//                }
-//                
-//                let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth2/2) + (brickWidth2 * CGFloat(j)), y: 0.0 + brickHeight/2),brickWidth: brickWidth2, rotation: 0.0)
-//                parent6.addChild(brick3)
-//            }
-//            
-//            parent1.removeAllChildren()
-//            parent2.removeAllChildren()
-//            parent3.removeAllChildren()
-//            
-//            for i in 0...numbOfBricks-1 {
-//                
-//                let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                parent1.addChild(brick)
-//                if i != numbOfBricks/2 {
-//                    let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                    parent2.addChild(brick2)
-//                }
-//                let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                parent3.addChild(brick3)
-//                
-//            }
-//            
-//            
-//            let action3 = SKAction.rotateByAngle(DegToRad(360), duration: duration)
-//            box3.runAction(action3)
-//            
-//        }else {
-//            
-//            let action = SKAction.rotateByAngle(DegToRad(-360), duration: duration)
-//            box1.runAction(action)
-//            
-//            let action2 = SKAction.rotateByAngle(DegToRad(360), duration: duration)
-//            box2.runAction(action2)
-//            parent1.removeAllChildren()
-//            parent2.removeAllChildren()
-//            parent3.removeAllChildren()
-//            
-//            for i in 0...numbOfBricks-1 {
-//                
-//                let brick = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                parent1.addChild(brick)
-//                if i != numbOfBricks/2 {
-//                    let brick2 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                    parent3.addChild(brick2)
-//                }
-//                let brick3 = Brick.createBrick(CGPoint(x: (0.0 + brickWidth/2) + (brickWidth * CGFloat(i)), y: 0.0 + brickHeight/2),brickWidth: brickWidth, rotation: 0.0)
-//                parent2.addChild(brick3)
-//                
-//            }
-//            
-//            let action3 = SKAction.rotateByAngle(DegToRad(-360), duration: duration)
-//            box3.runAction(action3)
-//        }
-//        
-//    } // End: Maze1Shift
+    //maze2 shift1 animation
+    func maze2Shift() {
+        
+        let duration = 0.5
+    
+        let rotateAction = SKAction.rotateByAngle(DegToRad(30), duration: duration)
+        box2.runAction(rotateAction)
+        box3.runAction(rotateAction)
+        box4.runAction(rotateAction)
+        box5.runAction(rotateAction)
+        
+        let rotateAction2 = SKAction.rotateByAngle(DegToRad(-75), duration: 1.0)
+        box7.runAction(rotateAction2)
+        
+        
+    } // End: Maze2Shift
     
     //maze shift timer
     func updateShiftTimer() {
@@ -280,6 +356,7 @@ class Maze2GameScene: GameScene {
                 
                 
             } else {
+                self.maze2Shift()
                 if seconds % 5 == 0 && monsterCount < maxMonsterCount {
                     
                     self.createNewMonster(getRandomEnemyPoint())
@@ -287,13 +364,13 @@ class Maze2GameScene: GameScene {
                     print("monster count: \(monsterCount)")
                 }
                 
-                self.timer.text = "Maze Shift in: \(seconds)"
+                self.timer.text = "Maze Shifting!"
                 if seconds == 3 {
                     vc.playSoundEffect(Sound.alarmSound)
                 }
                 if seconds == 0 {
                     
-                    //self.maze2Shift(self.mazeShiftIndex)
+                    
                     vc.alarmSound!.stop()
                     seconds = 16
                     self.mazeShiftIndex += 1

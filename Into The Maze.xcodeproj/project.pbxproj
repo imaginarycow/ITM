@@ -50,8 +50,9 @@
 		B542950B1C6101E9007119F7 /* Something_Strange.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950A1C6101E9007119F7 /* Something_Strange.ttf */; };
 		B542950E1C610522007119F7 /* Halo3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950D1C6104E6007119F7 /* Halo3.ttf */; };
 		B54295131C614254007119F7 /* walkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B54295121C614254007119F7 /* walkCycle.atlas */; };
+		B55B24251D62948600230439 /* maze2.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B24241D62948600230439 /* maze2.png */; };
 		B5790F941D46966600608F7F /* AdMob(iOS).swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F931D46966600608F7F /* AdMob(iOS).swift */; };
-		B5790F981D46AA9500608F7F /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F971D46AA9500608F7F /* Monster.swift */; };
+		B5790F981D46AA9500608F7F /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F971D46AA9500608F7F /* Enemy.swift */; };
 		B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B5790F9B1D47E0BF00608F7F /* mazeBackground.png */; };
 		B5790F9E1D47E26600608F7F /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = B5790F9D1D47E26600608F7F /* logo2.png */; };
 		B5790FA01D47E60000608F7F /* RateMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F9F1D47E60000608F7F /* RateMe.swift */; };
@@ -198,8 +199,9 @@
 		B542950A1C6101E9007119F7 /* Something_Strange.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Something_Strange.ttf; sourceTree = "<group>"; };
 		B542950D1C6104E6007119F7 /* Halo3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Halo3.ttf; sourceTree = "<group>"; };
 		B54295121C614254007119F7 /* walkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = walkCycle.atlas; sourceTree = "<group>"; };
+		B55B24241D62948600230439 /* maze2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze2.png; sourceTree = "<group>"; };
 		B5790F931D46966600608F7F /* AdMob(iOS).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AdMob(iOS).swift"; path = "Into The Maze/AdMob(iOS).swift"; sourceTree = "<group>"; };
-		B5790F971D46AA9500608F7F /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		B5790F971D46AA9500608F7F /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B5790F9B1D47E0BF00608F7F /* mazeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeBackground.png; sourceTree = "<group>"; };
 		B5790F9D1D47E26600608F7F /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		B5790F9F1D47E60000608F7F /* RateMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateMe.swift; sourceTree = "<group>"; };
@@ -376,7 +378,7 @@
 				B58CBF3A1D32BC1500908922 /* Helper Functions.swift */,
 				B5FF5F0D1D4BF78B00B53CEB /* AbilityHelper.swift */,
 				B54295081C610106007119F7 /* Player.swift */,
-				B5790F971D46AA9500608F7F /* Monster.swift */,
+				B5790F971D46AA9500608F7F /* Enemy.swift */,
 				B5B099DF1D5CE1CC00B6C02D /* SpawnPoints.swift */,
 				B53479BD1D2AB6E2001110CA /* BulletNode.swift */,
 				B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */,
@@ -529,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B099801D56680C00B6C02D /* maze1.png */,
+				B55B24241D62948600230439 /* maze2.png */,
 			);
 			name = MazeImgs;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				B5FF5F441D53CD4A00B53CEB /* superBullet.png in Resources */,
 				B5B099881D5910E300B6C02D /* monster.png in Resources */,
 				B5B099841D58E73300B6C02D /* directionArrow.png in Resources */,
+				B55B24251D62948600230439 /* maze2.png in Resources */,
 				B5B099751D55542500B6C02D /* fireTexture.png in Resources */,
 				B5FF5F251D4D03DF00B53CEB /* click.wav in Resources */,
 				B5B099E81D5D403300B6C02D /* m4a1.wav in Resources */,
@@ -821,7 +825,7 @@
 				B5B099911D5BDDA800B6C02D /* RemoveAds.swift in Sources */,
 				B53479B21D1C4864001110CA /* MainMenuScene.swift in Sources */,
 				B5FF5F0E1D4BF78B00B53CEB /* AbilityHelper.swift in Sources */,
-				B5790F981D46AA9500608F7F /* Monster.swift in Sources */,
+				B5790F981D46AA9500608F7F /* Enemy.swift in Sources */,
 				B58CBF3B1D32BC1500908922 /* Helper Functions.swift in Sources */,
 				B5A6D89C1C4FE64B001B6ABA /* MenuViewController.swift in Sources */,
 				B5790F941D46966600608F7F /* AdMob(iOS).swift in Sources */,

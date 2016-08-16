@@ -40,7 +40,7 @@ class NewPlayer:SKSpriteNode {
     
 }
 
-func turnNode(node: SKSpriteNode, direction: PlayerDirection) {
+func turnPlayer(name: String, node: SKSpriteNode, direction: PlayerDirection) {
     
     var deg = 0.0
     
@@ -83,7 +83,6 @@ func turnNode(node: SKSpriteNode, direction: PlayerDirection) {
     }
     
     node.zRotation = DegToRad(deg)
-    //currentDirection = direction
 }
 
 //texture array for Player

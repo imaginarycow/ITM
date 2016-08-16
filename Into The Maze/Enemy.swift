@@ -58,31 +58,31 @@ class Monster:SKSpriteNode {
         // then turn the zombie
         if moveToPoint.x == x1 {
             if moveToPoint.y == y1 {
-                turnNode(self, direction: PlayerDirection.South)
+                turnNode("player", node: self, direction: PlayerDirection.South)
             }else if moveToPoint.y > y1 {
-                turnNode(self, direction: PlayerDirection.North)
+                turnNode("player", node: self, direction: PlayerDirection.North)
             }else {
-                turnNode(self, direction: PlayerDirection.South)
+                turnNode("player", node: self, direction: PlayerDirection.South)
             }
             
         }
         if moveToPoint.x > x1 {
             if moveToPoint.y == y1 {
-                turnNode(self, direction: PlayerDirection.East)
+                turnNode("player", node: self, direction: PlayerDirection.East)
             }else if moveToPoint.y > y1 {
-                turnNode(self, direction: PlayerDirection.NorthEast)
+                turnNode("player", node: self, direction: PlayerDirection.NorthEast)
             }else {
-                turnNode(self, direction: PlayerDirection.SouthEast)
+                turnNode("player", node: self, direction: PlayerDirection.SouthEast)
             }
             
         }
         if moveToPoint.x < x1 {
             if moveToPoint.y == y1 {
-                turnNode(self, direction: PlayerDirection.West)
+                turnNode("player", node: self, direction: PlayerDirection.West)
             }else if moveToPoint.y > y1 {
-                turnNode(self, direction: PlayerDirection.NorthWest)
+                turnNode("player", node: self, direction: PlayerDirection.NorthWest)
             }else {
-                turnNode(self, direction: PlayerDirection.SouthWest)
+                turnNode("player", node: self, direction: PlayerDirection.SouthWest)
             }
             
         }

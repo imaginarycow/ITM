@@ -41,7 +41,7 @@ var playerPosition: CGPoint = (Player?.position)!
 let playerGun = SKSpriteNode(imageNamed: "gun.png")
 var finishPosition = CGPoint(x: 0,y: 0)
 
-var box1Width:CGFloat = 0.0
+var box1Width:CGFloat =  CGFloat((activeScene.size.height) * 1.0)
 var box1 = SKSpriteNode()
 var box2 = SKSpriteNode()
 var box3 = SKSpriteNode()
@@ -135,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(monster)
             monster.runAction(fade)
-            turnNode(monster, direction: .North)
+            turnNode("monster", node: monster, direction: .North)
             spawnImage.removeFromParent()
         }
         
@@ -153,11 +153,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //give player's start direction and location
         Player?.position = CGPoint(x: playerSpawn.x, y: playerSpawn.y)
         currentDirection = PlayerDirection.East
-        turnNode(Player!, direction: currentDirection)
+        turnNode("player", node: Player!, direction: currentDirection)
         
         playerGun.zPosition = 50
         playerGun.size = CGSize(width: (Player?.size.width)!, height: Player!.size.height * 1.5)
-        turnNode(playerGun, direction: currentDirection)
+        turnNode("gun", node: playerGun, direction: currentDirection)
         playerGun.alpha = 1.0
         playerGun.position = (Player?.position)!
         addChild(playerGun)
@@ -292,6 +292,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         box2 = SKSpriteNode()
         box3 = SKSpriteNode()
         box4 = SKSpriteNode()
+        box5 = SKSpriteNode()
+        box6 = SKSpriteNode()
+        box7 = SKSpriteNode()
         self.removeAllActions()
         self.removeAllChildren()
         self.scene?.removeAllActions()
