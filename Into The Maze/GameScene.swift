@@ -42,6 +42,8 @@ let playerGun = SKSpriteNode(imageNamed: "gun.png")
 var finishPosition = CGPoint(x: 0,y: 0)
 
 var box1Width:CGFloat =  CGFloat((activeScene.size.height) * 1.0)
+var circle1 = SKShapeNode()
+var circle2 = SKShapeNode()
 var box1 = SKSpriteNode()
 var box2 = SKSpriteNode()
 var box3 = SKSpriteNode()
@@ -52,6 +54,7 @@ var box7 = SKSpriteNode()
 var box8 = SKSpriteNode()
 
 var timerIsFrozen = false
+var treasureTaken = false
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -64,7 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let finishFlag = SKSpriteNode(imageNamed: "finish.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
-    
+    //facebook button
+    let shareButton = SKSpriteNode(imageNamed: "fb.png")
     let shootControl = SKSpriteNode(imageNamed: "shootButton.png")
     
     var TextureArray = [SKTexture]()
@@ -89,6 +93,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
         
+        box1Width =  CGFloat((activeScene.size.height) * 1.0)
+        treasureTaken = false
         monsterCount = 0
         monsterIndex = 0
         vc.playSoundEffect(.gameSound)
@@ -129,8 +135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.frame.size)
             monster.physicsBody?.usesPreciseCollisionDetection = true
             monster.physicsBody?.categoryBitMask = monsterCategory
-            monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
-            monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory
+            monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory | monsterCategory
+            monster.physicsBody?.contactTestBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory | monsterCategory
             monster.alpha = 0
             
             self.addChild(monster)
@@ -260,15 +266,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //create target area for player to reach
     func createCenter() {
         
-        center.position = CGPointMake(0.0, 0.0)
+        center.position = centerOfScene
         center.size = CGSize(width: 20.0 * scale, height: 20.0 * scale)
         center.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: center.size.width, height: center.size.height))
         center.physicsBody?.usesPreciseCollisionDetection = true
         center.physicsBody?.categoryBitMask = centerCategory
         center.physicsBody?.contactTestBitMask = playerCategory
-        center.zPosition = 11
+        center.zPosition = 100
         center.name = "center"
-        box1.addChild(center)
+        addChild(center)
         
     }
     
@@ -370,7 +376,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
             }
+            
+            if shareButton.containsPoint(location) {
+                postToFacebook()
+            }
+
         }
+        
     }
 
     func didBeginContact(contact: SKPhysicsContact) {

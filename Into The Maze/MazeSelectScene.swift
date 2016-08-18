@@ -82,7 +82,7 @@ class MazeSelectScene: SKScene {
         goLabel.fontName = labelFont
         goLabel.fontColor = .whiteColor()
         goLabel.zPosition = 100
-        goLabel.fontSize = 18.0 * scale
+        goLabel.fontSize = 22.0 * scale
         goLabel.position = CGPoint(x: (self.scene?.size.width)!/2, y: (self.scene?.size.height)! * 0.1)
         self.addChild(goLabel)
         
@@ -106,7 +106,7 @@ class MazeSelectScene: SKScene {
         case 2:
             gameScene = Maze2GameScene()
         case 3:
-            gameScene = Maze1GameScene()
+            gameScene = Maze3GameScene()
         case 4:
             gameScene = Maze1GameScene()
         case 5:

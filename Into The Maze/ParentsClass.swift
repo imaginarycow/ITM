@@ -19,7 +19,6 @@ class Parent {
         parent.color = color
         parent.size = size
         
-        
         return parent
     }
 }

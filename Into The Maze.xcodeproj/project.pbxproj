@@ -51,6 +51,10 @@
 		B542950E1C610522007119F7 /* Halo3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B542950D1C6104E6007119F7 /* Halo3.ttf */; };
 		B54295131C614254007119F7 /* walkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B54295121C614254007119F7 /* walkCycle.atlas */; };
 		B55B24251D62948600230439 /* maze2.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B24241D62948600230439 /* maze2.png */; };
+		B55B24271D64A8F300230439 /* Maze3GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B24261D64A8F300230439 /* Maze3GameScene.swift */; };
+		B55B242B1D650B7E00230439 /* JoystickHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B242A1D650B7E00230439 /* JoystickHelper.swift */; };
+		B55B242D1D650BD500230439 /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B242C1D650BD500230439 /* FacebookHelper.swift */; };
+		B55B242F1D650E9E00230439 /* fb.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B242E1D650E9E00230439 /* fb.png */; };
 		B5790F941D46966600608F7F /* AdMob(iOS).swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F931D46966600608F7F /* AdMob(iOS).swift */; };
 		B5790F981D46AA9500608F7F /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F971D46AA9500608F7F /* Enemy.swift */; };
 		B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B5790F9B1D47E0BF00608F7F /* mazeBackground.png */; };
@@ -200,6 +204,10 @@
 		B542950D1C6104E6007119F7 /* Halo3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Halo3.ttf; sourceTree = "<group>"; };
 		B54295121C614254007119F7 /* walkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = walkCycle.atlas; sourceTree = "<group>"; };
 		B55B24241D62948600230439 /* maze2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze2.png; sourceTree = "<group>"; };
+		B55B24261D64A8F300230439 /* Maze3GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maze3GameScene.swift; sourceTree = "<group>"; };
+		B55B242A1D650B7E00230439 /* JoystickHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickHelper.swift; sourceTree = "<group>"; };
+		B55B242C1D650BD500230439 /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
+		B55B242E1D650E9E00230439 /* fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb.png; sourceTree = "<group>"; };
 		B5790F931D46966600608F7F /* AdMob(iOS).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AdMob(iOS).swift"; path = "Into The Maze/AdMob(iOS).swift"; sourceTree = "<group>"; };
 		B5790F971D46AA9500608F7F /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B5790F9B1D47E0BF00608F7F /* mazeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeBackground.png; sourceTree = "<group>"; };
@@ -384,6 +392,8 @@
 				B5A6D8B81C507B00001B6ABA /* GlobalGameData.swift */,
 				B5A6D8691C4FE209001B6ABA /* AppDelegate.swift */,
 				B5790F9F1D47E60000608F7F /* RateMe.swift */,
+				B55B242C1D650BD500230439 /* FacebookHelper.swift */,
+				B55B242A1D650B7E00230439 /* JoystickHelper.swift */,
 				B534798B1D19E104001110CA /* AnalogJoystick.swift */,
 				B5B099E91D5E232300B6C02D /* TODO */,
 				B5B099D71D5CD34400B6C02D /* zombieWalk.atlas */,
@@ -458,6 +468,7 @@
 				B5FF5F281D4D059800B53CEB /* diamond.png */,
 				B5B099831D58E73300B6C02D /* directionArrow.png */,
 				B5B099DB1D5CD6AE00B6C02D /* zombieSpawn.png */,
+				B55B242E1D650E9E00230439 /* fb.png */,
 				B5B099E11D5D38BB00B6C02D /* finish.png */,
 				B51FBBDD1D432CED008DCF94 /* random.png */,
 				B5B099851D58EC9800B6C02D /* teleport.png */,
@@ -504,6 +515,7 @@
 				B54295021C60733F007119F7 /* GameScene.swift */,
 				B5A6D86D1C4FE209001B6ABA /* Maze1GameScene.swift */,
 				B54295041C60FB56007119F7 /* Maze2GameScene.swift */,
+				B55B24261D64A8F300230439 /* Maze3GameScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -722,6 +734,7 @@
 				B5B099811D56680C00B6C02D /* maze1.png in Resources */,
 				B5FF5F271D4D04D800B53CEB /* laser2.wav in Resources */,
 				B5FF5F1B1D4CF90D00B53CEB /* shiftSound.wav in Resources */,
+				B55B242F1D650E9E00230439 /* fb.png in Resources */,
 				B5FF5F1D1D4CFAC700B53CEB /* abilitySound.wav in Resources */,
 				B5B099631D54F1E500B6C02D /* fire3.sks in Resources */,
 				B5FF5F191D4CF54700B53CEB /* alarmSound.wav in Resources */,
@@ -809,10 +822,13 @@
 				B51FBBC81D3DF696008DCF94 /* adHelper.swift in Sources */,
 				B54295091C610106007119F7 /* Player.swift in Sources */,
 				B5790FA01D47E60000608F7F /* RateMe.swift in Sources */,
+				B55B242D1D650BD500230439 /* FacebookHelper.swift in Sources */,
 				B53479CE1D2C40ED001110CA /* MazeBuilders.swift in Sources */,
+				B55B242B1D650B7E00230439 /* JoystickHelper.swift in Sources */,
 				B51FBBDA1D3F4A0D008DCF94 /* HelpScene.swift in Sources */,
 				B5B099E01D5CE1CC00B6C02D /* SpawnPoints.swift in Sources */,
 				B5A6D86A1C4FE209001B6ABA /* AppDelegate.swift in Sources */,
+				B55B24271D64A8F300230439 /* Maze3GameScene.swift in Sources */,
 				B5A6D8B91C507B00001B6ABA /* GlobalGameData.swift in Sources */,
 				B54295051C60FB56007119F7 /* Maze2GameScene.swift in Sources */,
 				B53479D21D2D6CFB001110CA /* AbilitySelectScene.swift in Sources */,

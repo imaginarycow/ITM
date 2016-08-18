@@ -3,7 +3,7 @@ import SpriteKit
 
 let boxZPosition: CGFloat = 5
 let parentZPosition: CGFloat = 10
-var circle1 = SKShapeNode()
+
 
 class Maze2GameScene: GameScene {
     
@@ -301,17 +301,33 @@ class Maze2GameScene: GameScene {
     
     //maze2 shift1 animation
     func maze2Shift() {
+        //before user grabs treasuer
+        if treasureTaken == false {
+            
+            let duration = 0.5
+            
+            let rotateAction = SKAction.rotateByAngle(DegToRad(30), duration: duration)
+            box2.runAction(rotateAction)
+            box3.runAction(rotateAction)
+            box4.runAction(rotateAction)
+            box5.runAction(rotateAction)
+            
+            let rotateAction2 = SKAction.rotateByAngle(DegToRad(-75), duration: 1.0)
+            box7.runAction(rotateAction2)
+        }else {
+            
+            let duration = 0.5
+            
+            let rotateAction = SKAction.rotateByAngle(DegToRad(90), duration: duration)
+            box2.runAction(rotateAction)
+            box3.runAction(rotateAction)
+            box4.runAction(rotateAction)
+            box5.runAction(rotateAction)
+            
+            let rotateAction2 = SKAction.rotateByAngle(DegToRad(-180), duration: 1.0)
+            box7.runAction(rotateAction2)
+        }
         
-        let duration = 0.5
-    
-        let rotateAction = SKAction.rotateByAngle(DegToRad(30), duration: duration)
-        box2.runAction(rotateAction)
-        box3.runAction(rotateAction)
-        box4.runAction(rotateAction)
-        box5.runAction(rotateAction)
-        
-        let rotateAction2 = SKAction.rotateByAngle(DegToRad(-75), duration: 1.0)
-        box7.runAction(rotateAction2)
         
         
     } // End: Maze2Shift
