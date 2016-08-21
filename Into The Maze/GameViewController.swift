@@ -34,6 +34,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
     var explosionSound: AVAudioPlayer?
     var freezeSound: AVAudioPlayer?
     var spawnSound: AVAudioPlayer?
+    var zombieSound: AVAudioPlayer?
     
 
     override func viewDidLoad() {
@@ -87,8 +88,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.buttonPress?.volume = 0.3
             self.buttonPress?.play()
         case .gunSound:
-            //self.gunShot = setupAudioPlayerWithFile("laserSound", type: "wav")
-            self.gunShot = setupAudioPlayerWithFile("shotgun", type: "wav")
+            self.gunShot = setupAudioPlayerWithFile("laserSound", type: "wav")
+            //self.gunShot = setupAudioPlayerWithFile("shotgun", type: "wav")
             self.gunShot?.volume = 0.4
             self.gunShot?.play()
         case .redeemSound:
@@ -115,7 +116,10 @@ class GameViewController: UIViewController, UITextFieldDelegate, GADInterstitial
             self.spawnSound = setupAudioPlayerWithFile("spawnSound", type: "wav")
             self.spawnSound?.volume = 0.2
             self.spawnSound?.play()
-            
+        case .zombieSound:
+            self.zombieSound = setupAudioPlayerWithFile("zombieScream", type: "wav")
+            self.zombieSound?.volume = 0.5
+            self.zombieSound?.play()
         default:
             self.abilityUse = setupAudioPlayerWithFile("laser2", type: "wav")
              self.abilityUse?.play()

@@ -2,8 +2,6 @@
 import SpriteKit
 
 
-
-
 class Maze1GameScene: GameScene {
     
     let numbBricks2:Int = 6
@@ -29,7 +27,7 @@ class Maze1GameScene: GameScene {
         buildInnerTriangle()
         updateShiftTimer()
         updateClock()
-        setEnemySpawnPoints()
+
     }
     
     override func willMoveFromView(view: SKView) {
@@ -316,14 +314,13 @@ class Maze1GameScene: GameScene {
                 self.timer.fontColor = freezeColor
                 self.timer.text = "Time Freeze"
                 if freezeTimer > 9 {
-                    let texture = SKTexture(imageNamed: "spark.png")
-                    let sparks = createSpark(texture, point: CGPointZero, target: self.timer)
-                    self.timer.addChild(sparks)
+                    let ice = createIce2(CGPointZero, target: self.timer)
+                    self.timer.addChild(ice)
                     
                     delay(0.3) {
-                        sparks.removeFromParent()
-                        sparks.targetNode = nil
-                        sparks.resetSimulation()
+                        ice.removeFromParent()
+                        ice.targetNode = nil
+                        ice.resetSimulation()
                     }
 
                 }

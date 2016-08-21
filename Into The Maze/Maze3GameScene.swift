@@ -30,18 +30,48 @@ class Maze3GameScene: GameScene {
         
         updateShiftTimer()
         updateClock()
-        setEnemySpawnPoints()
+        
         
         //ability token set in buildOuterWall()
         
         buildBoxes2_5()
         buildOuterCircle()
         buildInnerCircle()
-        
+        buildBox6()
     }
     
     override func willMoveFromView(view: SKView) {
         
+    }
+    func buildBox6() {
+        
+        let width = CGFloat(activeScene.size.height * 0.4)
+        box6.size = CGSize(width: width, height: width)
+        box6.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y)
+        //box6.color = .blueColor()
+        box6.zPosition = boxZPosition + 3
+        addChild(box6)
+        
+        let size1 = CGSize(width: width, height: brickHeight)
+        let rot = DegToRad(90.0)
+        
+        let parent1 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (width/2)), size: size1)
+        box6.addChild(parent1)
+        let parent2 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (width/2)), size: size1)
+        box6.addChild(parent2)
+        
+        let numbBricks = Int(size1.width / brickWidth)
+        for i in 0...numbBricks-1 {
+            
+            let rot = Double(DegToRad(0.0))
+            let anchorPoint1: CGPoint = CGPoint(x: 0.0 - (size1.width / 2) + (brickWidth/2), y: 0.0)
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x + (brickWidth * CGFloat(i)), y: anchorPoint1.y), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x + (brickWidth * CGFloat(i)), y: anchorPoint1.y), brickWidth: brickWidth, rotation: rot)
+            parent1.addChild(brick1)
+            parent2.addChild(brick2)
+            
+        }
+
     }
     
     func buildBoxes2_5() {
@@ -95,10 +125,10 @@ class Maze3GameScene: GameScene {
             if i % 4 == 0 {
                 rot = 0.0
             }
-            if i == 1 || i == 8 {
-                rot = 90.0
-            }
-            if i > 1 {
+//            if i == 1 || i == 8 {
+//                rot = 90.0
+//            }
+            if i >= 1 {
                 rot = Double(DegToRad(-60.0)) + (Double(i-1) * radians)
             }
             
@@ -156,22 +186,38 @@ class Maze3GameScene: GameScene {
     //maze2 shift1 animation
     func maze3Shift() {
         
-        let duration = 1.0
+        if treasureTaken == false {
+            let duration = 1.0
+            
+            let rotateAction1 = SKAction.rotateByAngle(DegToRad(45), duration: duration)
+            circle1.runAction(rotateAction1)
+            
+            let rotateAction2 = SKAction.rotateByAngle(DegToRad(-45), duration: duration)
+            circle2.runAction(rotateAction2)
+            
+            let rotateAction3 = SKAction.rotateByAngle(DegToRad(90), duration: duration)
+            box2.runAction(rotateAction3)
+            
+        }else {
+            let duration = 1.0
+            
+            let rotateAction1 = SKAction.rotateByAngle(DegToRad(75), duration: duration)
+            circle1.runAction(rotateAction1)
+            
+            let rotateAction2 = SKAction.rotateByAngle(DegToRad(-75), duration: duration)
+            circle2.runAction(rotateAction2)
+            
+            let rotateAction3 = SKAction.rotateByAngle(DegToRad(150), duration: duration)
+            box2.runAction(rotateAction3)
+        }
         
-        let rotateAction1 = SKAction.rotateByAngle(DegToRad(45), duration: duration)
-        circle1.runAction(rotateAction1)
         
-        let rotateAction2 = SKAction.rotateByAngle(DegToRad(-45), duration: duration)
-        circle2.runAction(rotateAction2)
-        
-        let rotateAction3 = SKAction.rotateByAngle(DegToRad(45), duration: duration)
-        box2.runAction(rotateAction3)
     } // End: Maze3Shift
     
     //maze shift timer
     func updateShiftTimer() {
         
-        timer.position = CGPoint(x: frame.size.width * 0.15, y: frame.size.height * 0.80)
+        timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
         timer.fontName = labelFont
         timer.fontSize = 18.0
         timer.fontColor = .redColor()
@@ -187,14 +233,13 @@ class Maze3GameScene: GameScene {
                 self.timer.fontColor = freezeColor
                 self.timer.text = "Time Freeze"
                 if freezeTimer > 9 {
-                    let texture = SKTexture(imageNamed: "spark.png")
-                    let sparks = createSpark(texture, point: CGPointZero, target: self.timer)
-                    self.timer.addChild(sparks)
+                    let ice = createIce2(CGPointZero, target: self.timer)
+                    self.timer.addChild(ice)
                     
                     delay(0.3) {
-                        sparks.removeFromParent()
-                        sparks.targetNode = nil
-                        sparks.resetSimulation()
+                        ice.removeFromParent()
+                        ice.targetNode = nil
+                        ice.resetSimulation()
                     }
                     
                 }

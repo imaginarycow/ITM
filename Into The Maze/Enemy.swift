@@ -143,22 +143,30 @@ func removeAllEnemies() {
         }
     })
     print("monters in monstersArray: \(monstersArray.count)")
+    var i = 0
     for monster in monstersArray {
+        
+        //limit due to number of skemitters
+        if i < 7 {
             
-        //createAnimationAtPoint(activeScene, point: monster.position, imageNamed: "instakill.png")
-        let texture = SKTexture(imageNamed: "fireTexture.png")
-        let fireball = createFireball(texture, point: CGPointZero, target: monster)
-        monster.addChild(fireball)
-        
-        
-        delay(0.5) {
-            fireball.removeFromParent()
-            fireball.targetNode = nil
-            fireball.resetSimulation()
+            //createAnimationAtPoint(activeScene, point: monster.position, imageNamed: "instakill.png")
+            let texture = SKTexture(imageNamed: "fireTexture.png")
+            let fireball = createFireball(texture, point: CGPointZero, target: monster)
+            monster.addChild(fireball)
+            i += 1
+            
+            delay(0.5) {
+                fireball.removeFromParent()
+                fireball.targetNode = nil
+                fireball.resetSimulation()
+                monster.removeAllActions()
+                monster.removeFromParent()
+            }
+
+        } else {
             monster.removeAllActions()
             monster.removeFromParent()
         }
-        
     }
     monstersArray = []
     monsterCount = 0
@@ -184,10 +192,10 @@ func removeEnemy(node:SKNode) {
     monsterCount -= 1
     print("monster count: \(monsterCount)")
     
-    if monstersKilled < 5 {
+    if monstersKilled < 10 {
         monstersKilled += 1
     }
-    if monstersKilled == 5 {
+    if monstersKilled == 10 {
         monstersKilled = 0
         abilityTokens += 1
         setAbilityForUse(abilityTokens)

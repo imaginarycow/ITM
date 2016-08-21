@@ -56,7 +56,7 @@ class AbilitySelectScene: SKScene {
     }
     //Check to see if we should present rate me View to user
     func rateMe() {
-        var neverRate = gameData.boolForKey("neverRate")
+        let neverRate = gameData.boolForKey("neverRate")
         print(neverRate)
         var numLaunches = gameData.integerForKey("numLaunches") + 1
         print("number of game launches: \(numLaunches)")

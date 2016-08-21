@@ -8,7 +8,6 @@
 
 import Foundation
 import SpriteKit
-import Social
 
 //creates explosion sprite at contact point
 func createAnimationAtPoint(scene: SKScene, point: CGPoint, imageNamed: String = "explosion.png") {
@@ -54,6 +53,9 @@ extension GameScene {
     }
     
     func setFinishFlag(position: CGPoint) {
+        
+        setEnemyAroundFlag()
+        vc.playSoundEffect(.zombieSound)
         treasureTaken = true
         finishFlag.size = CGSize(width: 20.0 * scale, height: 30.0 * scale)
         finishFlag.position = position
@@ -76,7 +78,7 @@ extension GameScene {
         
         vc.alarmSound?.pause()
         vc.alarmSound?.stop()
-        
+        vc.playSoundEffect(.zombieSound)
         let notification = SKLabelNode(text: "You Died!")
         notification.position = centerOfScene
         notification.fontName = labelFont
@@ -147,16 +149,7 @@ extension GameScene {
         self.scene?.removeAllChildren()
         addChild(notification)
         addChild(notification2)
-        
-        let shareLabel = SKLabelNode(text: "Share to")
-        shareLabel.fontColor = mazeColor
-        shareLabel.fontSize = 18.0 * scale
-        shareLabel.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y - 105.0)
-        shareButton.size = CGSize(width: 50.0 * scale, height: 50.0 * scale)
-        shareButton.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y - 140.0)
-        addChild(shareLabel)
-        addChild(shareButton)
-        
+        vc.playSoundEffect(.zombieSound)
         delay(5.0) {
             vc.gameSound?.pause()
             vc.gameSound?.stop()

@@ -1,11 +1,15 @@
+//
+//  Maze4GameScene.swift
+//  Into The Maze
+//
+//  Created by ramiro beltran on 8/20/16.
+//  Copyright © 2016 Ramiro Beltran. All rights reserved.
+//
 
 import SpriteKit
 
-let boxZPosition: CGFloat = 5
-let parentZPosition: CGFloat = 10
 
-
-class Maze2GameScene: GameScene {
+class Maze4GameScene: GameScene {
     
     let numbBricks2:Int = 6
     var brickWidth2:CGFloat!
@@ -29,9 +33,9 @@ class Maze2GameScene: GameScene {
         
         buildOuterWall()
         buildBox1()
-        buildBoxes2_5()
-        buildBox6()
-        buildOuterCircle()
+        //buildBoxes2_5()
+        //buildBox6()
+        //buildOuterCircle()
         
     }
     
@@ -47,7 +51,7 @@ class Maze2GameScene: GameScene {
         outerWall.zPosition = boxZPosition
         addChild(outerWall)
         
-        abilityToken.position = CGPoint(x: 0.0 + (outerWall.size.width / 2) - abilityToken.size.width, y: 0.0 + (outerWall.size.width / 2) - abilityToken.size.width)
+        abilityToken.position = CGPoint(x: 0.0 + (outerWall.size.width / 2) - abilityToken.size.width, y: 0.0 - (outerWall.size.width / 2) + abilityToken.size.width)
         outerWall.addChild(abilityToken)
         
         let sideLength1:CGFloat = outerWallLength
@@ -57,13 +61,13 @@ class Maze2GameScene: GameScene {
         
         let parent1 = Parent.newParent(CGPoint(x: 0.0 - (sideLength1 / 2), y: 0.0), size: size1)
         outerWall.addChild(parent1)
-
+        
         let parent2 = Parent.newParent(CGPoint(x: 0.0 + (sideLength1 / 2), y: 0.0), size: size1)
         outerWall.addChild(parent2)
-
+        
         let parent3 = Parent.newParent(CGPoint(x: 0.0, y: 0.0  - (sideLength1 / 2)), size: size2)
         outerWall.addChild(parent3)
-
+        
         let parent4 = Parent.newParent(CGPoint(x: 0.0, y: 0.0  + (sideLength1 / 2)), size: size2)
         outerWall.addChild(parent4)
         
@@ -76,7 +80,7 @@ class Maze2GameScene: GameScene {
             let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             
             // create entry and exit
-            if i == numbOfBricks / 2 {
+            if i == numbOfBricks-1 {
                 
             }else {
                 parent1.addChild(brick1)
@@ -96,6 +100,7 @@ class Maze2GameScene: GameScene {
         box1Width = CGFloat((scene?.size.height)! * 0.8)
         box1.size = CGSize(width: box1Width, height: box1Width)
         //box1.color = .greenColor()
+        box1.zRotation = DegToRad(45.0)
         box1.zPosition = boxZPosition + 1
         box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         //box1.alpha = 0.2
@@ -202,18 +207,18 @@ class Maze2GameScene: GameScene {
             let brick4 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             parent3.addChild(brick3)
             parent4.addChild(brick4)
-
+            
             let brick5 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             let brick6 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             parent5.addChild(brick5)
             parent6.addChild(brick6)
-
+            
             let brick7 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             let brick8 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
             parent7.addChild(brick7)
             parent8.addChild(brick8)
         }
-
+        
     }
     
     func buildBox6() {
@@ -295,15 +300,19 @@ class Maze2GameScene: GameScene {
             parent3.addChild(brick3)
             parent4.addChild(brick4)
         }
-
+        
     }
     
-    //maze2 shift1 animation
-    func maze2Shift() {
+    //maze4 shift1 animation
+    func maze4Shift() {
         //before user grabs treasuer
         if treasureTaken == false {
             
             let duration = 0.5
+            
+            let shift1 = SKAction.moveTo(CGPoint(x: scene!.size.width * 0.55, y: scene!.size.height * 0.55), duration: duration)
+            let shift2 = SKAction.moveTo(CGPoint(x: scene!.size.width * 0.45, y: scene!.size.height * 0.45), duration: duration)
+            box1.runAction(SKAction.repeatActionForever(SKAction.sequence([shift1,shift2])))
             
             let rotateAction = SKAction.rotateByAngle(DegToRad(30), duration: duration)
             box2.runAction(rotateAction)
@@ -329,14 +338,14 @@ class Maze2GameScene: GameScene {
         
         
         
-    } // End: Maze2Shift
+    } // End: Maze4Shift
     
     //maze shift timer
     func updateShiftTimer() {
         
         timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
         timer.fontName = labelFont
-        timer.fontSize = 18.0
+        timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
         self.addChild(timer)
         
@@ -370,7 +379,7 @@ class Maze2GameScene: GameScene {
                 
                 
             } else {
-                self.maze2Shift()
+                self.maze4Shift()
                 if seconds % 5 == 0 && monsterCount < maxMonsterCount {
                     
                     self.createNewMonster(getRandomEnemyPoint())
@@ -400,4 +409,4 @@ class Maze2GameScene: GameScene {
     }
     
 }
-// End: Maze2GameScene
+// End: Maze4GameScene

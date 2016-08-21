@@ -67,8 +67,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let finishFlag = SKSpriteNode(imageNamed: "finish.png")
     //on screen buttons
     let backButton = SKLabelNode(text: "Quit")
-    //facebook button
-    let shareButton = SKSpriteNode(imageNamed: "fb.png")
     let shootControl = SKSpriteNode(imageNamed: "shootButton.png")
     
     var TextureArray = [SKTexture]()
@@ -89,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createNewScene() {
         centerOfScene = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
         activeScene = self
+        setEnemySpawnPoints()
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
@@ -141,7 +140,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(monster)
             monster.runAction(fade)
-            turnNode("monster", node: monster, direction: .North)
+            //vc.playSoundEffect(.zombieSound)
+            turnNode("monster", node: monster, direction: .West)
             spawnImage.removeFromParent()
         }
         
@@ -214,7 +214,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         shootControl.size = CGSize(width: buttonRad * 2, height: buttonRad * 2)
         shootControl.position = CGPoint(x: scene!.size.width * 0.91, y: scene!.size.height * 0.25)
-        shootControl.zPosition = 100
+        shootControl.zPosition = 50
         shootControl.name = "shootControl"
         
         //shootControl.physicsBody = SKPhysicsBody(circleOfRadius: buttonRad)
@@ -239,7 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             abilityControl.fillTexture = SKTexture(imageNamed: "abilityButton")
         }
         
-        abilityControl.zPosition = 100
+        abilityControl.zPosition = 50
         abilityControl.name = "abilityControl"
         scene!.addChild(abilityControl)
     }
@@ -375,10 +375,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     goBackToPreviousScene()
                 }
                 
-            }
-            
-            if shareButton.containsPoint(location) {
-                postToFacebook()
             }
 
         }

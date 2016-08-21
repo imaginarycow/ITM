@@ -114,10 +114,11 @@ func createSpark(texture:SKTexture, point:CGPoint, target: SKNode) -> SKEmitterN
     
 }
 
-let ice = NSBundle.mainBundle().pathForResource("ice", ofType: "sks")
-let iceParticle1 = NSKeyedUnarchiver.unarchiveObjectWithFile(ice!) as! SKEmitterNode
+//ice for ability use button
+let ice1 = NSBundle.mainBundle().pathForResource("ice", ofType: "sks")
+let iceParticle1 = NSKeyedUnarchiver.unarchiveObjectWithFile(ice1!) as! SKEmitterNode
 
-func createIce(point:CGPoint, target: SKNode) -> SKEmitterNode{
+func createIce1(point:CGPoint, target: SKNode) -> SKEmitterNode{
     
     let iceParticle = iceParticle1
     
@@ -129,4 +130,22 @@ func createIce(point:CGPoint, target: SKNode) -> SKEmitterNode{
     return iceParticle
     
 }
+
+//ice for timer
+let ice2 = NSBundle.mainBundle().pathForResource("ice2", ofType: "sks")
+let iceParticle2 = NSKeyedUnarchiver.unarchiveObjectWithFile(ice2!) as! SKEmitterNode
+
+func createIce2(point:CGPoint, target: SKNode) -> SKEmitterNode{
+    
+    let iceParticle = iceParticle2
+    
+    iceParticle.resetSimulation()
+    iceParticle.position = point
+    iceParticle.targetNode = target
+    iceParticle.zPosition = 100
+    
+    return iceParticle
+    
+}
+
 

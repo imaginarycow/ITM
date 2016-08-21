@@ -13,6 +13,7 @@ var abilitySelected:ability = .brickBreaker
 var abilityEnabled = false
 var abilityTokens:Int = gameData.integerForKey("abilityTokens")
 var abilityToken = SKSpriteNode(imageNamed: "abilityToken.png")
+var abilityTokenLabel = SKLabelNode(text: "x0")
 let freezeColor: UIColor = UIColor(red: 87/255.0, green: 191/255.0, blue: 230/255.0, alpha: 1.0)
 
 enum ability {
@@ -82,6 +83,7 @@ func useInstaKill() {
     
     let texture = SKTexture(imageNamed: "instakill.png")
     let fireball = createFireball(texture, point: CGPointZero, target: abilityControl)
+    
     abilityControl.addChild(fireball)
     vc.playSoundEffect(.abilitySound)
     
@@ -97,7 +99,7 @@ func useTimeFreeze() {
     timerIsFrozen = true
     
     //let texture = SKTexture(imageNamed: "timeFreeze.png")
-    let ice = createIce(CGPointZero, target: abilityControl)
+    let ice = createIce1(CGPointZero, target: abilityControl)
     abilityControl.addChild(ice)
     vc.playSoundEffect(.freezeSound)
     
@@ -110,16 +112,30 @@ func useTimeFreeze() {
 
 func setAbilityForUse(tokens: Int) {
     print("AbilityTokens: \(abilityTokens)")
+    abilityTokenLabel.removeFromParent()
 
     if tokens > 0 {
+        
+        abilityTokenLabel.text = "x\(abilityTokens)"
+        abilityTokenLabel.fontName = labelFont
+        abilityTokenLabel.fontColor = mazeColor
+        abilityTokenLabel.fontSize = 16.0 * scale
+        abilityTokenLabel.position = CGPoint(x: 0.0 + abilityControl.frame.size.width * 0.4, y: 0.0 + abilityControl.frame.size.width * 0.4)
+        abilityControl.addChild(abilityTokenLabel)
         
         let action1 = SKAction.fadeAlphaTo(0.3, duration: 0.5)
         let action2 = SKAction.fadeAlphaTo(1.5, duration: 0.5)
         let actions = SKAction.sequence([action1, action2])
         abilityControl.runAction(SKAction.repeatActionForever(actions))
     }else {
+        abilityTokenLabel.text = "x\(abilityTokens)"
+        abilityTokenLabel.fontName = labelFont
+        abilityTokenLabel.fontColor = mazeColor
+        abilityTokenLabel.fontSize = 16.0 * scale
+        abilityTokenLabel.position = CGPoint(x: 0.0 + abilityControl.frame.size.width/2, y: 0.0 + abilityControl.frame.size.width/2)
         abilityControl.removeAllActions()
         abilityControl.alpha = 0.3
+        abilityControl.addChild(abilityTokenLabel)
     }
     
 }
