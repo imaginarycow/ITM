@@ -11,7 +11,7 @@ import SpriteKit
 
 class Parent {
     
-    class func newParent(point: CGPoint, color: SKColor = .clearColor(), size: CGSize) -> SKSpriteNode {
+    class func newParent(point: CGPoint, size: CGSize, color: SKColor = .clearColor()) -> SKSpriteNode {
         let parent = SKSpriteNode()
         
         parent.position = point

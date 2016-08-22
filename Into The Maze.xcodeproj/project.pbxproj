@@ -59,6 +59,7 @@
 		B55B24391D68FF3300230439 /* Maze5GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B24381D68FF3300230439 /* Maze5GameScene.swift */; };
 		B55B243B1D6907F200230439 /* maze3.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B243A1D6907F200230439 /* maze3.png */; };
 		B55B243D1D6909F700230439 /* maze2.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B243C1D6909F700230439 /* maze2.png */; };
+		B55B243F1D6A68ED00230439 /* maze4.png in Resources */ = {isa = PBXBuildFile; fileRef = B55B243E1D6A68ED00230439 /* maze4.png */; };
 		B5790F941D46966600608F7F /* AdMob(iOS).swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F931D46966600608F7F /* AdMob(iOS).swift */; };
 		B5790F981D46AA9500608F7F /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790F971D46AA9500608F7F /* Enemy.swift */; };
 		B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B5790F9B1D47E0BF00608F7F /* mazeBackground.png */; };
@@ -216,6 +217,7 @@
 		B55B24381D68FF3300230439 /* Maze5GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maze5GameScene.swift; sourceTree = "<group>"; };
 		B55B243A1D6907F200230439 /* maze3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze3.png; sourceTree = "<group>"; };
 		B55B243C1D6909F700230439 /* maze2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze2.png; sourceTree = "<group>"; };
+		B55B243E1D6A68ED00230439 /* maze4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze4.png; sourceTree = "<group>"; };
 		B5790F931D46966600608F7F /* AdMob(iOS).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AdMob(iOS).swift"; path = "Into The Maze/AdMob(iOS).swift"; sourceTree = "<group>"; };
 		B5790F971D46AA9500608F7F /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B5790F9B1D47E0BF00608F7F /* mazeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeBackground.png; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				B5B099801D56680C00B6C02D /* maze1.png */,
 				B55B243C1D6909F700230439 /* maze2.png */,
 				B55B243A1D6907F200230439 /* maze3.png */,
+				B55B243E1D6A68ED00230439 /* maze4.png */,
 			);
 			name = MazeImgs;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				B5B099DC1D5CD6AE00B6C02D /* zombieSpawn.png in Resources */,
 				B55B243B1D6907F200230439 /* maze3.png in Resources */,
 				B58CC9B91D4BBDB60084887F /* loading.png in Resources */,
+				B55B243F1D6A68ED00230439 /* maze4.png in Resources */,
 				B5B099671D54F20400B6C02D /* fire5.sks in Resources */,
 				B5790F9C1D47E0BF00608F7F /* mazeBackground.png in Resources */,
 				B5FF5F171D4CF1C300B53CEB /* redeemSound.m4a in Resources */,

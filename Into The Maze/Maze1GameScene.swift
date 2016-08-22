@@ -334,12 +334,6 @@ class Maze1GameScene: GameScene {
                 
                 
             } else {
-                if seconds % 5 == 0 && monsterCount < maxMonsterCount {
-                    
-                    self.createNewMonster(getRandomEnemyPoint())
-                    monsterCount += 1
-                    print("monster count: \(monsterCount)")
-                }
                 
                 self.timer.text = "Maze Shift in: \(seconds)"
                 if seconds == 3 {

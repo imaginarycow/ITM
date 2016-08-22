@@ -20,7 +20,7 @@ class MazeSelectScene: SKScene {
     let goLabel = SKLabelNode(text: "Go")
     
     var selectedMaze:UIImage!
-    let mazeImages:[UIImage] = [UIImage(named: "maze1.png")!,UIImage(named: "maze2.png")!,UIImage(named: "maze3.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "random.png")!]
+    let mazeImages:[UIImage] = [UIImage(named: "maze1.png")!,UIImage(named: "maze2.png")!,UIImage(named: "maze3.png")!,UIImage(named: "maze4.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "random.png")!]
     let mazeIcon = SKSpriteNode()
     var numberOfMazes = 2
 

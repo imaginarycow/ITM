@@ -43,10 +43,18 @@ extension GameScene {
     func updateClock() {
         totalTime = 0
         let actionwait = SKAction.waitForDuration(1.0)
-        var seconds = 0
+        
         let actionrun = SKAction.runBlock({
             
             self.totalTime += 1
+            
+            //create monsters every 3 seconds
+            if self.totalTime % 3 == 0 && monsterCount < maxMonsterCount {
+                
+                self.createNewMonster(getRandomEnemyPoint())
+                monsterCount += 1
+                print("monster count: \(monsterCount)")
+            }
         })
         self.timer.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
 

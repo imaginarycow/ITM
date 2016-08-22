@@ -219,7 +219,7 @@ class Maze3GameScene: GameScene {
         
         timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
         timer.fontName = labelFont
-        timer.fontSize = 18.0
+        timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
         self.addChild(timer)
         
@@ -254,12 +254,6 @@ class Maze3GameScene: GameScene {
                 
             } else {
                 self.maze3Shift()
-                if seconds % 5 == 0 && monsterCount < maxMonsterCount {
-                    
-                    self.createNewMonster(getRandomEnemyPoint())
-                    monsterCount += 1
-                    print("monster count: \(monsterCount)")
-                }
                 
                 self.timer.text = "Maze Shifting!"
                 if seconds == 3 {
