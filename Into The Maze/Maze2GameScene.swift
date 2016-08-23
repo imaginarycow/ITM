@@ -28,7 +28,7 @@ class Maze2GameScene: GameScene {
         //ability token set in buildOuterWall()
         
         buildOuterWall()
-        buildBox1()
+        buildBox1A()
         buildBoxes2_5()
         buildBox6()
         buildOuterCircle()
@@ -91,7 +91,11 @@ class Maze2GameScene: GameScene {
         }
     }
     
-    func buildBox1() {
+    func buildBox1A() {
+        box1.removeAllActions()
+        box1.removeAllChildren()
+        box1.removeFromParent()
+        box1 = SKSpriteNode() //reset box1
         print("building box 1 bricks")
         box1Width = CGFloat((scene?.size.height)! * 0.8)
         box1.size = CGSize(width: box1Width, height: box1Width)
@@ -130,7 +134,50 @@ class Maze2GameScene: GameScene {
             parent8.addChild(brick4)
         }
     }
-    
+    func buildBox1B() { //for maze shift
+        box1.removeAllActions()
+        box1.removeAllChildren()
+        box1.removeFromParent()
+        box1 = SKSpriteNode()  //reset box1
+        print("building box 1 bricks")
+        box1Width = CGFloat((scene?.size.height)! * 0.67)
+        box1.size = CGSize(width: box1Width, height: box1Width)
+        //box1.color = .greenColor()
+        box1.zPosition = boxZPosition + 1
+        box1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        //box1.alpha = 0.2
+        addChild(box1)
+        
+        let parentSize1 = CGSize(width: brickHeight, height: box1Width / 2)
+        let parentSize2 = CGSize(width: box1Width / 2, height: brickHeight)
+        
+        let parent5 = Parent.newParent(CGPoint(x: 0.0 - (box1Width / 2), y: 0.0), size: parentSize1)
+        box1.addChild(parent5)
+        let parent6 = Parent.newParent(CGPoint(x: 0.0 + (box1Width / 2), y: 0.0), size: parentSize1)
+        box1.addChild(parent6)
+        let parent7 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 - (box1Width / 2)), size: parentSize2)
+        box1.addChild(parent7)
+        let parent8 = Parent.newParent(CGPoint(x: 0.0, y: 0.0 + (box1Width / 2)), size: parentSize2)
+        box1.addChild(parent8)
+        
+        let numbBricks = Int(parentSize1.height / brickWidth)
+        
+        for i in 0...numbBricks-1 {
+            let rot = Double(DegToRad(90.0))
+            let anchorPoint1: CGPoint = CGPoint(x: 0.0, y: 0.0 - (parentSize1.height / 2) + (brickWidth/2))
+            let brick1 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            let brick2 = Brick.createBrick(CGPoint(x: anchorPoint1.x, y: anchorPoint1.y + (brickWidth * CGFloat(i))), brickWidth: brickWidth, rotation: rot)
+            parent5.addChild(brick1)
+            parent6.addChild(brick2)
+            
+            let anchorPoint2: CGPoint = CGPoint(x: 0.0 - (parentSize2.width / 2) + (brickWidth/2), y: 0.0)
+            let brick3 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            let brick4 = Brick.createBrick(CGPoint(x: anchorPoint2.x + (brickWidth * CGFloat(i)), y: anchorPoint2.y), brickWidth: brickWidth, rotation: 0.0)
+            parent7.addChild(brick3)
+            parent8.addChild(brick4)
+        }
+    }
+
     func buildBoxes2_5() {
         
         let width = CGFloat(outerWall.size.height * 0.2)
@@ -300,7 +347,7 @@ class Maze2GameScene: GameScene {
     
     //maze2 shift1 animation
     func maze2Shift() {
-        //before user grabs treasuer
+        //before user grabs treasure
         if treasureTaken == false {
             
             let duration = 0.5
@@ -327,9 +374,19 @@ class Maze2GameScene: GameScene {
             box7.runAction(rotateAction2)
         }
         
-        
-        
     } // End: Maze2Shift
+    
+    func box1Shift() {
+        
+        if mazeShiftIndex % 2 == 0 {
+            buildBox1B()
+            mazeShiftIndex += 1
+        }else {
+            buildBox1A()
+            mazeShiftIndex += 1
+        }
+        
+    }
     
     //maze shift timer
     func updateShiftTimer() {
@@ -378,7 +435,7 @@ class Maze2GameScene: GameScene {
                 }
                 if seconds == 0 {
                     
-                    
+                    self.box1Shift()
                     vc.alarmSound!.stop()
                     seconds = 16
                     self.mazeShiftIndex += 1

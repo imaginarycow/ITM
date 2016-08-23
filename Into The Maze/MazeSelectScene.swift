@@ -20,9 +20,10 @@ class MazeSelectScene: SKScene {
     let goLabel = SKLabelNode(text: "Go")
     
     var selectedMaze:UIImage!
-    let mazeImages:[UIImage] = [UIImage(named: "maze1.png")!,UIImage(named: "maze2.png")!,UIImage(named: "maze3.png")!,UIImage(named: "maze4.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "mazeLaunchScreen.png")!,UIImage(named: "timeFreeze.png")!,UIImage(named: "random.png")!]
+    var numberOfMazes = 0
+    let mazes = [Maze1GameScene(),Maze2GameScene(),Maze3GameScene(),Maze4GameScene(),Maze5GameScene()]
+    let mazeImages:[UIImage] = [UIImage(named: "maze1.png")!,UIImage(named: "maze2.png")!,UIImage(named: "maze3.png")!,UIImage(named: "maze4.png")!,UIImage(named: "maze5.png")!,UIImage(named: "random.png")!]
     let mazeIcon = SKSpriteNode()
-    var numberOfMazes = 2
 
     var index = 2
     
@@ -82,7 +83,7 @@ class MazeSelectScene: SKScene {
         goLabel.fontName = labelFont
         goLabel.fontColor = .whiteColor()
         goLabel.zPosition = 100
-        goLabel.fontSize = 22.0 * scale
+        goLabel.fontSize = 26.0 * scale
         goLabel.position = CGPoint(x: (self.scene?.size.width)!/2, y: (self.scene?.size.height)! * 0.1)
         self.addChild(goLabel)
         
@@ -110,19 +111,10 @@ class MazeSelectScene: SKScene {
         case 4:
             gameScene = Maze4GameScene()
         case 5:
-            gameScene = Maze1GameScene()
+            gameScene = Maze5GameScene()
         case 6:
-            gameScene = Maze1GameScene()
-        case 7:
-            gameScene = Maze1GameScene()
-        case 8:
-            gameScene = Maze1GameScene()
-        case 9:
-            gameScene = Maze1GameScene()
-        case 10:
-            gameScene = Maze1GameScene()
-        case 11:
-            gameScene = Maze1GameScene()
+            let random = Int(arc4random_uniform(5))
+            gameScene = mazes[random]
         default:
             gameScene = Maze1GameScene()
         }

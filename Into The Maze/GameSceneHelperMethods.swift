@@ -209,12 +209,12 @@ extension GameScene {
     
     func removeTreasure(node: SKNode) {
         node.removeFromParent()
-        let treasureLabel = SKLabelNode(text: "Got the loot!")
+        let treasureLabel = SKLabelNode(text: "Get Out!")
         treasureLabel.zPosition = 100
         treasureLabel.fontName = labelFont
         treasureLabel.fontSize = 24.0 * scale
         treasureLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        treasureLabel.fontColor = .greenColor()
+        treasureLabel.fontColor = .redColor()
         scene?.addChild(treasureLabel)
         delay(1.0) {
             treasureLabel.removeFromParent()

@@ -44,6 +44,7 @@ var finishPosition = CGPoint(x: 0,y: 0)
 var box1Width:CGFloat =  CGFloat((activeScene.size.height) * 1.0)
 var circle1 = SKShapeNode()
 var circle2 = SKShapeNode()
+var circle3 = SKShapeNode()
 var box1 = SKSpriteNode()
 var box2 = SKSpriteNode()
 var box3 = SKSpriteNode()
@@ -88,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         centerOfScene = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
         activeScene = self
         setEnemySpawnPoints()
-        
+        mazeShiftIndex = 0
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         self.physicsWorld.contactDelegate = self
         

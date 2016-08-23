@@ -34,16 +34,16 @@ class Maze3GameScene: GameScene {
         
         //ability token set in buildOuterWall()
         
-        buildBoxes2_5()
+        buildBox2()
         buildOuterCircle()
         buildInnerCircle()
-        buildBox6()
+        buildBox3()
     }
     
     override func willMoveFromView(view: SKView) {
         
     }
-    func buildBox6() {
+    func buildBox3() {
         
         let width = CGFloat(activeScene.size.height * 0.4)
         box6.size = CGSize(width: width, height: width)
@@ -74,7 +74,7 @@ class Maze3GameScene: GameScene {
 
     }
     
-    func buildBoxes2_5() {
+    func buildBox2() {
         
         let width = CGFloat(activeScene.size.height * 0.3)
         box2.size = CGSize(width: width, height: width)
@@ -115,10 +115,16 @@ class Maze3GameScene: GameScene {
         circle1.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         addChild(circle1)
         
-        let brickWidth3 = brickWidth * 2.6
-        let numb = 12
+//        let brickWidth3 = brickWidth * 2.6
+//        let numb = 12
+//        let pi = M_PI
+//        let radians = pi/6
+        
         let pi = M_PI
-        let radians = pi/6
+        let circ = 2 * pi * Double(rad)
+        let numb = Int(circ / Double(brickWidth))
+        let radians = (2 * pi) / Double(numb)
+        
         var rot: Double = 0.0
         for i in 1...numb {
             
@@ -138,7 +144,7 @@ class Maze3GameScene: GameScene {
             if i == 7 {
                 
             }else {
-                let brick = Brick.createBrick(CGPoint(x: x, y: y), brickWidth: brickWidth3, rotation: rot)
+                let brick = Brick.createBrick(CGPoint(x: x, y: y), brickWidth: brickWidth, rotation: rot)
                 circle1.addChild(brick)
             }
             
@@ -209,6 +215,8 @@ class Maze3GameScene: GameScene {
             
             let rotateAction3 = SKAction.rotateByAngle(DegToRad(150), duration: duration)
             box2.runAction(rotateAction3)
+            
+            box6.runAction(rotateAction2)
         }
         
         
