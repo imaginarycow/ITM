@@ -244,7 +244,7 @@ class Maze4GameScene: GameScene {
     }
 
     //maze4 shift1 animation
-    func maze4Shift() {
+    func maze4Shift1() {
         //before user grabs treasuer
         if treasureTaken == false {
             
@@ -269,6 +269,24 @@ class Maze4GameScene: GameScene {
         
     } // End: Maze4Shift
     
+    func mazeShift() {
+        
+        if mazeShiftIndex % 2 == 0 {
+            let duration = 1.0
+            
+            let rotateAction1 = SKAction.rotateByAngle(DegToRad(90.0), duration: duration)
+            box2.runAction(rotateAction1)
+            box5.runAction(rotateAction1)
+        } else {
+            let duration = 1.0
+            
+            let rotateAction1 = SKAction.rotateByAngle(DegToRad(-90.0), duration: duration)
+            box3.runAction(rotateAction1)
+            box4.runAction(rotateAction1)
+        }
+        
+    }
+    
     //maze shift timer
     func updateShiftTimer() {
         
@@ -279,7 +297,7 @@ class Maze4GameScene: GameScene {
         self.addChild(timer)
         
         let actionwait = SKAction.waitForDuration(1.0)
-        var seconds = 15
+        var seconds = 10
         var freezeTimer = 10
         let actionrun = SKAction.runBlock({
             
@@ -308,17 +326,17 @@ class Maze4GameScene: GameScene {
                 
                 
             } else {
-                self.maze4Shift()
+                self.maze4Shift1()
                 
-                self.timer.text = "Maze Shifting!"
+                self.timer.text = "Shift in \(seconds)"
                 if seconds == 3 {
                     vc.playSoundEffect(Sound.alarmSound)
                 }
                 if seconds == 0 {
                     
-                    
+                    self.mazeShift()
                     vc.alarmSound!.stop()
-                    seconds = 16
+                    seconds = 11
                     self.mazeShiftIndex += 1
                 }
                 

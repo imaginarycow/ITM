@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import SpriteKit
 
+var adShowIndex = 0
+
 // bool to see if ad banner should load
 var adsRemoved = gameData.boolForKey("adsRemoved")
 

@@ -110,13 +110,14 @@ extension GameScene {
             vc.gameSound?.stop()
             self.scene?.removeAllChildren()
             
-            if adsRemoved == false {
+            if adsRemoved == false && vc.interstitial.isReady && (adShowIndex % 2 == 0) {
                 
                 AdMob.sharedInstance.showInterstitial()
+                
             }else {
                 self.goBackToPreviousScene()
             }
-
+            adShowIndex += 1
         }
     }
     
@@ -163,13 +164,14 @@ extension GameScene {
             vc.gameSound?.stop()
             self.scene?.removeAllChildren()
             
-            if adsRemoved == false {
+            if adsRemoved == false && vc.interstitial.isReady && (adShowIndex % 2 == 0){
                 
                 AdMob.sharedInstance.showInterstitial()
+                
             }else {
                 self.goBackToPreviousScene()
             }
-            
+            adShowIndex += 1
         }
 
     }

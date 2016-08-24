@@ -131,8 +131,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             monster.size = CGSize(width: monsterSize, height: monsterSize)
             monster.zPosition = 100
             monster.name = "monster"
-            
-            monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.frame.size)
+            let rad:CGFloat = monster.frame.width * 0.4
+            monster.physicsBody = SKPhysicsBody(circleOfRadius: rad)
             monster.physicsBody?.usesPreciseCollisionDetection = true
             monster.physicsBody?.categoryBitMask = monsterCategory
             monster.physicsBody?.collisionBitMask = bulletCategory | boundingBoxCategory | playerCategory | brickCategory | monsterCategory

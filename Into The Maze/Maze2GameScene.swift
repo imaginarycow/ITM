@@ -380,10 +380,10 @@ class Maze2GameScene: GameScene {
         
         if mazeShiftIndex % 2 == 0 {
             buildBox1B()
-            mazeShiftIndex += 1
+
         }else {
             buildBox1A()
-            mazeShiftIndex += 1
+            
         }
         
     }
@@ -429,7 +429,7 @@ class Maze2GameScene: GameScene {
             } else {
                 self.maze2Shift()
                 
-                self.timer.text = "Maze Shifting!"
+                self.timer.text = "Shift in \(seconds)"
                 if seconds == 3 {
                     vc.playSoundEffect(Sound.alarmSound)
                 }
