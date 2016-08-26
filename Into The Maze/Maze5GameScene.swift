@@ -252,6 +252,7 @@ class Maze5GameScene: GameScene {
     func updateShiftTimer() {
         
         timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        timer.zPosition = 200
         timer.fontName = labelFont
         timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
@@ -289,7 +290,7 @@ class Maze5GameScene: GameScene {
             } else {
                 self.maze5Shift()
                 
-                self.timer.text = "Maze Shifting!"
+                self.timer.text = "Shifting!"
                 if seconds == 3 {
                     vc.playSoundEffect(Sound.alarmSound)
                 }
@@ -304,7 +305,6 @@ class Maze5GameScene: GameScene {
                 seconds -= 1
                 
             }
-            
             
         })
         self.timer.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))

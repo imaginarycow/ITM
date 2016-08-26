@@ -18,7 +18,7 @@ class MazeSelectScene: SKScene {
     let leftArrow = SKSpriteNode(imageNamed: "arrow.png")
     let rightArrow = SKSpriteNode(imageNamed: "arrow.png")
     let goLabel = SKLabelNode(text: "Go")
-    
+    let scoreLabel = SKLabelNode(text: "")
     var selectedMaze:UIImage!
     var numberOfMazes = 0
     let mazes = [Maze1GameScene(),Maze2GameScene(),Maze3GameScene(),Maze4GameScene(),Maze5GameScene()]
@@ -29,6 +29,8 @@ class MazeSelectScene: SKScene {
     
     
     override func didMoveToView(view: SKView) {
+        
+        getHighScores()
         
         if musicIsPlaying == false {
             musicIsPlaying = true
@@ -68,7 +70,7 @@ class MazeSelectScene: SKScene {
         self.addChild(leftArrow)
         self.addChild(rightArrow)
         self.addChild(mazeIcon)
-        self.addChild(mazeNumLabel)
+        //self.addChild(mazeNumLabel)
     }
     
     func createLabels() {
@@ -86,6 +88,17 @@ class MazeSelectScene: SKScene {
         goLabel.fontSize = 26.0 * scale
         goLabel.position = CGPoint(x: (self.scene?.size.width)!/2, y: (self.scene?.size.height)! * 0.1)
         self.addChild(goLabel)
+        
+        if gameData.integerForKey("maze1HS") == 0 {
+            scoreLabel.text = ""
+        }else {
+            scoreLabel.text = "High Score: \(gameData.integerForKey("maze1HS"))"
+        }
+        scoreLabel.fontName = labelFont
+        scoreLabel.fontSize = 12.0 * scale
+        scoreLabel.fontColor = mazeColor
+        scoreLabel.position = CGPoint(x: (self.scene?.size.width)!/2, y: (self.scene?.size.height)! * 0.1 + 40.0)
+        //self.addChild(scoreLabel)
         
         backButton.fontSize = 14.0 * scale
         backButton.fontName = labelFont
@@ -137,6 +150,11 @@ class MazeSelectScene: SKScene {
                     mazeNumb = numberOfMazes
                 }else {
                     mazeNumb -= 1
+//                    let HS = highScores["maze\(mazeNumb)"]
+//                    if HS != 0 {
+//                        scoreLabel.text = "High Score: \(HS)"
+//                    }
+                    
                 }
                 
             }
@@ -147,6 +165,10 @@ class MazeSelectScene: SKScene {
                     mazeNumb = 1
                 }else {
                     mazeNumb += 1
+//                    let HS = highScores["maze\(mazeNumb)"]
+//                    if HS != 0 {
+//                        scoreLabel.text = "High Score: \(HS)"
+//                    }
                 }
                 
             }

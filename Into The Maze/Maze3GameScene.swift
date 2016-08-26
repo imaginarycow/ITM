@@ -226,6 +226,7 @@ class Maze3GameScene: GameScene {
     func updateShiftTimer() {
         
         timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        timer.zPosition = 200
         timer.fontName = labelFont
         timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
@@ -263,12 +264,11 @@ class Maze3GameScene: GameScene {
             } else {
                 self.maze3Shift()
                 
-                self.timer.text = "Maze Shifting!"
+                self.timer.text = "Shifting!"
                 if seconds == 3 {
                     vc.playSoundEffect(Sound.alarmSound)
                 }
                 if seconds == 0 {
-                    
                     
                     vc.alarmSound!.stop()
                     seconds = 16

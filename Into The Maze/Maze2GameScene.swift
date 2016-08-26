@@ -391,14 +391,21 @@ class Maze2GameScene: GameScene {
     //maze shift timer
     func updateShiftTimer() {
         
-        timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        if scale >= 1.75 {
+            scoreLabel.position = CGPoint(x: frame.size.width * 0.3, y: frame.size.height * 0.92)
+            timer.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.92)
+        }else {
+            timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        }
+        
+        timer.zPosition = 200
         timer.fontName = labelFont
         timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
         self.addChild(timer)
         
         let actionwait = SKAction.waitForDuration(1.0)
-        var seconds = 15
+        var seconds = 10
         var freezeTimer = 10
         let actionrun = SKAction.runBlock({
             
@@ -437,7 +444,7 @@ class Maze2GameScene: GameScene {
                     
                     self.box1Shift()
                     vc.alarmSound!.stop()
-                    seconds = 16
+                    seconds = 11
                     self.mazeShiftIndex += 1
                 }
                 

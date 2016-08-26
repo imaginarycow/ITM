@@ -290,9 +290,18 @@ class Maze4GameScene: GameScene {
     //maze shift timer
     func updateShiftTimer() {
         
-        timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        if scale >= 1.75 {
+            scoreLabel.position = CGPoint(x: frame.size.width * 0.065, y: frame.size.height * 0.7)
+            scoreLabel.zRotation = DegToRad(90.0)
+            timer.position = CGPoint(x: frame.size.width * 0.1, y: frame.size.height * 0.7)
+            timer.zRotation = DegToRad(90.0)
+        }else {
+            timer.position = CGPoint(x: frame.size.width * 0.10, y: frame.size.height * 0.80)
+        }
+
+        timer.zPosition = 200
         timer.fontName = labelFont
-        timer.fontSize = 14.0 * scale
+        timer.fontSize = 16.0 * scale
         timer.fontColor = .redColor()
         self.addChild(timer)
         

@@ -127,7 +127,7 @@ extension GameScene {
         vc.alarmSound?.stop()
         
         let notification = SKLabelNode(text: "You Beat the Maze")
-        notification.position = centerOfScene
+        notification.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y + 60.0)
         notification.fontName = labelFont
         notification.fontColor = mazeColor
         notification.fontSize = 50.0 * scale
@@ -141,12 +141,20 @@ extension GameScene {
             seconds = (totalTime % 60)
         }
         
-        let notification2 = SKLabelNode(text: "in \(minutes) minutes, \(seconds) seconds!")
-        notification2.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y - 60.0)
+        let notification2 = SKLabelNode(text: "in \(minutes) minutes, \(seconds) seconds")
+        notification2.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y)
         notification2.fontName = labelFont
         notification2.fontColor = mazeColor
         notification2.fontSize = 30.0 * scale
         notification2.zPosition = 100
+        
+        let notification3 = SKLabelNode(text: "and killed \(monstersKilledInLevel) zombies!")
+        notification3.position = CGPoint(x: centerOfScene.x, y: centerOfScene.y - 50.0)
+        notification3.fontName = labelFont
+        notification3.fontColor = mazeColor
+        notification3.fontSize = 30.0 * scale
+        notification3.zPosition = 100
+
         box1 = SKSpriteNode()
         box2 = SKSpriteNode()
         box3 = SKSpriteNode()
@@ -158,6 +166,8 @@ extension GameScene {
         self.scene?.removeAllChildren()
         addChild(notification)
         addChild(notification2)
+        addChild(notification3)
+        
         vc.playSoundEffect(.zombieSound)
         delay(5.0) {
             vc.gameSound?.pause()
@@ -173,7 +183,7 @@ extension GameScene {
             }
             adShowIndex += 1
         }
-
+        setHighScore(level)
     }
     
     //super bullet for brick breaker ability

@@ -28,10 +28,6 @@ var gameHasRun = false
 let gameData = NSUserDefaults.standardUserDefaults()
 
 
-func updateScore() {
-    
-}
-
 func loadInstallData() {
     
 }

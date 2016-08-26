@@ -18,6 +18,7 @@ var maxMonsterCount = 10
 var monsterIndex = 0
 var monstersArray: [SKSpriteNode] = []
 var monstersKilled = 0
+var monstersKilledInLevel = 0
 var monsterTextures = [SKTexture]()
 
 enum MonsterDirection {
@@ -129,7 +130,6 @@ class Monster:SKSpriteNode {
     
 }
 
-
 func removeAllEnemies() {
     monstersArray = []
     print("attempting to remove all monsters with instakill")
@@ -143,6 +143,22 @@ func removeAllEnemies() {
         }
     })
     print("monters in monstersArray: \(monstersArray.count)")
+    monstersKilledInLevel += monstersArray.count
+    let points = 25 * monstersArray.count
+    levelScore += points
+    
+    let texture = SKTexture(imageNamed: "spark.png")
+    let sparks = createSpark(texture, point: CGPointZero, target: scoreLabel)
+    scoreLabel.addChild(sparks)
+    
+    delay(0.3) {
+        sparks.removeFromParent()
+        sparks.targetNode = nil
+        sparks.resetSimulation()
+    }
+    
+    scoreLabel.text = String(format: "Score: %04u", levelScore)
+
     var i = 0
     for monster in monstersArray {
         
@@ -201,6 +217,7 @@ func removeEnemy(node:SKNode) {
         setAbilityForUse(abilityTokens)
         gameData.setInteger(abilityTokens, forKey: "abilityTokens")
     }
+    monstersKilledInLevel += 1
 }
 
 

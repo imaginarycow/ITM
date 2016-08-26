@@ -56,12 +56,14 @@ var box8 = SKSpriteNode()
 
 var timerIsFrozen = false
 var treasureTaken = false
+var levelScore = 0
+let scoreLabel = SKLabelNode(fontNamed: labelFont)
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var totalTime:Int = 0
-    var levelScore = 0
-    let scoreLabel = SKLabelNode(fontNamed: labelFont)
+    
     var mazeShiftIndex = 0
     let timer = SKLabelNode(text: "")
     let center = SKSpriteNode(imageNamed: "diamond.png")
@@ -95,8 +97,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         box1Width =  CGFloat((activeScene.size.height) * 1.0)
         treasureTaken = false
+        levelScore = 0
         monsterCount = 0
         monsterIndex = 0
+        monstersKilledInLevel = 0
         vc.playSoundEffect(.gameSound)
         createBackButton()
         createBoundingBox()
@@ -107,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //createNewMonster()
         createCenter()
         setAbilityToken()
+        timerIsFrozen = false
         AdMob.sharedInstance.delegate = self
         
         setJoystickHandler()
@@ -174,8 +179,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createBackButton() {
         
         backButton.fontColor = .redColor()
-        backButton.fontSize = 14.0
-        backButton.position = CGPoint(x: self.size.width * 0.9, y: self.size.height * 0.92)
+        backButton.fontSize = 14.0 * scale
+        if scale >= 1.75 {
+            backButton.position = CGPoint(x: self.size.width * 0.95, y: self.size.height * 0.92)
+        }else {
+            backButton.position = CGPoint(x: self.size.width * 0.9, y: self.size.height * 0.92)
+        }
+        
         backButton.zPosition = 50
         backButton.fontName = labelFont
         self.addChild(backButton)
@@ -185,9 +195,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scoreLabel.name = "scoreLabel"
         scoreLabel.fontColor = mazeColor
-        scoreLabel.fontSize = 16.0
+        scoreLabel.fontSize = 16.0 * scale
         scoreLabel.text = String(format: "Score: %04u", levelScore)
         scoreLabel.position = CGPoint(x: frame.size.width * 0.1, y: frame.size.height * 0.92)
+        scoreLabel.zRotation = DegToRad(0.0)
         scene!.addChild(scoreLabel)
     }
     
@@ -424,7 +435,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == abilityCategory) {
             print("player got ability token")
             abilityTokens += 1
-            updateScore(50)
+            updateScore(25)
             vc.playSoundEffect(.redeemSound)
             removeToken(secondBody.node!)
             setAbilityForUse(abilityTokens)
@@ -454,7 +465,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 removeBullet(superNode)
             }
             createAnimationAtPoint(self, point: contactPoint)
-            removeBrick(firstBody.node!)
+            //removeBrick(firstBody.node!)
         }
         if (firstBody.categoryBitMask == monsterCategory && secondBody.categoryBitMask == superBulletCategory) {
             print("superBullet hit monster")
@@ -462,6 +473,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 removeBullet(superNode)
             }
             removeEnemy(firstBody.node!)
+            updateScore(50)
         }
 
     }

@@ -80,7 +80,7 @@ class AbilitySelectScene: SKScene {
             
             let iconTitle = SKLabelNode()
             iconTitle.fontColor = mazeColor
-            iconTitle.fontName = "TimesNewRomanPS-BoldMT"
+            //iconTitle.fontName = "TimesNewRomanPS-BoldMT"
             iconTitle.fontSize = 16.0 * scale
             
             if i == 0 {

@@ -246,7 +246,9 @@ class MainMenuScene: SKScene, UITextFieldDelegate, GADInterstitialDelegate {
         var movementDistance:CGFloat = 0
         let movementDuration: Double = 0.3
         
-        if scale > 1.35 {
+        if scale > 1.45 {
+            movementDistance = -260
+        }else if scale > 1.35{
             movementDistance = -180
         }else {
             movementDistance = -140
